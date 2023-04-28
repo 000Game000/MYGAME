@@ -20,3 +20,9 @@ void BeginWindow::on_exitBtn_clicked()
     this->close();
 }
 
+
+void BeginWindow::on_StartBtn_clicked()
+{
+
+}
+

@@ -1,4 +1,5 @@
 #include "Mainwindow.h"
+#include "Modules/Global.h"
 #include <QApplication>
 
 #include <QLocale>
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
             break;
         }
     }
+    Global global;
     MainWindow w;
     return a.exec();
 }

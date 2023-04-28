@@ -18,6 +18,8 @@ public:
 private slots:
     void on_exitBtn_clicked();
 
+    void on_StartBtn_clicked();
+
 private:
     Ui::BeginWindow *ui;
 };

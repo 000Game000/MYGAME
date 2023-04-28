@@ -4,6 +4,9 @@
 namespace MYGAME {
 class Attribute;
 }
+/*属性类
+ *
+ */
 class Attribute
 {
 private:
