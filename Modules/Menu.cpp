@@ -2,7 +2,8 @@
 #include<QMenuBar>
 #include<QMenu>
 #include"Windows/BeginWindow.h"
-void MYGAME::setMenu(QWidget*widget){
+namespace MYGAME{
+void setMenu(QWidget*widget){
     QMenuBar*menu=new QMenuBar(widget);
     QMenu*menu1=new QMenu("游戏(&G)",menu);
     QAction*gameAction1=new QAction("读取(&R)");
@@ -17,4 +18,5 @@ void MYGAME::setMenu(QWidget*widget){
         b->show();
         widget->close();
     });
+}
 }

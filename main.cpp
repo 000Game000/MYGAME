@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    Global global;
+    MYGAME::Global global;
     MainWindow w;
     return a.exec();
 }

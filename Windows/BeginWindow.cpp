@@ -25,4 +25,3 @@ void BeginWindow::on_StartBtn_clicked()
 {
 
 }
-

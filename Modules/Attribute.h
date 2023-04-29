@@ -2,24 +2,23 @@
 #define ATTRIBUTE_H
 #include<QString>
 namespace MYGAME {
-class Attribute;
-}
 /*属性类
- *
+ *基础几个属性 智力 速度等
+ *属性的基础类
  */
 class Attribute
 {
-private:
+protected:
     QString name;                                       //属性名称
     long long rank;                                     //属性等级
     long long EXP;                                      //经验值
 public:
     QString getName() const;
     void setName(const QString &newName);
-    long long getRank() const;
+    virtual long long getRank() const;
     void setRank(long long newRank);
     long long getEXP() const;
     void setEXP(long long newEXP);
 };
-
+}
 #endif // ATTRIBUTE_H

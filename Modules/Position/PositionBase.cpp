@@ -1,5 +1,5 @@
 #include "PositionBase.h"
-
+namespace MYGAME{
 QString PositionBase::getName() const
 {
     return name;
@@ -50,9 +50,15 @@ void PositionBase::setCount(long long newCount)
     count = newCount;
 }
 
+PositionBase::PositionBase()
+{
+
+}
+
 PositionBase::PositionBase(const QString &name, long long rank, long long EXP, long long pleasure, long long count) : name(name),
     rank(rank),
     EXP(EXP),
     pleasure(pleasure),
     count(count)
 {}
+}

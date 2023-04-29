@@ -1,4 +1,5 @@
 #include "Attribute.h"
+namespace MYGAME{
 QString Attribute::getName() const
 {
     return name;
@@ -27,4 +28,5 @@ long long Attribute::getEXP() const
 void Attribute::setEXP(long long newEXP)
 {
     EXP = newEXP;
+}
 }
