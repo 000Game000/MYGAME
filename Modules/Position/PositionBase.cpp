@@ -50,6 +50,11 @@ void PositionBase::setCount(long long newCount)
     count = newCount;
 }
 
+void PositionBase::show()
+{
+
+}
+
 PositionBase::PositionBase()
 {
 

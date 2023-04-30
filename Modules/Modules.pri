@@ -2,6 +2,7 @@ SOURCES += \
     $$PWD/Attribute.cpp \
     $$PWD/Global.cpp \
     $$PWD/Menu.cpp \
+    $$PWD/People.cpp \
     $$PWD/Position/Anus.cpp \
     $$PWD/Position/Bladder.cpp \
     $$PWD/Position/Breast.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     $$PWD/Attribute.h \
     $$PWD/Global.h \
     $$PWD/Modules.h \
+    $$PWD/People.h \
     $$PWD/Position/Anus.h \
     $$PWD/Position/Bladder.h \
     $$PWD/Position/Breast.h \

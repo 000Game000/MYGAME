@@ -25,7 +25,7 @@ public:
     void setPleasure(long long newPleasure);
     long long getCount() const;
     void setCount(long long newCount);
-    virtual void show()=0;
+    virtual void show();
 };
 }
 #endif // POSITIONBASE_H
