@@ -1,10 +1,8 @@
 #include "Mainwindow.h"
-#include "Modules/Global.h"
 #include <QApplication>
 
 #include <QLocale>
 #include <QTranslator>
-
 int main(int argc, char *argv[])
 {
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Floor);
@@ -19,7 +17,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    MYGAME::Global global;
     MainWindow w;
     return a.exec();
 }

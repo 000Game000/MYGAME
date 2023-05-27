@@ -13,6 +13,7 @@ void setMenu(QWidget*widget){
     menu1->addAction(gameAction2);
     menu1->addAction(gameAction3);
     menu->addMenu(menu1);
+    qDebug()<<widget->objectName();
     widget->connect(gameAction3,&QAction::triggered,widget,[=]{
         BeginWindow *b=new BeginWindow();
         b->show();

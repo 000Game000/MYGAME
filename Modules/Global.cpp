@@ -1,12 +1,12 @@
 #include "Global.h"
 #include "QDebug"
 namespace MYGAME{
-QList<QString> Global::getMajorList() const
+QList<QString> Global::getMajorList()
 {
     return majorList;
 }
 
-QList<QString> Global::getCareerList() const
+QList<QString> Global::getCareerList()
 {
     return careerList;
 }

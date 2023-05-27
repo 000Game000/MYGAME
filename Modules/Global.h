@@ -16,8 +16,9 @@ public:
     Global();
     void initMajorList();                                           //初始化专业表列
     void initCareerList();                                          //初始化职业表列
-    QList<QString> getMajorList() const;
-    QList<QString> getCareerList() const;
+    QList<QString> getMajorList();
+    QList<QString> getCareerList();
 };
 }
+Q_GLOBAL_STATIC(MYGAME::Global,global);
 #endif // GLOBAL_H

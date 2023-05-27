@@ -65,6 +65,11 @@ QList<Attribute> People::getAttributeList() const
     return attributeList;
 }
 
+QList<Attribute> &People::getVariableAttributeList()
+{
+    return attributeList;
+}
+
 void People::setAttributeList(const QList<Attribute> &newAttributeList)
 {
     attributeList = newAttributeList;
@@ -192,11 +197,6 @@ People::People(const QString &name, const QString &nickName, const QString &clai
     positions(positions),
     describe(describe)
 {}
-
-QList<Attribute> &People::getVariableAttribute()
-{
-    return this->attributeList;
-}
 
 QList<QString> &People::getVariableTag()
 {

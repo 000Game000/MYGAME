@@ -33,9 +33,9 @@ protected:
 public:
     People();
     People(const QString &name, const QString &nickName, const QString &claimed, const QDate &birthday, const QString &occupation, const QString &major, const QList<Attribute> &attributeList, const QColor &hairColor, const QColor &skinColor, Height height, Weight weight, const QColor &RPupilColor, const QColor &LPupilColor, const QList<QString> &tag, const QList<Skill> &skills, const QList<PositionBase> &positions, const QString &describe);
-    QList<Attribute>&getVariableAttribute();
     QList<QString>&getVariableTag();
     QList<Skill>&getVariableSkills();
+    QList<Attribute>&getVariableAttributeList();
     QList<PositionBase>&getVariablePositions();
     QString getName() const;
     void setName(const QString &newName);
