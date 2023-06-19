@@ -190,57 +190,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="Occupation" native="true">
-            <property name="minimumSize">
-             <size>
-              <width>236</width>
-              <height>36</height>
-             </size>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
-             <item>
-              <widget class="QLabel" name="OccupationLable">
-               <property name="maximumSize">
-                <size>
-                 <width>29</width>
-                 <height>22</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="text">
-                <string>职业:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="selectOccupation">
-               <property name="minimumSize">
-                <size>
-                 <width>180</width>
-                 <height>21</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>这是你现在的职业,现在并不影响什么.</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
            <widget class="QWidget" name="Major" native="true">
             <property name="minimumSize">
              <size>
@@ -253,8 +202,8 @@
               <widget class="QLabel" name="MajorLable">
                <property name="maximumSize">
                 <size>
-                 <width>29</width>
-                 <height>16777215</height>
+                 <width>38</width>
+                 <height>21</height>
                 </size>
                </property>
                <property name="font">
@@ -285,6 +234,57 @@
                </property>
                <property name="toolTip">
                 <string>这是你本科的专业,暂时只影响你的技能.</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="Occupation" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>236</width>
+              <height>36</height>
+             </size>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="OccupationLable">
+               <property name="maximumSize">
+                <size>
+                 <width>38</width>
+                 <height>21</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string/>
+               </property>
+               <property name="text">
+                <string>职业:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="selectOccupation">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>21</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>这是你现在的职业,现在并不影响什么.</string>
                </property>
               </widget>
              </item>
@@ -422,7 +422,10 @@
                 <number>60</number>
                </property>
                <property name="maximum">
-                <number>10000</number>
+                <number>120</number>
+               </property>
+               <property name="singleStep">
+                <number>1</number>
                </property>
                <property name="value">
                 <number>100</number>
@@ -461,7 +464,7 @@
                 <number>60</number>
                </property>
                <property name="maximum">
-                <number>10000</number>
+                <number>120</number>
                </property>
                <property name="value">
                 <number>100</number>
@@ -500,7 +503,7 @@
                 <number>60</number>
                </property>
                <property name="maximum">
-                <number>10000</number>
+                <number>120</number>
                </property>
                <property name="value">
                 <number>100</number>
@@ -539,7 +542,7 @@
                 <number>60</number>
                </property>
                <property name="maximum">
-                <number>10000</number>
+                <number>120</number>
                </property>
                <property name="value">
                 <number>100</number>
@@ -578,7 +581,7 @@
                 <number>60</number>
                </property>
                <property name="maximum">
-                <number>10000</number>
+                <number>120</number>
                </property>
                <property name="value">
                 <number>100</number>
@@ -597,11 +600,431 @@
       <attribute name="title">
        <string>其他属性</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QGroupBox" name="appearance">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>121</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>外貌</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QWidget" name="height" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_20">
+             <item>
+              <widget class="QLabel" name="heightLable">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>身高:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="heightHorizontalSlider">
+               <property name="maximum">
+                <number>4</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="heightTipsLable">
+               <property name="minimumSize">
+                <size>
+                 <width>72</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>一二三四五</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="weight" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_21">
+             <item>
+              <widget class="QLabel" name="weightLable">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>体型:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="weightHorizontalSlider">
+               <property name="maximum">
+                <number>4</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="weightTipsLable">
+               <property name="minimumSize">
+                <size>
+                 <width>72</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>一二三四五</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="dickSize" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_16">
+             <item>
+              <widget class="QLabel" name="dickSizeLable">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string/>
+               </property>
+               <property name="text">
+                <string>dickSize:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="dickSizeHorizontalSlider">
+               <property name="minimum">
+                <number>10</number>
+               </property>
+               <property name="maximum">
+                <number>30</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="dickSizeTipsLable">
+               <property name="minimumSize">
+                <size>
+                 <width>72</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>一二三四五</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="diameterLable">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>直径:10MM</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lengthLable">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>长度:50MM</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_17">
+             <item>
+              <widget class="QWidget" name="hairColor" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                <item>
+                 <widget class="QLabel" name="hairColorLable">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>发色:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ColorSelection" name="hairColorSelect" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="EyeColors" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_18">
+                <item>
+                 <widget class="QLabel" name="eyeColorsLable">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string/>
+                  </property>
+                  <property name="text">
+                   <string>瞳色:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="LEyeColorsLable">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string/>
+                  </property>
+                  <property name="text">
+                   <string>左</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ColorSelection" name="LEyeColorsSelect" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="REyeColorsLable">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string/>
+                  </property>
+                  <property name="text">
+                   <string>右</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ColorSelection" name="REyeColorsSelect" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="EyeColorsEqual">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>如果眼睛颜色相同,以右边为准.</string>
+                  </property>
+                  <property name="text">
+                   <string>使瞳色相同</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="skinColor" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="QLabel" name="skinColorLable">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>肤色:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ColorSelection" name="skinColorSelect" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="tag">
+         <property name="title">
+          <string>标签</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="tags">
+            <property name="minimumSize">
+             <size>
+              <width>71</width>
+              <height>18</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>等待添加主角可用标签</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="complete">
+         <property name="toolTip">
+          <string>点击按钮完成主角创建</string>
+         </property>
+         <property name="text">
+          <string>完成</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColorSelection</class>
+   <extends>QWidget</extends>
+   <header>Windows/ColorSelection.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

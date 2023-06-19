@@ -13,6 +13,7 @@ protected:
     long long rank;                                     //属性等级
     long long EXP;                                      //经验值
 public:
+    Attribute(const QString &name, long long rank, long long EXP);
     QString getName() const;
     void setName(const QString &newName);
     virtual long long getRank() const;

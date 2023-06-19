@@ -1,6 +1,6 @@
 #include "ColorSelection.h"
 #include "ui_ColorSelection.h"
-
+#include<QPainter>
 ColorSelection::ColorSelection(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ColorSelection)
@@ -20,12 +20,23 @@ QColor ColorSelection::getColor() const
 
 void ColorSelection::setColor(const QColor &newColor)
 {
-    color = newColor;
+    this->color = newColor;
+//    int a;
+//    int b;
+//    int c;
+//    int d;
+//    this->color.getRgb(&a,&b,&c,&d);
+//    qDebug()<<a<<b<<c<<d;
     QPalette p(this->palette());
     p.setColor(QPalette::Window,this->color);
     this->setAutoFillBackground(true);
     this->setPalette(p);
-    this->show();
+    this->update();
+}
+
+void ColorSelection::setColor(int R, int G, int B, int A)
+{
+    setColor(qRgba(R,G,B,A));
 }
 
 void ColorSelection::mouseReleaseEvent(QMouseEvent *)

@@ -1,18 +1,42 @@
 #include "Mainwindow.h"
 #include "ui_Mainwindow.h"
-#include "Modules/Modules.h"
 #include "Windows/BeginWindow.h"
+#include "Modules/Global.h"
+#include "Windows/CreateLead.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->initWindows();
     ui->setupUi(this);
-    MYGAME::setMenu(this);
-    BeginWindow*b=new BeginWindow();
-    b->show();
 }
 
 MainWindow::~MainWindow()
 {
+    MYGAME::global.setMainWindow(nullptr);
     delete ui;
+}
+
+void MainWindow::NewGame(MYGAME::Player *player)
+{
+    this->peopleList.push_back(player);
+    this->initNewGame();
+    qDebug()<<time;
+    qDebug()<<time->toString("dddd");
+    qDebug()<<LONG_LONG_MAX;
+    this->show();
+}
+
+void MainWindow::initWindows()
+{
+    MYGAME::global.setMainWindow(this);
+    MYGAME::global.setBeginWindow(new BeginWindow);
+    MYGAME::global.setCreateLead(new CreateLead);
+    MYGAME::global.getBeginWindow()->show();
+    connect(MYGAME::global.getCreateLead(),&CreateLead::NewGame,this,&MainWindow::NewGame);
+}
+
+void MainWindow::initNewGame()
+{
+    this->time=new QDateTime(QDate(3021,6,30),QTime(7,0,0));
 }

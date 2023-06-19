@@ -60,21 +60,6 @@ void People::setMajor(const QString &newMajor)
     major = newMajor;
 }
 
-QList<Attribute> People::getAttributeList() const
-{
-    return attributeList;
-}
-
-QList<Attribute> &People::getVariableAttributeList()
-{
-    return attributeList;
-}
-
-void People::setAttributeList(const QList<Attribute> &newAttributeList)
-{
-    attributeList = newAttributeList;
-}
-
 QColor People::getHairColor() const
 {
     return hairColor;
@@ -135,36 +120,6 @@ void People::setLPupilColor(const QColor &newLPupilColor)
     LPupilColor = newLPupilColor;
 }
 
-QList<QString> People::getTag() const
-{
-    return tag;
-}
-
-void People::setTag(const QList<QString> &newTag)
-{
-    tag = newTag;
-}
-
-QList<Skill> People::getSkills() const
-{
-    return skills;
-}
-
-void People::setSkills(const QList<Skill> &newSkills)
-{
-    skills = newSkills;
-}
-
-QList<PositionBase> People::getPositions() const
-{
-    return positions;
-}
-
-void People::setPositions(const QList<PositionBase> &newPositions)
-{
-    positions = newPositions;
-}
-
 QString People::getDescribe() const
 {
     return describe;
@@ -175,42 +130,64 @@ void People::setDescribe(const QString &newDescribe)
     describe = newDescribe;
 }
 
+void People::show()
+{
+    qDebug()<<"人物基类!!!";
+}
+
+std::vector<Attribute *> People::getAttributeList() const
+{
+    return attributeList;
+}
+
+
+void People::setAttributeList(const std::vector<Attribute *> &newAttributeList)
+{
+    attributeList = newAttributeList;
+}
+
+std::vector<QString> People::getTagList() const
+{
+    return tagList;
+}
+
+void People::setTagList(const std::vector<QString> &newTagList)
+{
+    tagList = newTagList;
+}
+
+std::vector<Skill*> People::getSkillList() const
+{
+    return skillList;
+}
+
+std::vector<Skill*> &People::getVariableSkillList()
+{
+    return skillList;
+}
+
+void People::setSkillList(const std::vector<Skill*> &newSkillList)
+{
+    skillList = newSkillList;
+}
+
+std::vector<PositionBase *> People::getPositionList() const
+{
+    return positionList;
+}
+
+std::vector<PositionBase *> &People::getVariablePositionList()
+{
+    return positionList;
+}
+
+void People::setPositionList(const std::vector<PositionBase *> &newPositionList)
+{
+    positionList = newPositionList;
+}
+
 People::People()
 {
-}
-
-People::People(const QString &name, const QString &nickName, const QString &claimed, const QDate &birthday, const QString &occupation, const QString &major, const QList<Attribute> &attributeList, const QColor &hairColor, const QColor &skinColor, Height height, Weight weight, const QColor &RPupilColor, const QColor &LPupilColor, const QList<QString> &tag, const QList<Skill> &skills, const QList<PositionBase> &positions, const QString &describe) : name(name),
-    nickName(nickName),
-    claimed(claimed),
-    birthday(birthday),
-    occupation(occupation),
-    major(major),
-    attributeList(attributeList),
-    hairColor(hairColor),
-    skinColor(skinColor),
-    height(height),
-    weight(weight),
-    RPupilColor(RPupilColor),
-    LPupilColor(LPupilColor),
-    tag(tag),
-    skills(skills),
-    positions(positions),
-    describe(describe)
-{}
-
-QList<QString> &People::getVariableTag()
-{
-    return this->tag;
-}
-
-QList<Skill> &People::getVariableSkills()
-{
-    return this->skills;
-}
-
-QList<PositionBase> &People::getVariablePositions()
-{
-    return this->positions;
 }
 
 }

@@ -29,4 +29,10 @@ void Attribute::setEXP(long long newEXP)
 {
     EXP = newEXP;
 }
+
+Attribute::Attribute(const QString &name, long long rank, long long EXP) : name(name),
+    rank(rank),
+    EXP(EXP)
+{}
+
 }

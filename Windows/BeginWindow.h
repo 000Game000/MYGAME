@@ -6,7 +6,9 @@
 namespace Ui {
 class BeginWindow;
 }
-
+/*
+ * 开始游戏界面
+ */
 class BeginWindow : public QWidget
 {
     Q_OBJECT
