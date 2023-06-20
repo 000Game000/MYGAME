@@ -3,6 +3,7 @@
 #include "Windows/BeginWindow.h"
 #include "Modules/Global.h"
 #include "Windows/CreateLead.h"
+#include "Modules/AttributeAdd.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,6 +25,12 @@ void MainWindow::NewGame(MYGAME::Player *player)
     qDebug()<<time;
     qDebug()<<time->toString("dddd");
     qDebug()<<LONG_LONG_MAX;
+    std::vector<MYGAME::Attribute*>list=player->getAttributeList();
+    foreach (MYGAME::Attribute*temp, list) {
+        if(temp->getName()=="体质"||temp->getName()=="意志"){
+            qDebug()<<dynamic_cast<MYGAME::AttributeAdd*>(temp)->getNowValue();
+        }
+    }
     this->show();
 }
 

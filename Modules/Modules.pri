@@ -1,5 +1,6 @@
 SOURCES += \
     $$PWD/Attribute.cpp \
+    $$PWD/AttributeAdd.cpp \
     $$PWD/Global.cpp \
     $$PWD/Menu.cpp \
     $$PWD/People.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     $$PWD/Attribute.h \
+    $$PWD/AttributeAdd.h \
     $$PWD/Global.h \
     $$PWD/Modules.h \
     $$PWD/People.h \

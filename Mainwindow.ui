@@ -29,9 +29,66 @@
    <attribute name="dockWidgetArea">
     <number>4</number>
    </attribute>
-   <widget class="QWidget" name="dockWidget_2"/>
+   <widget class="QWidget" name="mainDockWidget">
+    <widget class="QWidget" name="staminaBarWidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>318</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="staminaBarLabel">
+        <property name="minimumSize">
+         <size>
+          <width>41</width>
+          <height>19</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>体力:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Strip" name="staminaBarStrip" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>19</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="staminaBarNumberLabel">
+        <property name="minimumSize">
+         <size>
+          <width>121</width>
+          <height>19</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>999999/999999</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Strip</class>
+   <extends>QWidget</extends>
+   <header>Windows/Strip.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
