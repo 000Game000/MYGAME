@@ -2,7 +2,7 @@ SOURCES += \
     $$PWD/Attribute.cpp \
     $$PWD/AttributeAdd.cpp \
     $$PWD/Global.cpp \
-    $$PWD/Menu.cpp \
+    $$PWD/Modules.cpp \
     $$PWD/People.cpp \
     $$PWD/Player.cpp \
     $$PWD/Position/Anus.cpp \
