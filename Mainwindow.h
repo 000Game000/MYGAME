@@ -23,6 +23,9 @@ public:
     ~MainWindow();
 public slots:
     void NewGame(MYGAME::Player*player);
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void initWindows();                                                             //窗口关系初始化
