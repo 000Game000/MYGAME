@@ -3,6 +3,7 @@
 #include "ui_CreateLead.h"
 #include "Modules/Global.h"
 #include "Modules/Modules.h"
+#include "Modules/AttributeAdd.h"
 CreateLead::CreateLead(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CreateLead)
@@ -32,9 +33,9 @@ void CreateLead::initUI()
     this->point=20;
     ui->PointsRemaining->setText("剩余点数:"+QString::number(this->point));
     //设置输入框与对应属性的关联
-    maps.insert(ui->WillpowerInput,new MYGAME::Attribute("意志",100,0));
+    maps.insert(ui->WillpowerInput,new MYGAME::AttributeAdd("意志",100,0,100));
     maps.insert(ui->QuickInput,new MYGAME::Attribute("敏捷",100,0));
-    maps.insert(ui->PhysiqueInput,new MYGAME::Attribute("体质",100,0));
+    maps.insert(ui->PhysiqueInput,new MYGAME::AttributeAdd("体质",100,0,100));
     maps.insert(ui->CharmInput,new MYGAME::Attribute("魅力",100,0));
     maps.insert(ui->IntelligenceInput,new MYGAME::Attribute("智力",100,0));
     ui->WillpowerInput->setRange(60,120);
@@ -96,10 +97,6 @@ void CreateLead::attributeChanged(QSpinBox *input)
     foreach (QSpinBox*temp, maps.keys()) {
         temp->setMaximum(maps.value(temp)->getRank()+this->point);
     }
-    qDebug()<<input->objectName();
-    qDebug()<<input->value();
-    qDebug()<<maps.value(input)->getName();
-    qDebug()<<maps.value(input)->getRank();
 }
 
 void CreateLead::on_WillpowerInput_valueChanged(int)
@@ -229,7 +226,7 @@ void CreateLead::on_complete_clicked()
         QMessageBox::critical(this,"错误","请输入自称");
         return;
     }
-    QString str="2000";
+    QString str="3000";
     if(ui->monthInput->text().toLongLong()<10){
         str+="0";
     }
@@ -244,29 +241,50 @@ void CreateLead::on_complete_clicked()
         return;
     }
     //存入对象
+    //设置名称
     this->player->setName(ui->nameInput->text());
+    //设置昵称
     this->player->setNickName(ui->nickNameInput->text());
+    //设置自称
     this->player->setClaimed(ui->claimedInput->text());
+    //设置生日
     this->player->setBirthday(date);
+    //设置专业
     this->player->setMajor(ui->selectMajor->currentText());
+    //设置职业
     this->player->setOccupation(ui->selectOccupation->currentText());
+    //设置五项基本属性
     std::vector<MYGAME::Attribute*>*attributeList=new std::vector<MYGAME::Attribute*>();
     foreach (QSpinBox*temp, maps.keys()) {
+        if(maps.value(temp)->getName()=="体质"||maps.value(temp)->getName()=="意志"){
+            dynamic_cast<MYGAME::AttributeAdd*>(maps.value(temp))->setNowValue(maps.value(temp)->getRank());
+        }
         attributeList->push_back(maps.value(temp));
     }
     this->player->setAttributeList(*attributeList);
+    //设置发色
     this->player->setHairColor(ui->hairColorSelect->getColor());
+    //设置肤色
     this->player->setSkinColor(ui->skinColorSelect->getColor());
+    //设置右眼颜色
     this->player->setRPupilColor(ui->REyeColorsSelect->getColor());
+    //设置左眼颜色
     this->player->setLPupilColor(ui->LEyeColorsSelect->getColor());
+    //设置标签
     this->player->setTagList(std::vector<QString>());
+    //设置技能
     std::vector<MYGAME::Skill*>*skillList=new std::vector<MYGAME::Skill*>();
     skillList->push_back(new MYGAME::Skill("计算机",1,0));
     this->player->setSkillList(*skillList);
+    //设置部位表列
     std::vector<MYGAME::PositionBase*>*positionList=new std::vector<MYGAME::PositionBase*>();
     positionList->push_back(this->penis);
     this->player->setPositionList(*positionList);
+    //设置初始金钱
+    this->player->setMoney(3000);
+    //触发信号
     emit this->NewGame(this->player);
+    //关闭窗口
     this->close();
 }
 

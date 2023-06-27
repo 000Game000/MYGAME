@@ -25,10 +25,10 @@ public slots:
     void NewGame(MYGAME::Player*player);
 private:
     Ui::MainWindow *ui;
-    void initWindows();
-    void initNewGame();
-    QDateTime*time;
-    std::vector<MYGAME::People*> peopleList;
+    void initWindows();                                                             //窗口关系初始化
+    void initNewGame();                                                             //新游戏初始化
+    QDateTime*time;                                                                 //游戏时间
+    std::vector<MYGAME::People*> peopleList;                                        //角色表列
+    void refresh();                                                                 //刷新
 };
-
 #endif // MAINWINDOW_H

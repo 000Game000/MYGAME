@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Strip</class>
- <widget class="QWidget" name="Strip">
+ <class>MYStrip</class>
+ <widget class="QWidget" name="MYStrip">
   <property name="geometry">
    <rect>
     <x>0</x>

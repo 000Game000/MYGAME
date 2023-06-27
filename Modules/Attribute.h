@@ -20,6 +20,7 @@ public:
     void setRank(long long newRank);
     long long getEXP() const;
     void setEXP(long long newEXP);
+    virtual void show();
 };
 }
 #endif // ATTRIBUTE_H
