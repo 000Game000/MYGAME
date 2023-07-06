@@ -3,7 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*肛门类
+/*
+ * 肛门类
  */
 class Anus : public PositionBase
 {

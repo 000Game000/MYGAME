@@ -295,7 +295,7 @@
         <attribute name="title">
          <string>系统</string>
         </attribute>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="systemStore">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -306,6 +306,19 @@
          </property>
          <property name="text">
           <string>系统商城</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="itemList">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>10</y>
+           <width>75</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>所持物品</string>
          </property>
         </widget>
        </widget>

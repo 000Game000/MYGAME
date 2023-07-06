@@ -2,7 +2,8 @@
 #define POSITIONBASE_H
 #include<QString>
 namespace MYGAME {
-/*人物部位的基础类
+/*
+ * 人物部位的基础类
  */
 class PositionBase
 {

@@ -3,7 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*尿道类
+/*
+ * 尿道类
  */
 class Urethra : public PositionBase
 {
