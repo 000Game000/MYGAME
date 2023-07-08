@@ -4,10 +4,10 @@
 #include<QDate>
 #include<QColor>
 #include<vector>
-#include"Modules.h"
-#include"Attribute.h"
-#include"Skill/Skill.h"
-#include"Position/PositionBase.h"
+#include"Modules/Modules.h"
+#include"Modules/Attribute.h"
+#include"Modules/Skill/Skill.h"
+#include"Modules/Position/PositionBase.h"
 namespace MYGAME{
 /*人物基础类
  */

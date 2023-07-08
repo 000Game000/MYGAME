@@ -290,4 +290,3 @@ void CreateLead::on_complete_clicked()
     //关闭窗口
     this->close();
 }
-

@@ -33,6 +33,7 @@ SystemStore::~SystemStore()
 void SystemStore::on_stoneList_itemClicked(QListWidgetItem *item)
 {
     this->flag=false;
+    this->selectItem=item;
     ui->itemName->setText((*this->itemList)[ui->stoneList->row(item)]->getName());
     ui->describe->setText((*this->itemList)[ui->stoneList->row(item)]->getDescribe());
     ui->itemFunction->setText((*this->itemList)[ui->stoneList->row(item)]->getItemFunction());
@@ -49,7 +50,7 @@ void SystemStore::on_stoneList_itemClicked(QListWidgetItem *item)
             break;
         }
     }
-    ui->money->setText("所花点数:"+QString::number((*this->itemList)[ui->stoneList->row(item)]->getMoney()*ui->count->value()-ui->count->minimum()));
+    ui->money->setText("所花点数:"+QString::number((*this->itemList)[ui->stoneList->row(item)]->getMoney()*(ui->count->value()-ui->count->minimum())));
 }
 
 
@@ -61,15 +62,18 @@ void SystemStore::on_count_valueChanged(int)
 
 void SystemStore::on_buy_clicked()
 {
-    if(player->getSystem().getPoint()>(item->getMoney()*(ui->count->value())-ui->count->minimum())){
-        item->setCount(ui->count->value());
-        if(!this->flag){
-            player->getVariableItemList()->push_back(item);
+    if(player->getSystem().getPoint()>=(item->getMoney()*(ui->count->value())-ui->count->minimum())){
+        if(ui->count->value()!=0){
+            item->setCount(ui->count->value());
+            if(!this->flag){
+                player->getVariableItemList()->push_back(item);
+            }
+            this->player->getVariableSystem().setPoint(player->getSystem().getPoint()-item->getMoney()*(ui->count->value()-ui->count->minimum()));
         }
-        this->player->getVariableSystem().setPoint(player->getSystem().getPoint()-item->getMoney()*(ui->count->value())-ui->count->minimum());
         ui->point->setText(tr("系统点数:")+QString::number(this->player->getSystem().getPoint()));
     }
     else{
         QMessageBox::critical(this,tr("错误"),tr("系统点数不足无法购买!!!"));
     }
+    this->on_stoneList_itemClicked(selectItem);
 }

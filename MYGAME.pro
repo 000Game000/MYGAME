@@ -30,7 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 include(Windows/Windows.pri)
 include(Modules/Modules.pri)
+include(Person/Person.pri)
 include(Map/Map.pri)
-
 RESOURCES += \
     System/System.qrc

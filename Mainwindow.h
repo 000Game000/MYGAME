@@ -4,7 +4,7 @@
 
 #include <QMainWindow>
 #include <vector>
-#include"Modules/Player.h"
+#include"Person/Player.h"
 
 
 QT_BEGIN_NAMESPACE

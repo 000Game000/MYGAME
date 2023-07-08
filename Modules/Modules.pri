@@ -4,8 +4,6 @@ SOURCES += \
     $$PWD/Global.cpp \
     $$PWD/Item/ItemBase.cpp \
     $$PWD/Modules.cpp \
-    $$PWD/People.cpp \
-    $$PWD/Player.cpp \
     $$PWD/Position/Anus.cpp \
     $$PWD/Position/Bladder.cpp \
     $$PWD/Position/Breast.cpp \
@@ -27,8 +25,6 @@ HEADERS += \
     $$PWD/Global.h \
     $$PWD/Item/ItemBase.h \
     $$PWD/Modules.h \
-    $$PWD/People.h \
-    $$PWD/Player.h \
     $$PWD/Position/Anus.h \
     $$PWD/Position/Bladder.h \
     $$PWD/Position/Breast.h \

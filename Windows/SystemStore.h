@@ -2,7 +2,7 @@
 #define SYSTEMSTORE_H
 
 #include <QWidget>
-#include "Modules/Player.h"
+#include "Person/Player.h"
 #include<QListWidgetItem>
 namespace Ui {
 class SystemStore;
@@ -13,6 +13,7 @@ class SystemStore : public QWidget
     Q_OBJECT
     MYGAME::Player*player;                                                          //玩家类
     std::vector<MYGAME::ItemBase*>*itemList;                                        //系统贩卖的物品表列
+    QListWidgetItem*selectItem;                                                     //保存选中的item
     MYGAME::ItemBase*item;                                                          //当前选中的物品
     bool flag=false;                                                                //当前物品是否在背包中拥有
 public:

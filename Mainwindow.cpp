@@ -1,6 +1,7 @@
 #include "Mainwindow.h"
 #include "ui_Mainwindow.h"
 #include "Modules/Global.h"
+#include "Windows/ItemList.h"
 #include "Windows/CreateLead.h"
 #include "Windows/BeginWindow.h"
 #include "Windows/SystemStore.h"
@@ -11,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     this->initWindows();
     ui->setupUi(this);
+    ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->command->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->charaList->setFeatures(QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable);
 }
 
 MainWindow::~MainWindow()
@@ -88,10 +92,7 @@ void MainWindow::on_systemStore_clicked()
 
 void MainWindow::on_itemList_clicked()
 {
-    for(size_t i=0;i<player->getItemList()->size();i++){
-        qDebug()<<(*player->getItemList())[i]->getName();
-        qDebug()<<(*player->getItemList())[i]->getMoney();
-        qDebug()<<(*player->getItemList())[i]->getCount();
-    }
+    ItemList*IL=new ItemList(player);
+    IL->show();
 }
 

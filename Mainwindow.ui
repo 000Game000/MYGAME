@@ -269,12 +269,12 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget">
+  <widget class="QDockWidget" name="command">
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
@@ -327,7 +327,7 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget_2">
+  <widget class="QDockWidget" name="charaList">
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
