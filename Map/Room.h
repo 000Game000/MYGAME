@@ -3,6 +3,9 @@
 #include<QString>
 #include<map>
 namespace MYGAME{
+/*
+ * 房间类
+ */
 class Room
 {
     QString name;                                       //房间名称

@@ -1,7 +1,9 @@
 SOURCES += \
     $$PWD/Attribute.cpp \
     $$PWD/AttributeAdd.cpp \
+    $$PWD/Cloths.cpp \
     $$PWD/Global.cpp \
+    $$PWD/Item/Cloth.cpp \
     $$PWD/Item/ItemBase.cpp \
     $$PWD/Modules.cpp \
     $$PWD/Position/Anus.cpp \
@@ -22,7 +24,9 @@ SOURCES += \
 HEADERS += \
     $$PWD/Attribute.h \
     $$PWD/AttributeAdd.h \
+    $$PWD/Cloths.h \
     $$PWD/Global.h \
+    $$PWD/Item/Cloth.h \
     $$PWD/Item/ItemBase.h \
     $$PWD/Modules.h \
     $$PWD/Position/Anus.h \

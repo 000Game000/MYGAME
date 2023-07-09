@@ -7,7 +7,9 @@
 namespace Ui {
 class SystemStore;
 }
-
+/*
+ * 系统商店
+ */
 class SystemStore : public QWidget
 {
     Q_OBJECT

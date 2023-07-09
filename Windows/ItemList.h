@@ -7,7 +7,9 @@
 namespace Ui {
 class ItemList;
 }
-
+/*
+ * 物品栏
+ */
 class ItemList : public QWidget
 {
     Q_OBJECT

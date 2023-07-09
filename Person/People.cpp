@@ -186,8 +186,44 @@ void People::setPositionList(const std::vector<PositionBase *> &newPositionList)
     positionList = newPositionList;
 }
 
+Room *People::getLive() const
+{
+    return live;
+}
+
+void People::setLive(Room *newLive)
+{
+    live = newLive;
+}
+
+QString People::getSlive() const
+{
+    return Slive;
+}
+
+void People::setSlive(const QString &newSlive)
+{
+    Slive = newSlive;
+}
+
+Cloths People::getCloths() const
+{
+    return cloths;
+}
+
+Cloths &People::getVariableCloths()
+{
+    return cloths;
+}
+
+void People::setCloths(const Cloths &newCloths)
+{
+    cloths = newCloths;
+}
+
 People::People()
 {
+    this->live=nullptr;
 }
 
 }

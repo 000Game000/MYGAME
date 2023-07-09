@@ -6,7 +6,8 @@
 #include"Windows/BeginWindow.h"
 #include"Windows/CreateLead.h"
 namespace MYGAME {
-/*全局单例类
+/*
+ * 全局单例类
  * 1.包含现有专业
  * 2.包含职业
  * 3.包含窗口指针

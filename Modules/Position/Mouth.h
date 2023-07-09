@@ -3,7 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*嘴类
+/*
+ * 嘴类
  */
 class Mouth : public PositionBase
 {

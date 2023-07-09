@@ -6,7 +6,9 @@
 namespace Ui {
 class ColorSelection;
 }
-
+/*
+ * 颜色选择
+ */
 class ColorSelection : public QWidget
 {
     Q_OBJECT

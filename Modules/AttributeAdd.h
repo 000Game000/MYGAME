@@ -3,6 +3,11 @@
 
 #include "Attribute.h"
 namespace MYGAME{
+/*
+ * 属性类
+ * 基础几个属性 智力 魅力等
+ * 增加了现在值
+ */
 class AttributeAdd : public Attribute
 {
 protected:

@@ -6,7 +6,9 @@
 namespace Ui {
 class MYStrip;
 }
-
+/*
+ * 进度条
+ */
 class MYStrip : public QWidget
 {
     Q_OBJECT

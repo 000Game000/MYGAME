@@ -6,7 +6,9 @@
 namespace Ui {
 class ItemBaseWidget;
 }
-
+/*
+ * 基础物品列表项
+ */
 class ItemBaseWidget : public QWidget
 {
     Q_OBJECT

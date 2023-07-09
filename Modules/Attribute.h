@@ -2,9 +2,10 @@
 #define ATTRIBUTE_H
 #include<QString>
 namespace MYGAME {
-/*属性类
- *基础几个属性 智力 魅力等
- *属性的基础类
+/*
+ * 属性类
+ * 基础几个属性 智力 魅力等
+ * 属性的基础类
  */
 class Attribute
 {

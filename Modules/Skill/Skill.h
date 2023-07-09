@@ -2,7 +2,8 @@
 #define SKILL_H
 #include<QString>
 namespace MYGAME{
-/*人物技能类
+/*
+ * 人物技能类
  */
 class Skill
 {
