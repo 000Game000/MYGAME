@@ -21,12 +21,6 @@ QColor ColorSelection::getColor() const
 void ColorSelection::setColor(const QColor &newColor)
 {
     this->color = newColor;
-//    int a;
-//    int b;
-//    int c;
-//    int d;
-//    this->color.getRgb(&a,&b,&c,&d);
-//    qDebug()<<a<<b<<c<<d;
     QPalette p(this->palette());
     p.setColor(QPalette::Window,this->color);
     this->setAutoFillBackground(true);

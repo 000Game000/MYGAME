@@ -202,7 +202,7 @@
               <widget class="QLabel" name="MajorLable">
                <property name="maximumSize">
                 <size>
-                 <width>38</width>
+                 <width>29</width>
                  <height>21</height>
                 </size>
                </property>
@@ -253,7 +253,7 @@
               <widget class="QLabel" name="OccupationLable">
                <property name="maximumSize">
                 <size>
-                 <width>38</width>
+                 <width>29</width>
                  <height>21</height>
                 </size>
                </property>

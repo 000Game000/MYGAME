@@ -3,5 +3,6 @@
         <file>Strip/Red.png</file>
         <file>Strip/bg.png</file>
         <file>Strip/Blue.png</file>
+        <file>Strip/Green.png</file>
     </qresource>
 </RCC>

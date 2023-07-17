@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ERASystem</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
@@ -32,24 +32,24 @@
    <widget class="QWidget" name="mainDockWidget">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QWidget" name="temp" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>0</number>
-        </property>
+      <widget class="QWidget" name="Strips" native="true">
+       <layout class="QGridLayout" name="gridLayout">
         <property name="leftMargin">
          <number>0</number>
         </property>
         <property name="topMargin">
-         <number>6</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
          <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>0</number>
         </property>
-        <item>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
          <widget class="QLabel" name="date">
           <property name="minimumSize">
            <size>
@@ -62,40 +62,18 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QLabel" name="blank">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QWidget" name="counts" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
+        <item row="0" column="1">
          <widget class="QLabel" name="points">
           <property name="minimumSize">
            <size>
-            <width>91</width>
+            <width>160</width>
             <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>91</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="text">
@@ -103,42 +81,14 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QLabel" name="money">
+        <item row="0" column="2">
+         <widget class="QWidget" name="staminaBarWidget" native="true">
           <property name="minimumSize">
            <size>
-            <width>91</width>
+            <width>0</width>
             <height>0</height>
            </size>
           </property>
-          <property name="text">
-           <string>金钱:9223372036854775807</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QWidget" name="Strips" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QWidget" name="staminaBarWidget" native="true">
           <layout class="QHBoxLayout" name="horizontalLayout">
            <property name="spacing">
             <number>0</number>
@@ -159,8 +109,14 @@
             <widget class="QLabel" name="staminaBarLabel">
              <property name="minimumSize">
               <size>
-               <width>41</width>
+               <width>30</width>
                <height>19</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
               </size>
              </property>
              <property name="text">
@@ -182,13 +138,13 @@
             <widget class="QLabel" name="staminaBarNumberLabel">
              <property name="minimumSize">
               <size>
-               <width>121</width>
+               <width>90</width>
                <height>19</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>121</width>
+               <width>90</width>
                <height>19</height>
               </size>
              </property>
@@ -200,8 +156,40 @@
           </layout>
          </widget>
         </item>
-        <item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="position">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>生命扇区/最终生命/居住区/自家/主角房间</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="money">
+          <property name="minimumSize">
+           <size>
+            <width>160</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>金钱:9223372036854775807</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
          <widget class="QWidget" name="energyBarWidget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="spacing">
             <number>0</number>
@@ -222,8 +210,14 @@
             <widget class="QLabel" name="energyBarLabel">
              <property name="minimumSize">
               <size>
-               <width>41</width>
+               <width>30</width>
                <height>19</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
               </size>
              </property>
              <property name="text">
@@ -245,13 +239,13 @@
             <widget class="QLabel" name="energyBarNumberLabel">
              <property name="minimumSize">
               <size>
-               <width>121</width>
+               <width>90</width>
                <height>19</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>121</width>
+               <width>90</width>
                <height>19</height>
               </size>
              </property>
@@ -298,10 +292,10 @@
         <widget class="QPushButton" name="systemStore">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>5</x>
            <y>10</y>
-           <width>75</width>
-           <height>25</height>
+           <width>130</width>
+           <height>36</height>
           </rect>
          </property>
          <property name="text">
@@ -311,14 +305,58 @@
         <widget class="QPushButton" name="itemList">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>140</x>
            <y>10</y>
-           <width>75</width>
-           <height>25</height>
+           <width>130</width>
+           <height>36</height>
           </rect>
          </property>
          <property name="text">
           <string>所持物品</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="peopleList">
+         <property name="geometry">
+          <rect>
+           <x>420</x>
+           <y>10</y>
+           <width>130</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>人物表列</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="playerStatus">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>10</y>
+           <width>130</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>主角信息</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>560</x>
+           <y>10</y>
+           <width>130</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>一二三四五六七八九十</string>
          </property>
         </widget>
        </widget>

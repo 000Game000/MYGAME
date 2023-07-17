@@ -17,9 +17,7 @@ namespace MYGAME{
 class People
 {
 protected:
-    Room *live;                                     //人物居住地址
     QString name;                                   //姓名
-    QString Slive;                                  //显示用的居住地址
     QString nickName;                               //昵称
     QString claimed;                                //自称
     QDate birthday;                                 //出生日期
@@ -37,6 +35,8 @@ protected:
     std::vector<PositionBase*> positionList;        //部位表列
     QString describe;                               //人物描述
     Cloths cloths;                                  //人物服装
+    Room *live;                                     //人物居住地址
+    QString Slive;                                  //显示用的居住地址
 public:
     People();
     QString getName() const;

@@ -6,6 +6,7 @@ MYStrip::MYStrip(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MYStrip)
 {
+    this->frame=1;
     ui->setupUi(this);
 }
 

@@ -215,15 +215,27 @@ void CreateLead::on_complete_clicked()
 {
     //进行输入检查
     if(ui->nameInput->text()==""){
-        QMessageBox::critical(this,"错误","请输入姓名");
+        QMessageBox::critical(this,"错误","请输入姓名!!!");
+        return;
+    }
+    if(ui->nameInput->text().length()>10){
+        QMessageBox::critical(this,"错误","姓名请不要超过十个字符!!!");
         return;
     }
     if(ui->nickNameInput->text()==""){
-        QMessageBox::critical(this,"错误","请输入昵称");
+        QMessageBox::critical(this,"错误","请输入昵称!!!");
         return;
     }
-    if(ui->CharmInput->text()==""){
-        QMessageBox::critical(this,"错误","请输入自称");
+    if(ui->nickNameInput->text().length()>10){
+        QMessageBox::critical(this,"错误","昵请不要超过十个字符!!!");
+        return;
+    }
+    if(ui->claimedInput->text()==""){
+        QMessageBox::critical(this,"错误","请输入自称!!!");
+        return;
+    }
+    if(ui->claimedInput->text().length()>10){
+        QMessageBox::critical(this,"错误","自称请不要超过十个字符!!!");
         return;
     }
     QString str="3000";
@@ -237,7 +249,7 @@ void CreateLead::on_complete_clicked()
     str+=ui->dayInput->text();
     QDate date=QDate::fromString(str,"yyyyMMdd");
     if(!date.isValid()){
-        QMessageBox::critical(this,"错误","日期输入有误");
+        QMessageBox::critical(this,"错误","日期输入有误!!!");
         return;
     }
     //存入对象

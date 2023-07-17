@@ -140,6 +140,11 @@ std::vector<Attribute *> People::getAttributeList() const
     return attributeList;
 }
 
+std::vector<Attribute *> &People::getVariableAttributeList()
+{
+    return attributeList;
+}
+
 
 void People::setAttributeList(const std::vector<Attribute *> &newAttributeList)
 {
