@@ -20,4 +20,9 @@ Room::Room()
 {
 
 }
+
+MYGAME::Room::Room(const QString &name, std::vector<Map *> *list, const QString &img, Map *superiorMap, const QString &type):Map(name,list,img,superiorMap)
+{
+    this->type=type;
+}
 }

@@ -73,7 +73,7 @@ void MainWindow::initMap()
     this->mapList.push_back(new MYGAME::Map("军事扇区",nullptr,"",nullptr));
     this->mapList.push_back(new MYGAME::Map("能源扇区",nullptr,"",nullptr));
     this->mapList.push_back(new MYGAME::Map("AI扇区",nullptr,"",nullptr));
-    this->mapList.push_back(new MYGAME::Map("宪法扇区",nullptr,"",nullptr));
+    this->mapList.push_back(new MYGAME::Map("先锋扇区",nullptr,"",nullptr));
 }
 
 void MainWindow::refresh()
