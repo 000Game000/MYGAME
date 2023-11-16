@@ -226,6 +226,11 @@ void People::setCloths(const Cloths &newCloths)
     cloths = newCloths;
 }
 
+bool People::save()
+{
+    return true;
+}
+
 People::People()
 {
     this->live=nullptr;

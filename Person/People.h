@@ -85,6 +85,7 @@ public:
     Cloths getCloths() const;
     Cloths&getVariableCloths();
     void setCloths(const Cloths &newCloths);
+    virtual bool save();
 };
 }
 #endif // PEOPLE_H

@@ -2,7 +2,7 @@
 #define PEOPLELIST_H
 
 #include <QWidget>
-#include"Person/Player.h"
+#include"Person/People.h"
 namespace Ui {
 class PeopleList;
 }
@@ -13,13 +13,11 @@ class PeopleList : public QWidget
 
 public:
     explicit PeopleList(QWidget *parent = nullptr);
-    PeopleList(MYGAME::Player *player, std::vector<MYGAME::People *> *peopleList,QWidget *parent = nullptr);
-
+    PeopleList(std::vector<MYGAME::People *> *peopleList,QWidget *parent = nullptr);
     ~PeopleList();
 
 private:
     Ui::PeopleList *ui;
-    MYGAME::Player*player;
     std::vector<MYGAME::People*>*peopleList;
 };
 

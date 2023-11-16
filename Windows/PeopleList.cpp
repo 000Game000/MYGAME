@@ -1,6 +1,6 @@
 #include "PeopleList.h"
 #include "ui_PeopleList.h"
-
+#include "PeopleListItem.h"
 PeopleList::PeopleList(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PeopleList)
@@ -15,8 +15,12 @@ PeopleList::~PeopleList()
     delete ui;
 }
 
-PeopleList::PeopleList(MYGAME::Player *player, std::vector<MYGAME::People *> *peopleList,QWidget *parent) : PeopleList(parent)
+PeopleList::PeopleList(std::vector<MYGAME::People *> *peopleList,QWidget *parent) : PeopleList(parent)
 {
-    this->player=player;
     this->peopleList=peopleList;
+    PeopleListItem*P=new PeopleListItem(dynamic_cast<MYGAME::Girl*>((*this->peopleList)[0]));
+    QListWidgetItem*qlwi=new QListWidgetItem();
+    qlwi->setSizeHint(P->size());
+    ui->listWidget->addItem(qlwi);
+    ui->listWidget->setItemWidget(qlwi,P);
 }

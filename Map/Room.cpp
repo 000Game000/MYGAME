@@ -18,11 +18,9 @@ void Room::show()
 
 Room::Room()
 {
-
 }
-
-MYGAME::Room::Room(const QString &name, std::vector<Map *> *list, const QString &img, Map *superiorMap, const QString &type):Map(name,list,img,superiorMap)
+Room::Room(const QString &name, std::vector<Map *> *list, const QString &img, const QString &type, Map *superiorMap,const QString &roomType) : Map(name, list, img, type,superiorMap)
 {
-    this->type=type;
+    this->roomType=roomType;
 }
 }

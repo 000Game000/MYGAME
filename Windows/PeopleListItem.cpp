@@ -12,3 +12,8 @@ PeopleListItem::~PeopleListItem()
 {
     delete ui;
 }
+
+PeopleListItem::PeopleListItem(MYGAME::Girl *girl,QWidget *parent):PeopleListItem(parent)
+{
+    this->girl=girl;
+}
