@@ -33,4 +33,5 @@ include(Modules/Modules.pri)
 include(Person/Person.pri)
 include(Map/Map.pri)
 RESOURCES += \
-    System/System.qrc
+    Images/People/People.qrc \
+    Images/System/System.qrc

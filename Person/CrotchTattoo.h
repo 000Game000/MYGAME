@@ -9,8 +9,8 @@ class CrotchTattoo
 {
 protected:
     long long rank;                                     //等级 负数为没有,种子为零,正数为等级
-    long long EXP;                                      //部位经验
-    QString img;                                        //形状
+    long long EXP;                                      //淫纹经验
+    QString img;                                        //图片
     std::vector<QString> sList;                         //特质列表
 public:
     CrotchTattoo();

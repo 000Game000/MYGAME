@@ -31,13 +31,8 @@ void Penis::show()
     qDebug()<<"Penis类";
 }
 
-Penis::Penis()
+Penis::Penis():PositionBase("阴茎",2,0,0,0)
 {
-    this->name="阴茎";
-    this->rank=2;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
     this->diameter=10;
     this->dickSize=Lovely;
 }

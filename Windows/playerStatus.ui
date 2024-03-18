@@ -821,49 +821,41 @@
          <property name="title">
           <string>吉尔</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QLabel" name="penisEnum">
-              <property name="text">
-               <string>标签:三个字</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="penisLong">
-              <property name="text">
-               <string>长度:500MM</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="penisDiameter">
-              <property name="text">
-               <string>直径:100MM</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="penisEnum">
+            <property name="text">
+             <string>标签:三个字</string>
+            </property>
+           </widget>
           </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
-             <widget class="QLabel" name="penisCount">
-              <property name="text">
-               <string>使用次数:9223372036854775807</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="penisSemen">
-              <property name="text">
-               <string>单次射精量:9223372036854775807ML</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+          <item row="0" column="1">
+           <widget class="QLabel" name="penisLong">
+            <property name="text">
+             <string>长度:500MM</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="penisDiameter">
+            <property name="text">
+             <string>直径:100MM</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="penisCount">
+            <property name="text">
+             <string>使用次数:9223372036854775807</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="penisSemen">
+            <property name="text">
+             <string>单次射精量:9223372036854775807ML</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -878,13 +870,13 @@
   <customwidget>
    <class>MYStrip</class>
    <extends>QWidget</extends>
-   <header>Windows/MYStrip.h</header>
+   <header>Windows\Module/MYStrip.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ColorView</class>
    <extends>QWidget</extends>
-   <header>Windows/ColorView.h</header>
+   <header>Windows/Module/ColorView.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -5,6 +5,7 @@
 #include"Mainwindow.h"
 #include"Windows/BeginWindow.h"
 #include"Windows/CreateLead.h"
+#include<QDockWidget>
 namespace MYGAME {
 /*
  * 全局单例类

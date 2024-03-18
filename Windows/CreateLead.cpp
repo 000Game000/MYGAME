@@ -283,7 +283,7 @@ void CreateLead::on_complete_clicked()
     //设置左眼颜色
     this->player->setLPupilColor(ui->LEyeColorsSelect->getColor());
     //设置标签
-    this->player->setTagList(std::vector<QString>());
+    this->player->setTagList(std::vector<Tag*>());
     //设置技能
     std::vector<MYGAME::Skill*>*skillList=new std::vector<MYGAME::Skill*>();
     skillList->push_back(new MYGAME::Skill("计算机",1,0));

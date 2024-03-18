@@ -1,11 +1,7 @@
 #include "Mouth.h"
 namespace MYGAME{
-Mouth::Mouth()
+Mouth::Mouth(long long rank, long long EXP, long long pleasure, long long count):PositionBase("嘴巴",rank,EXP,pleasure,count)
 {
-    this->name="嘴巴";
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
-    this->rank=0;
+
 }
 }

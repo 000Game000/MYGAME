@@ -12,8 +12,14 @@ protected:
     long long expand=15;                                        //最大直径单位mm
     long long volume=500;                                       //容量单位ml 500ml~800ml
 public:
-    Anus();
-    Anus(long long expand, long long volume);
+    /* rank                     感度等级
+     * EXP                      经验(达到后升级部位等级)
+     * pleasure                 快感的最大值
+     * count                    当前部位的经验次数
+     * expand                   最大直径单位mm
+     * volume                   容量单位ml
+     */
+    Anus(long long rank, long long EXP, long long pleasure, long long count,long long expand, long long volume);
     long long getExpand() const;
     void setExpand(long long newExpand);
     long long getVolume() const;

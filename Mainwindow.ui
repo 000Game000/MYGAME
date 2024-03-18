@@ -10,6 +10,12 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>ERASystem</string>
   </property>
@@ -69,16 +75,91 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="spacing">
          <number>0</number>
         </property>
-        <item row="0" column="0">
-         <widget class="QLabel" name="date">
+        <item row="1" column="2">
+         <widget class="QWidget" name="energyBarWidget" native="true">
           <property name="minimumSize">
            <size>
-            <width>181</width>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="energyBarLabel">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>19</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>精力:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="MYStrip" name="energyBarStrip" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>15</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="energyBarNumberLabel">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>19</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>90</width>
+               <height>19</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>999999/999999</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="money">
+          <property name="minimumSize">
+           <size>
+            <width>160</width>
             <height>0</height>
            </size>
           </property>
           <property name="text">
-           <string>3021年12月12日12时12分星期六</string>
+           <string>金钱:9223372036854775807</string>
           </property>
          </widget>
         </item>
@@ -98,6 +179,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </property>
           <property name="text">
            <string>点数:9223372036854775807</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="date">
+          <property name="minimumSize">
+           <size>
+            <width>181</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>3021年12月12日12时12分星期六</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="position">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>生命扇区/最终生命/居住区/自家/主角房间</string>
           </property>
          </widget>
         </item>
@@ -176,224 +283,21 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </layout>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="position">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>生命扇区/最终生命/居住区/自家/主角房间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="money">
-          <property name="minimumSize">
-           <size>
-            <width>160</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>金钱:9223372036854775807</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QWidget" name="energyBarWidget" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="energyBarLabel">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>19</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>精力:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="MYStrip" name="energyBarStrip" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>15</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="energyBarNumberLabel">
-             <property name="minimumSize">
-              <size>
-               <width>90</width>
-               <height>19</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>90</width>
-               <height>19</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>999999/999999</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
        </layout>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="command">
+  <widget class="QDockWidget" name="systemCommand">
    <property name="windowTitle">
-    <string>指令表列</string>
+    <string>系统</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QVBoxLayout" name="verticalLayout_5">
-     <item>
-      <widget class="QTabWidget" name="tabWidget">
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="tab_3">
-        <attribute name="title">
-         <string>系统</string>
-        </attribute>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QScrollArea" name="scrollArea">
-           <property name="widgetResizable">
-            <bool>true</bool>
-           </property>
-           <widget class="QWidget" name="scrollAreaWidgetContents">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>756</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <widget class="QPushButton" name="systemStore">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>10</y>
-               <width>130</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>系统商城</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="itemList">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>10</y>
-               <width>130</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>所持物品</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="playerStatus">
-             <property name="geometry">
-              <rect>
-               <x>290</x>
-               <y>10</y>
-               <width>130</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>主角信息</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="peopleList">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>10</y>
-               <width>130</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>人物表列</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton">
-             <property name="geometry">
-              <rect>
-               <x>570</x>
-               <y>10</y>
-               <width>130</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>9</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>一二三四五六七八九十</string>
-             </property>
-            </widget>
-           </widget>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QVBoxLayout" name="verticalLayout_5"/>
    </widget>
   </widget>
  </widget>
@@ -401,7 +305,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <customwidget>
    <class>MYStrip</class>
    <extends>QWidget</extends>
-   <header>Windows/MYStrip.h</header>
+   <header>Windows/Module/MYStrip.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

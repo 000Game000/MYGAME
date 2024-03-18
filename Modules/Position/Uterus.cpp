@@ -1,11 +1,10 @@
 #include "Uterus.h"
 namespace MYGAME{
-Uterus::Uterus()
+
+Uterus::Uterus(long long rank, long long EXP, long long pleasure, long long count, long long volume, short menstrualCycle, short pregnancyDays)
+    :PositionBase("子宫",rank,EXP,pleasure,count),volume(volume),menstrualCycle(menstrualCycle),pregnancyDays(pregnancyDays)
 {
-    this->name="子宫";
-    this->rank=-2;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
+    this->ovulation=this->menstrualCycle/2;
 }
+
 }

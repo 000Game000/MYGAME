@@ -1,11 +1,7 @@
 #include "Ovary.h"
 namespace MYGAME{
-Ovary::Ovary()
+Ovary::Ovary(long long rank, long long EXP, long long pleasure, long long count):PositionBase("卵巢",rank,EXP,pleasure,count)
 {
-    this->name="卵巢";
-    this->rank=-3;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
+
 }
 }

@@ -1,11 +1,8 @@
 #include "Vagina.h"
 namespace MYGAME{
-Vagina::Vagina()
+Vagina::Vagina(long long rank, long long EXP, long long pleasure, long long count,long long maximumDiameter,long long length,QColor color)
+    :PositionBase("阴道",rank,EXP,pleasure,count),maximumDiameter(maximumDiameter),length(length),color(color)
 {
-    this->name="阴道";
-    this->rank=1;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
+
 }
 }

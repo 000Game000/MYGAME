@@ -1,11 +1,8 @@
 #include "Nipple.h"
 namespace MYGAME{
-Nipple::Nipple()
+Nipple::Nipple(long long rank, long long EXP, long long pleasure, long long count,long long length,long long diameter,long long ductusLactiferiDiameter,QColor color)
+    :PositionBase("乳头",rank,EXP,pleasure,count),length(length),diameter(diameter),ductusLactiferiDiameter(ductusLactiferiDiameter),color(color)
 {
-    this->name="乳头";
-    this->rank=2;
-    this->EXP=0;
-    this->pleasure=0;
-    this->count=0;
+
 }
 }

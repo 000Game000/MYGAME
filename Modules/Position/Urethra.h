@@ -11,7 +11,13 @@ class Urethra : public PositionBase
 protected:
     long long expand=6;                                       //尿道最大直径单位mm
 public:
-    Urethra();
+    /* rank                     感度等级
+     * EXP                      经验(达到后升级部位等级)
+     * pleasure                 快感的最大值
+     * count                    当前部位的经验次数
+     * expand                   尿道内部的直径
+     */
+    Urethra(long long rank, long long EXP, long long pleasure, long long count,long long expand);
 };
 }
 #endif // URETHRA_H

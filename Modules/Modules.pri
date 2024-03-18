@@ -5,6 +5,7 @@ SOURCES += \
     $$PWD/Global.cpp \
     $$PWD/Item/Cloth.cpp \
     $$PWD/Item/ItemBase.cpp \
+    $$PWD/MYFunctions.cpp \
     $$PWD/Modules.cpp \
     $$PWD/Position/Anus.cpp \
     $$PWD/Position/Bladder.cpp \
@@ -19,7 +20,8 @@ SOURCES += \
     $$PWD/Position/Uterus.cpp \
     $$PWD/Position/Vagina.cpp \
     $$PWD/Skill/Skill.cpp \
-    $$PWD/System_.cpp
+    $$PWD/System_.cpp \
+    $$PWD/Tag.cpp
 
 HEADERS += \
     $$PWD/Attribute.h \
@@ -28,6 +30,7 @@ HEADERS += \
     $$PWD/Global.h \
     $$PWD/Item/Cloth.h \
     $$PWD/Item/ItemBase.h \
+    $$PWD/MYFunctions.h \
     $$PWD/Modules.h \
     $$PWD/Position/Anus.h \
     $$PWD/Position/Bladder.h \
@@ -42,4 +45,5 @@ HEADERS += \
     $$PWD/Position/Uterus.h \
     $$PWD/Position/Vagina.h \
     $$PWD/Skill/Skill.h \
-    $$PWD/System_.h
+    $$PWD/System_.h \
+    $$PWD/Tag.h

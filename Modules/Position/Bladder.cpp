@@ -1,16 +1,9 @@
 #include "Bladder.h"
 namespace MYGAME{
-Bladder::Bladder()
-{
-    this->name="膀胱";
-    this->rank=-2;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
-}
-
-void Bladder::show()
+Bladder::Bladder(long long rank, long long EXP, long long pleasure, long long count,long long volume)
+    :PositionBase("膀胱",rank,EXP,pleasure,count),volume(volume)
 {
 
 }
+
 }

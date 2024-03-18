@@ -9,7 +9,7 @@ namespace MYGAME{
 class Mouth : public PositionBase
 {
 public:
-    Mouth();
+    Mouth(long long rank, long long EXP, long long pleasure, long long count);
 };
 }
 #endif // MOUTH_H

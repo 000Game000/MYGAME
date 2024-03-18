@@ -83,10 +83,12 @@ void PlayerStatus::init()
                 //精力
                 ui->energyBarStrip->setMaxValue(P->getRank());
                 ui->energyBarStrip->setNowValue(P->getNowValue());
+                ui->energyBarStrip->setFrame(1);
                 ui->energyBarStrip->setBackground(":/Strip/Strip/Blue.png");
                 ui->energyBarStrip->setProspect(":/Strip/Strip/bg.png");
                 ui->energyBarNumberLabel->setText(QString::number(P->getNowValue())+"/"+QString::number(P->getRank()));
                 //意志经验
+                qDebug()<<P->getEXP();
                 ui->willpowerStrip->setMaxValue(P->getRank());
                 ui->willpowerStrip->setNowValue(P->getEXP());
                 ui->willpowerStrip->setBackground(":/Strip/Strip/Green.png");

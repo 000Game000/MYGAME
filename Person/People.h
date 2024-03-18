@@ -5,6 +5,7 @@
 #include<QColor>
 #include<vector>
 #include "Map/Room.h"
+#include "Modules/Tag.h"
 #include "Modules/Cloths.h"
 #include "Modules/Modules.h"
 #include "Modules/Attribute.h"
@@ -30,13 +31,13 @@ protected:
     QColor skinColor;                               //肤色
     QColor RPupilColor;                             //右眼颜色
     QColor LPupilColor;                             //左眼颜色
-    std::vector<QString> tagList;                   //人物素质
+    std::vector<Tag*> tagList;                      //人物素质
     std::vector<Skill*> skillList;                  //技能表列
     std::vector<PositionBase*> positionList;        //部位表列
     QString describe;                               //人物描述
     Cloths cloths;                                  //人物服装
     Room *live;                                     //人物居住地址
-    QString Slive;                                  //显示用的居住地址
+    Map*currentPosition;                            //当前所在地点
 public:
     People();
     QString getName() const;
@@ -69,9 +70,6 @@ public:
     std::vector<Attribute *> getAttributeList() const;
     std::vector<Attribute *>&getVariableAttributeList();
     void setAttributeList(const std::vector<Attribute *> &newAttributeList);
-    std::vector<QString> getTagList() const;
-    std::vector<QString>&getVariableTagList();
-    void setTagList(const std::vector<QString> &newTagList);
     std::vector<Skill*> getSkillList() const;
     std::vector<Skill*>&getVariableSkillList();
     void setSkillList(const std::vector<Skill*> &newSkillList);
@@ -80,12 +78,16 @@ public:
     void setPositionList(const std::vector<PositionBase *> &newPositionList);
     Room *getLive() const;
     void setLive(Room *newLive);
-    QString getSlive() const;
-    void setSlive(const QString &newSlive);
+    void setLive(Map*newLive);
     Cloths getCloths() const;
     Cloths&getVariableCloths();
     void setCloths(const Cloths &newCloths);
     virtual bool save();
+    std::vector<Tag *> getTagList() const;
+    std::vector<Tag*>&getVariableTagList();
+    void setTagList(const std::vector<Tag *> &newTagList);
+    Map *getCurrentPosition() const;
+    void setCurrentPosition(Map *newCurrentPosition);
 };
 }
 #endif // PEOPLE_H

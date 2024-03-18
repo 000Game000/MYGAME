@@ -107,6 +107,6 @@ void Girl::setExposing(long long newExposing)
 
 Girl::Girl()
 {
-
+    this->crotchTattoo=new CrotchTattoo();
 }
 }

@@ -1,5 +1,4 @@
 #include "Mainwindow.h"
-#include "Person/Nine.h"
 #include "ui_Mainwindow.h"
 #include "Modules/Global.h"
 #include "Windows/ItemList.h"
@@ -7,19 +6,23 @@
 #include "Windows/PeopleList.h"
 #include "Windows/BeginWindow.h"
 #include "Windows/SystemStore.h"
+#include "Modules/MYFunctions.h"
 #include "Windows/PlayerStatus.h"
 #include "Modules/AttributeAdd.h"
+#include "Person/SystemGirlOne.h"
+#define button_width 130
+#define button_height 36
 void textMap(std::vector<MYGAME::Map*>&mapList);
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
     this->initWindows();
     this->initMap();
-    //textMap(this->mapList);
-    ui->setupUi(this);
+    this->initSystemCommand();
     ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
-    ui->command->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->systemCommand->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
 }
 
 MainWindow::~MainWindow()
@@ -31,8 +34,11 @@ MainWindow::~MainWindow()
 void MainWindow::NewGame(MYGAME::Player *player)
 {
     this->player=player;
+    this->player->setLive((*(*(*(*(*this->mapList[6]->getList())[0]->getList())[0]->getList())[0]->getList())[2]->getList())[1]);
+    this->player->setCurrentPosition(this->player->getLive());
     this->initNewGame();
     this->show();
+    this->initSystemCommandDockWidget();
 }
 
 void MainWindow::initWindows()
@@ -56,8 +62,53 @@ void MainWindow::initNewGame()
     ui->energyBarStrip->setBackground(":/Strip/Strip/Blue.png");
     ui->energyBarStrip->setProspect(":/Strip/Strip/bg.png");
     ui->energyBarStrip->setFrame(1);
-    this->peopleList.push_back(new MYGAME::Nine());
+    //初始化主角所在位置
+    ui->position->setText("当前所在地点:"+this->player->getCurrentPosition()->getName());
+    ui->position->setToolTip(MYGAME::getSPosition(this->player->getCurrentPosition()));
+    initPeople();
     this->refresh();
+}
+
+void MainWindow::initSystemCommand()
+{
+    this->SystemCommandList.push_back(&MainWindow::playerStatusFunction);
+    this->SystemCommandList.push_back(&MainWindow::itemList);
+    this->SystemCommandList.push_back(&MainWindow::systemStore);
+    this->SystemCommandList.push_back(&MainWindow::showPeopleList);
+    this->SystemCommandList.push_back(&MainWindow::move);
+    this->SystemCommandList.push_back(&MainWindow::text);
+}
+
+void MainWindow::initSystemCommandDockWidget()
+{
+    QScrollArea*SystemCommandSA=new QScrollArea(ui->systemCommand);
+    ui->systemCommand->setWidget(SystemCommandSA);
+
+    QWidget*widget=new QWidget(SystemCommandSA);
+    widget->setAttribute(Qt::WA_DeleteOnClose);
+    SystemCommandSA->setWidget(widget);
+    widget->resize(SystemCommandSA->size());
+
+    this->gridLayoutWidget(widget,this,&this->SystemCommandList);
+    SystemCommandSA->setWidgetResizable(true);
+}
+
+template<class T>
+void MainWindow::gridLayoutWidget(QWidget*widget,T*type,std::vector<QString*(T::*)(UC)>*list)
+{
+    QGridLayout*gl=new QGridLayout(widget);
+    size_t count=0;
+    for(size_t i=0;i<list->size();i++){
+        if((type->*(*list)[i])(1)->compare(QString("true"))==0){
+            QPushButton*pb=new QPushButton(*(this->*(this->SystemCommandList[i]))(2),widget);
+            pb->setMinimumSize(this->buttonWidth,this->buttonHeight);
+            connect(pb,&QPushButton::clicked,type,(*list)[i]);
+            gl->addWidget(pb,count/5,count%5);
+            pb->show();
+            count++;
+        }
+    }
+    widget->setLayout(gl);
 }
 
 void MainWindow::initMap()
@@ -424,9 +475,9 @@ void MainWindow::initMap()
     //父母家(主角)
     //楼层
     ____0=new std::vector<MYGAME::Map*>;
-    ____0->push_back(new MYGAME::Map("-1",nullptr,"","楼层",(*___0)[0]));
-    ____0->push_back(new MYGAME::Map("1",nullptr,"","楼层",(*___0)[0]));
-    ____0->push_back(new MYGAME::Map("2",nullptr,"","楼层",(*___0)[0]));
+    ____0->push_back(new MYGAME::Map("-1楼",nullptr,"","楼层",(*___0)[0]));
+    ____0->push_back(new MYGAME::Map("1楼",nullptr,"","楼层",(*___0)[0]));
+    ____0->push_back(new MYGAME::Map("2楼",nullptr,"","楼层",(*___0)[0]));
     ____0->push_back(new MYGAME::Room("后花园",nullptr,"","房间",(*___0)[0],"后花园"));
     (*___0)[0]->setList(____0);
     //-1
@@ -454,9 +505,9 @@ void MainWindow::initMap()
     //艾斯忒拉家
     ____0=new std::vector<MYGAME::Map*>;
     ____0->push_back(new MYGAME::Map("庭院",nullptr,"","楼层",(*___0)[1]));
-    ____0->push_back(new MYGAME::Map("-1",nullptr,"","楼层",(*___0)[1]));
-    ____0->push_back(new MYGAME::Map("1",nullptr,"","楼层",(*___0)[1]));
-    ____0->push_back(new MYGAME::Map("2",nullptr,"","楼层",(*___0)[1]));
+    ____0->push_back(new MYGAME::Map("-1楼",nullptr,"","楼层",(*___0)[1]));
+    ____0->push_back(new MYGAME::Map("1楼",nullptr,"","楼层",(*___0)[1]));
+    ____0->push_back(new MYGAME::Map("2楼",nullptr,"","楼层",(*___0)[1]));
     ____0->push_back(new MYGAME::Map("后院",nullptr,"","楼层",(*___0)[1]));
     (*___0)[1]->setList(____0);
     //庭院
@@ -518,6 +569,12 @@ void MainWindow::initMap()
     (*_0)[2]->setList(__0);
 }
 
+void MainWindow::initPeople()
+{
+    this->peopleList.push_back(new MYGAME::SystemGirlOne(this->time->date(),this->player->getLive()));
+    this->peopleList[0]->setCurrentPosition(this->player->getCurrentPosition());
+}
+
 void textMap(std::vector<MYGAME::Map*>&mapList){
     for(auto i:mapList){
         if(i->getType()=="扇区"){
@@ -573,28 +630,90 @@ void MainWindow::refresh()
     }
 }
 
-void MainWindow::on_systemStore_clicked()
+QString*MainWindow::playerStatusFunction(UC flag)
 {
-    SystemStore*Ss=new SystemStore(this->player);
-    Ss->show();
-}
-
-void MainWindow::on_itemList_clicked()
-{
-    ItemList*IL=new ItemList(this->player);
-    IL->show();
-}
-
-void MainWindow::on_peopleList_clicked()
-{
-    PeopleList*Pl=new PeopleList(&(this->peopleList));
-    Pl->show();
-}
-
-
-void MainWindow::on_playerStatus_clicked()
-{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("玩家状态");
+    }
     PlayerStatus*Ps=new PlayerStatus(this->player);
     Ps->show();
+    return nullptr;
 }
 
+QString *MainWindow::itemList(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("所持物品");
+    }
+    ItemList*IL=new ItemList(this->player);
+    IL->show();
+    return nullptr;
+}
+
+QString *MainWindow::systemStore(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("系统商城");
+    }
+    SystemStore*Ss=new SystemStore(this->player);
+    Ss->show();
+    return nullptr;
+}
+
+QString *MainWindow::showPeopleList(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("人物表列");
+    }
+    qDebug()<<this->peopleList.size();
+    PeopleList*Pl=new PeopleList(&(this->peopleList),this->time);
+    Pl->show();
+    return nullptr;
+}
+
+QString *MainWindow::move(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("移动");
+    }
+    qDebug()<<"移动";
+    //PeopleList*Pl=new PeopleList(&(this->peopleList));
+    //Pl->show();
+    return new QString("移动");
+}
+
+QString *MainWindow::text(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("测试");
+    }
+    qDebug()<<"测试";
+    return new QString("测试");
+}
+
+void MainWindow::on_systemCommand_visibilityChanged(bool visible)
+{
+    if(visible){
+        qDebug()<<"显示";
+    }else{
+        qDebug()<<"隐藏";
+    }
+}

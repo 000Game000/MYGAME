@@ -1,5 +1,20 @@
 #include "People.h"
 namespace MYGAME {
+Map *People::getCurrentPosition() const
+{
+    return currentPosition;
+}
+
+void People::setCurrentPosition(Map *newCurrentPosition)
+{
+    currentPosition = newCurrentPosition;
+}
+
+People::People()
+{
+    this->live=nullptr;
+}
+
 QString People::getName() const
 {
     return name;
@@ -151,16 +166,6 @@ void People::setAttributeList(const std::vector<Attribute *> &newAttributeList)
     attributeList = newAttributeList;
 }
 
-std::vector<QString> People::getTagList() const
-{
-    return tagList;
-}
-
-void People::setTagList(const std::vector<QString> &newTagList)
-{
-    tagList = newTagList;
-}
-
 std::vector<Skill*> People::getSkillList() const
 {
     return skillList;
@@ -201,14 +206,9 @@ void People::setLive(Room *newLive)
     live = newLive;
 }
 
-QString People::getSlive() const
+void People::setLive(Map *newLive)
 {
-    return Slive;
-}
-
-void People::setSlive(const QString &newSlive)
-{
-    Slive = newSlive;
+    live = dynamic_cast<Room*>(newLive);
 }
 
 Cloths People::getCloths() const
@@ -231,9 +231,19 @@ bool People::save()
     return true;
 }
 
-People::People()
+std::vector<Tag *> People::getTagList() const
 {
-    this->live=nullptr;
+    return tagList;
+}
+
+std::vector<Tag *> &People::getVariableTagList()
+{
+    return tagList;
+}
+
+void People::setTagList(const std::vector<Tag *> &newTagList)
+{
+    tagList = newTagList;
 }
 
 }

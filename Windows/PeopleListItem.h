@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "Person/Girl.h"
+
 namespace Ui {
 class PeopleListItem;
 }
@@ -12,7 +13,7 @@ class PeopleListItem : public QWidget
     Q_OBJECT
 
 public:
-    PeopleListItem(MYGAME::Girl *girl,QWidget *parent = nullptr);
+    PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,QWidget *parent = nullptr);
     explicit PeopleListItem(QWidget *parent = nullptr);
     ~PeopleListItem();
 private:

@@ -47,6 +47,7 @@ void CrotchTattoo::setSList(const std::vector<QString> &newSList)
 
 CrotchTattoo::CrotchTattoo()
 {
-
+    this->EXP=0;
+    this->rank=0;
 }
 }

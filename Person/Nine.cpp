@@ -7,6 +7,5 @@ Nine::Nine()
     this->nickName="Nine";
     this->claimed="我";
     this->live=nullptr;
-    this->Slive="空";
 }
 }

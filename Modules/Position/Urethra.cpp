@@ -1,11 +1,8 @@
 #include "Urethra.h"
 namespace MYGAME{
-Urethra::Urethra()
+Urethra::Urethra(long long rank, long long EXP, long long pleasure, long long count,long long expand)
+    :PositionBase("尿道",rank,EXP,pleasure,count),expand(expand)
 {
-    this->name="尿道";
-    this->rank=-2;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
+
 }
 }

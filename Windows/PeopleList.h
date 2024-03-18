@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include"Person/People.h"
+#include "qlistwidget.h"
 namespace Ui {
 class PeopleList;
 }
@@ -13,8 +14,11 @@ class PeopleList : public QWidget
 
 public:
     explicit PeopleList(QWidget *parent = nullptr);
-    PeopleList(std::vector<MYGAME::People *> *peopleList,QWidget *parent = nullptr);
+    PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime* const time,QWidget *parent = nullptr);
     ~PeopleList();
+
+private slots:
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::PeopleList *ui;
