@@ -1,8 +1,10 @@
 #include "Mainwindow.h"
 #include "ui_Mainwindow.h"
-#include "Windows/BeginWindow.h"
 #include "Modules/Global.h"
+#include "Windows/ItemList.h"
 #include "Windows/CreateLead.h"
+#include "Windows/BeginWindow.h"
+#include "Windows/SystemStore.h"
 #include "Modules/AttributeAdd.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     this->initWindows();
     ui->setupUi(this);
+    ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->command->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->charaList->setFeatures(QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable);
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::NewGame(MYGAME::Player *player)
 {
-    this->peopleList.push_back(player);
+    this->player=player;
     this->initNewGame();
     this->show();
 }
@@ -56,7 +61,8 @@ void MainWindow::refresh()
     QLocale locale=QLocale::Chinese;
     ui->date->setText(locale.toString(*this->time,SFormat));
     //刷新角色类内部内容
-    MYGAME::Player*player=dynamic_cast<MYGAME::Player*>(this->peopleList[0]);
+    //刷新系统点数
+    ui->points->setText("点数:"+QString::number(player->getSystem().getPoint()));
     //刷新金钱
     ui->money->setText("金钱:"+QString::number(player->getMoney()));
     std::vector<MYGAME::Attribute*>list=player->getAttributeList();
@@ -77,3 +83,16 @@ void MainWindow::refresh()
         }
     }
 }
+
+void MainWindow::on_systemStore_clicked()
+{
+    SystemStore*ss=new SystemStore(player);
+    ss->show();
+}
+
+void MainWindow::on_itemList_clicked()
+{
+    ItemList*IL=new ItemList(player);
+    IL->show();
+}
+

@@ -63,7 +63,7 @@ void CreateLead::initUI()
     ui->REyeColorsSelect->setColor(0,0,0,0);
     ui->LEyeColorsSelect->setColor(0,0,0,0);
     ui->skinColorSelect->setColor(0xf0,0xd5,0x8c,0xff);
-    //
+    //设置眼睛颜色
     connect(ui->LEyeColorsSelect,&ColorSelection::clicked,this,[=](){
         if(ui->EyeColorsEqual->isChecked()){
             ui->REyeColorsSelect->setColor(ui->LEyeColorsSelect->getColor());
@@ -282,9 +282,11 @@ void CreateLead::on_complete_clicked()
     this->player->setPositionList(*positionList);
     //设置初始金钱
     this->player->setMoney(3000);
+    //设置初始系统点数
+    MYGAME::System_&temp = this->player->getVariableSystem();
+    temp.setPoint(300);
     //触发信号
     emit this->NewGame(this->player);
     //关闭窗口
     this->close();
 }
-

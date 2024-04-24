@@ -3,7 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*膀胱类
+/*
+ * 膀胱类
  */
 class Bladder : public PositionBase
 {

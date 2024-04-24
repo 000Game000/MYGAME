@@ -3,7 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*乳房类
+/*
+ * 乳房类
  */
 class Breast : public PositionBase
 {

@@ -4,7 +4,7 @@
 
 #include <QMainWindow>
 #include <vector>
-#include"Modules/Player.h"
+#include"Person/Player.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -23,11 +23,18 @@ public:
     ~MainWindow();
 public slots:
     void NewGame(MYGAME::Player*player);
+private slots:
+
+    void on_systemStore_clicked();
+
+    void on_itemList_clicked();
+
 private:
     Ui::MainWindow *ui;
     void initWindows();                                                             //窗口关系初始化
     void initNewGame();                                                             //新游戏初始化
     QDateTime*time;                                                                 //游戏时间
+    MYGAME::Player*player;
     std::vector<MYGAME::People*> peopleList;                                        //角色表列
     void refresh();                                                                 //刷新
 };

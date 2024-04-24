@@ -3,8 +3,8 @@
 
 #include "PositionBase.h"
 namespace MYGAME{
-/*阴蒂类
- *
+/*
+ * 阴蒂类
  */
 class Clit : public PositionBase
 {

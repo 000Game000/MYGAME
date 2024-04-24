@@ -3,7 +3,8 @@
 #include<QColor>
 #include "PositionBase.h"
 namespace MYGAME{
-/*阴道类
+/*
+ * 阴道类
  */
 class Vagina : public PositionBase
 {

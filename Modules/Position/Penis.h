@@ -4,7 +4,8 @@
 #include "PositionBase.h"
 #include "Modules/Modules.h"
 namespace MYGAME{
-/*阴茎类
+/*
+ * 阴茎类
  */
 class Penis : public PositionBase
 {

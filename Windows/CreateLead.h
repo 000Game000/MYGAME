@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QSpinBox>
-#include <Modules/Player.h>
+#include <Person/Player.h>
 #include "Modules/Position/Penis.h"
 namespace Ui {
 class CreateLead;

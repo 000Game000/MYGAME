@@ -2,9 +2,8 @@ SOURCES += \
     $$PWD/Attribute.cpp \
     $$PWD/AttributeAdd.cpp \
     $$PWD/Global.cpp \
+    $$PWD/Item/ItemBase.cpp \
     $$PWD/Modules.cpp \
-    $$PWD/People.cpp \
-    $$PWD/Player.cpp \
     $$PWD/Position/Anus.cpp \
     $$PWD/Position/Bladder.cpp \
     $$PWD/Position/Breast.cpp \
@@ -17,15 +16,15 @@ SOURCES += \
     $$PWD/Position/Urethra.cpp \
     $$PWD/Position/Uterus.cpp \
     $$PWD/Position/Vagina.cpp \
-    $$PWD/Skill/Skill.cpp
+    $$PWD/Skill/Skill.cpp \
+    $$PWD/System_.cpp
 
 HEADERS += \
     $$PWD/Attribute.h \
     $$PWD/AttributeAdd.h \
     $$PWD/Global.h \
+    $$PWD/Item/ItemBase.h \
     $$PWD/Modules.h \
-    $$PWD/People.h \
-    $$PWD/Player.h \
     $$PWD/Position/Anus.h \
     $$PWD/Position/Bladder.h \
     $$PWD/Position/Breast.h \
@@ -38,4 +37,5 @@ HEADERS += \
     $$PWD/Position/Urethra.h \
     $$PWD/Position/Uterus.h \
     $$PWD/Position/Vagina.h \
-    $$PWD/Skill/Skill.h
+    $$PWD/Skill/Skill.h \
+    $$PWD/System_.h
