@@ -15,12 +15,12 @@ public:
     explicit MYStrip(QWidget *parent = nullptr);
     ~MYStrip();
 
-    long long getMaxValue() const;
-    void setMaxValue(long long newMaxValue);
-    long long getNowValue() const;
-    void setNowValue(long long newNowValue);
-    long long getFrame() const;
-    void setFrame(long long newFrame);
+    unsigned long long getMaxValue() const;
+    void setMaxValue(unsigned long long newMaxValue);
+    unsigned long long getNowValue() const;
+    void setNowValue(unsigned long long newNowValue);
+    unsigned long long getFrame() const;
+    void setFrame(unsigned long long newFrame);
     QString getBackground() const;
     void setBackground(const QString &newBackground);
     QString getProspect() const;
@@ -28,11 +28,11 @@ public:
     void paintEvent(QPaintEvent *);
 private:
     Ui::MYStrip *ui;
-    long long maxValue;                                     //进度条的最大值
-    long long nowValue;                                     //当前值
-    long long frame;                                        //边框大小
-    QString background;                                     //背景图片
-    QString prospect;                                       //前景图片
+    unsigned long long maxValue;                                     //进度条的最大值
+    unsigned long long nowValue;                                     //当前值
+    unsigned long long frame;                                        //边框大小
+    QString background;                                              //背景图片
+    QString prospect;                                                //前景图片
 };
 
 #endif // MYSTRIP_H

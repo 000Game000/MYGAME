@@ -41,7 +41,7 @@ SystemGirlOne::SystemGirlOne(QDate time,Map*live)
     this->tagList.push_back(new Tag("慵懒","这个与懒惰有什么不同呢?"));
     this->positionList.push_back(new Mouth(0,0,100,0));
     this->positionList.push_back(new Breast(1,0,100,0,false,124));
-    this->positionList.push_back(new Nipple(2,0,100,0,15,8,0,QColor(255,192,203)));
+    this->positionList.push_back(new Nipple(2,0,100,0,15,8,1,QColor(255,192,203)));
     this->positionList.push_back(new Clit(3,0,100,0,10,10));
     this->positionList.push_back(new Urethra(-1,0,100,0,3));
     this->positionList.push_back(new Bladder(-2,0,100,0,350));

@@ -12,7 +12,7 @@ protected:
     long long volume=5;                                         //容量单位ml
     short menstrualCycle=28;                                    //月经周期21天~35天 11到18岁来月经
     short ovulation=14;                                         //月经周期的一半为排卵日,排卵日前5天到后4天为排卵期.
-    short pregnancyDays=-1;                                      //0为出生日怀孕天数为280天,负数为未怀孕.
+    short pregnancyDays=-1;                                     //0为出生日怀孕天数为280天,负数为未怀孕.
 public:
     /* rank                     感度等级
      * EXP                      经验(达到后升级部位等级)
@@ -24,6 +24,14 @@ public:
      * pregnancyDays            怀孕天数
      */
     Uterus(long long rank, long long EXP, long long pleasure, long long count,long long volume,short menstrualCycle=28,short pregnancyDays=-1);
+    long long getVolume() const;
+    void setVolume(long long newVolume);
+    short getMenstrualCycle() const;
+    void setMenstrualCycle(short newMenstrualCycle);
+    short getOvulation() const;
+    void setOvulation(short newOvulation);
+    short getPregnancyDays() const;
+    void setPregnancyDays(short newPregnancyDays);
 };
 }
 #endif // UTERUS_H

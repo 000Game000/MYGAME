@@ -13,11 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QHBoxLayout" name="horizontalLayout_21">
+   <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="mainPage">
       <attribute name="title">
@@ -1045,386 +1045,1183 @@
      </widget>
      <widget class="QWidget" name="page1">
       <attribute name="title">
-       <string>部位信息</string>
+       <string>部位信息一</string>
       </attribute>
-      <widget class="QGroupBox" name="mouth">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QGroupBox" name="mouth">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>71</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>口</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="mouthRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="mouthEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="mouthCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="mouthPleasure" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="breast">
+         <property name="title">
+          <string>乳房</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="breastRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="breastEXP" native="true"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="breastCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="breastPleasure" native="true"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="breastSize">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>乳房大小:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="MYStripAdd" name="breastMilk" native="true"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="breastMilkYield">
+            <property name="text">
+             <string>母乳产量:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="breastNumber">
+            <property name="text">
+             <string>乳腺数量:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="Nipple">
+         <property name="title">
+          <string>乳头</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0" colspan="6">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLabel" name="nippleRank">
+              <property name="minimumSize">
+               <size>
+                <width>121</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>121</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>敏感度:9999999999</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="MYStripAdd" name="nippleEXP" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0" colspan="6">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QLabel" name="nippleCount">
+              <property name="minimumSize">
+               <size>
+                <width>121</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>121</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>经验次数:9999999999</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="MYStripAdd" name="nipplePleasure" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="nippleLength">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>长度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="nippleDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="4">
+           <widget class="QLabel" name="nippleDuctusLactiferiDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>乳孔直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="QWidget" name="nippleColor" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_17">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="nippleColorLable">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>121</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>乳头颜色:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="ColorView" name="nippleColorView" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="clit">
+         <property name="title">
+          <string>阴蒂</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QLabel" name="clitRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="clitEXP" native="true"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="clitCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="clitPleasure" native="true"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="clitLength">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>长度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="clitDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="urethra">
+         <property name="title">
+          <string>尿道</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="urethraRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="urethraEXP" native="true"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="urethraCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="urethraPleasure" native="true"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="urethraDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page2">
+      <attribute name="title">
+       <string>部位信息二</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QGroupBox" name="bladder">
+         <property name="title">
+          <string>膀胱</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QLabel" name="bladderRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="bladderEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="bladderCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="bladderPleasure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="bladderYield">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>尿液产量:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="MYStripAdd" name="bladderVolume" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="vagina">
+         <property name="title">
+          <string>阴道</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="vaginaRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="MYStripAdd" name="vaginaEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="vaginaCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="MYStripAdd" name="vaginaPleasure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="vaginaLength">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>长度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QWidget" name="vaginaColor" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_22">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="vaginaColorLable">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>121</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>阴唇颜色:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="ColorView" name="vaginaColorView" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="vaginaDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="uterus">
+         <property name="title">
+          <string>子宫</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="uterusRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="MYStripAdd" name="uterusEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="uterusCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="MYStripAdd" name="uterusPleasure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="uterusVolume">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>容量:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="uterusMenstrualCycle">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>月经周期:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="uterusPregnancyDays">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>怀孕天数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="ovary">
+         <property name="title">
+          <string>卵巢</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QLabel" name="ovaryRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="ovaryEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="ovaryCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="ovaryPleasure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="anus">
+         <property name="title">
+          <string>肛门</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QLabel" name="anusRank">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>敏感度:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="MYStripAdd" name="anusEXP" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="anusCount">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>121</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>经验次数:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="MYStripAdd" name="anusPleasure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="anusDiameter">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>直径:9999999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="anusVolume">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>容量:9999999999</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>淫纹</string>
+      </attribute>
+      <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>9</y>
-         <width>761</width>
-         <height>81</height>
+         <x>10</x>
+         <y>10</y>
+         <width>121</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
-         <height>71</height>
+         <width>121</width>
+         <height>0</height>
         </size>
        </property>
-       <property name="title">
-        <string>口</string>
+       <property name="text">
+        <string>淫纹等级:9999999999</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="mouthRank">
-          <property name="minimumSize">
-           <size>
-            <width>121</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>121</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>敏感度:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="mouthEXPLabel">
-          <property name="minimumSize">
-           <size>
-            <width>53</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>53</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>EXP:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="MYStrip" name="mouthEXPStrip" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="mouthEXPBarNumberLabel">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>90</width>
-            <height>19</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>999999/999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="mouthCount">
-          <property name="minimumSize">
-           <size>
-            <width>121</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>121</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>经验次数:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="mouthPleasureLabel">
-          <property name="minimumSize">
-           <size>
-            <width>53</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>53</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>快感:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="MYStrip" name="mouthPleasureStrip" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="mouthPleasureBarNumberLabel">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>90</width>
-            <height>19</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>999999/999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </widget>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="MYStripAdd" name="vaginaEXP_2" native="true">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>96</y>
-         <width>761</width>
-         <height>128</height>
+         <x>140</x>
+         <y>10</y>
+         <width>631</width>
+         <height>15</height>
         </rect>
        </property>
-       <property name="title">
-        <string>乳房</string>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>15</height>
+        </size>
        </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QLabel" name="breastRank">
-          <property name="minimumSize">
-           <size>
-            <width>121</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>121</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>敏感度:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="breastEXPLabel">
-          <property name="minimumSize">
-           <size>
-            <width>53</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>53</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>EXP:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="MYStrip" name="breastEXPStrip" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="breastEXPBarNumberLabel">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>90</width>
-            <height>19</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>999999/999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="breastCount">
-          <property name="minimumSize">
-           <size>
-            <width>121</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>121</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>经验次数:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="breastPleasureLabel">
-          <property name="minimumSize">
-           <size>
-            <width>53</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>53</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>快感:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="MYStrip" name="breastPleasureStrip" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="breastPleasureBarNumberLabel">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>90</width>
-            <height>19</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>999999/999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="breastSize">
-          <property name="minimumSize">
-           <size>
-            <width>121</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>乳房大小:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLabel" name="breastMilkLabel">
-          <property name="minimumSize">
-           <size>
-            <width>53</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>53</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>乳量:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="MYStrip" name="breastMilkStrip" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QLabel" name="breastMilkBarNumberLabel">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>90</width>
-            <height>19</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>999999/999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="breastMilkYield">
-          <property name="text">
-           <string>母乳产量:9999999999</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1" colspan="2">
-         <widget class="QLabel" name="breastNumber">
-          <property name="text">
-           <string>乳腺数量:9999999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>710</x>
+         <y>30</y>
+         <width>66</width>
+         <height>521</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>66</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>701</width>
+         <height>521</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -1442,6 +2239,12 @@
    <class>ColorView</class>
    <extends>QWidget</extends>
    <header>Windows/Module/ColorView.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MYStripAdd</class>
+   <extends>QWidget</extends>
+   <header>Windows/Module/MYStripAdd.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

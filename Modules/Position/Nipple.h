@@ -24,6 +24,14 @@ public:
      * color                    乳头颜色
      */
     Nipple(long long rank, long long EXP, long long pleasure, long long count,long long length,long long diameter,long long ductusLactiferiDiameter,QColor color);
+    long long getLength() const;
+    void setLength(long long newLength);
+    long long getDiameter() const;
+    void setDiameter(long long newDiameter);
+    long long getDuctusLactiferiDiameter() const;
+    void setDuctusLactiferiDiameter(long long newDuctusLactiferiDiameter);
+    QColor getColor() const;
+    void setColor(const QColor &newColor);
 };
 }
 #endif // NIPPLE_H

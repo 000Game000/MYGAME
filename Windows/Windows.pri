@@ -7,6 +7,7 @@ SOURCES += \
     $$PWD/Module/ColorSelection.cpp \
     $$PWD/Module/ColorView.cpp \
     $$PWD/Module/MYStrip.cpp \
+    $$PWD/Module/MYStripAdd.cpp \
     $$PWD/PeopleList.cpp \
     $$PWD/PeopleListItem.cpp \
     $$PWD/SystemStore.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     $$PWD/Module/ColorSelection.h \
     $$PWD/Module/ColorView.h \
     $$PWD/Module/MYStrip.h \
+    $$PWD/Module/MYStripAdd.h \
     $$PWD/PeopleList.h \
     $$PWD/PeopleListItem.h \
     $$PWD/SystemStore.h \
@@ -33,6 +35,7 @@ FORMS += \
     $$PWD/Module/ColorSelection.ui \
     $$PWD/Module/ColorView.ui \
     $$PWD/Module/MYStrip.ui \
+    $$PWD/Module/MYStripAdd.ui \
     $$PWD/PeopleList.ui \
     $$PWD/PeopleListItem.ui \
     $$PWD/SystemStore.ui \

@@ -6,49 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>300</width>
+    <height>20</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="title">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
    </property>
-   <property name="text">
-    <string>三个字:</string>
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-  </widget>
-  <widget class="MYStrip" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>10</y>
-     <width>120</width>
-     <height>15</height>
-    </rect>
+   <property name="topMargin">
+    <number>0</number>
    </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>20</y>
-     <width>90</width>
-     <height>15</height>
-    </rect>
+   <property name="rightMargin">
+    <number>0</number>
    </property>
-   <property name="text">
-    <string>999999/999999</string>
+   <property name="bottomMargin">
+    <number>0</number>
    </property>
-  </widget>
+   <item>
+    <widget class="QLabel" name="name">
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="MYStrip" name="Strip" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>120</width>
+       <height>15</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="number">
+     <property name="minimumSize">
+      <size>
+       <width>90</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>90</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>

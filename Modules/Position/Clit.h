@@ -20,6 +20,10 @@ public:
      * diameter                 阴蒂直径
      */
     Clit(long long rank, long long EXP, long long pleasure, long long count,long long length,long long diameter);
+    long long getLength() const;
+    void setLength(long long newLength);
+    long long getDiameter() const;
+    void setDiameter(long long newDiameter);
 };
 }
 #endif // CLIT_H

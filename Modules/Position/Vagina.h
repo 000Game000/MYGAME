@@ -22,6 +22,12 @@ public:
      * color                    阴唇的颜色
      */
     Vagina(long long rank, long long EXP, long long pleasure, long long count,long long maximumDiameter,long long length,QColor color);
+    long long getMaximumDiameter() const;
+    void setMaximumDiameter(long long newMaximumDiameter);
+    long long getLength() const;
+    void setLength(long long newLength);
+    QColor getColor() const;
+    void setColor(const QColor &newColor);
 };
 }
 #endif // VAGINA_H

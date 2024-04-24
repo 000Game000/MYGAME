@@ -3,6 +3,14 @@
 #include "Modules/MYFunctions.h"
 #include "Modules/AttributeAdd.h"
 #include "Modules/Position/Breast.h"
+#include <Modules/Position/Anus.h>
+#include <Modules/Position/Bladder.h>
+#include <Modules/Position/Clit.h>
+#include <Modules/Position/Nipple.h>
+#include <Modules/Position/Ovary.h>
+#include <Modules/Position/Urethra.h>
+#include <Modules/Position/Uterus.h>
+#include <Modules/Position/Vagina.h>
 CharacterDetails::CharacterDetails(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CharacterDetails)
@@ -139,43 +147,237 @@ void CharacterDetails::init()
         if(positionList[i]->getName().compare("嘴巴")==0){
             ui->mouthRank->setText("敏感度:"+QString::number(positionList[i]->getRank()));
             ui->mouthCount->setText("经验次数:"+QString::number(positionList[i]->getCount()));
-            ui->mouthEXPStrip->setMaxValue(positionList[i]->getEXP());
-            ui->mouthEXPStrip->setNowValue(positionList[i]->getNowEXP());
-            ui->mouthEXPStrip->setBackground(":/Strip/Strip/Green.png");
-            ui->mouthEXPStrip->setProspect(":/Strip/Strip/bg.png");
-            ui->mouthEXPBarNumberLabel->setText(QString::number(positionList[i]->getNowEXP())+"/"+QString::number(positionList[i]->getEXP()));
 
-            ui->mouthPleasureStrip->setMaxValue(positionList[i]->getPleasure());
-            ui->mouthPleasureStrip->setNowValue(positionList[i]->getNowPleasure());
-            ui->mouthPleasureStrip->setBackground(":/Strip/Strip/Pink.png");
-            ui->mouthPleasureStrip->setProspect(":/Strip/Strip/bg.png");
-            ui->mouthPleasureBarNumberLabel->setText(QString::number(positionList[i]->getNowPleasure())+"/"+QString::number(positionList[i]->getPleasure()));
+            ui->mouthEXP->setName("EXP");
+            ui->mouthEXP->setMAXValue(positionList[i]->getEXP());
+            ui->mouthEXP->setNOWValue(positionList[i]->getNowEXP());
+            ui->mouthEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->mouthEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->mouthPleasure->setName("快感");
+            ui->mouthPleasure->setMAXValue(positionList[i]->getPleasure());
+            ui->mouthPleasure->setNOWValue(positionList[i]->getNowPleasure());
+            ui->mouthPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->mouthPleasure->setProspect(":/Strip/Strip/bg.png");
             continue;
         }else if(positionList[i]->getName().compare("乳房")==0){
             MYGAME::Breast*P=dynamic_cast<MYGAME::Breast*>(positionList[i]);
             ui->breastRank->setText("敏感度:"+QString::number(P->getRank()));
             ui->breastCount->setText("经验次数:"+QString::number(P->getCount()));
-            ui->breastEXPStrip->setMaxValue(P->getEXP());
-            ui->breastEXPStrip->setNowValue(P->getNowEXP());
-            ui->breastEXPStrip->setBackground(":/Strip/Strip/Green.png");
-            ui->breastEXPStrip->setProspect(":/Strip/Strip/bg.png");
-            ui->breastEXPBarNumberLabel->setText(QString::number(P->getNowEXP())+"/"+QString::number(P->getEXP()));
-
-            ui->breastPleasureStrip->setMaxValue(P->getPleasure());
-            ui->breastPleasureStrip->setNowValue(P->getNowPleasure());
-            ui->breastPleasureStrip->setBackground(":/Strip/Strip/Pink.png");
-            ui->breastPleasureStrip->setProspect(":/Strip/Strip/bg.png");
-            ui->breastPleasureBarNumberLabel->setText(QString::number(P->getNowPleasure())+"/"+QString::number(P->getPleasure()));
-
             ui->breastSize->setText("乳房大小:"+QString::number(P->getSize())+"mm");
-            ui->breastMilkStrip->setMaxValue(P->getVolume());
-            ui->breastMilkStrip->setNowValue(P->getStock());
-            ui->breastMilkStrip->setBackground(":/Strip/Strip/MilkyWhite.png");
-            ui->breastMilkStrip->setProspect(":/Strip/Strip/bg.png");
-            ui->breastMilkBarNumberLabel->setText(QString::number(P->getStock())+"/"+QString::number(P->getVolume())+"ML");
-            ui->breastMilkYield->setText("母乳产量:"+QString::number(P->getMilkYield()));
+            ui->breastMilkYield->setText("母乳产量:"+QString::number((unsigned long long)P->getMilkYield()));
             ui->breastNumber->setText("乳腺数量:"+QString::number(P->getGalactophore()));
+
+            ui->breastEXP->setName("EXP");
+            ui->breastEXP->setMAXValue(P->getEXP());
+            ui->breastEXP->setNOWValue(P->getNowEXP());
+            ui->breastEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->breastEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->breastPleasure->setName("快感");
+            ui->breastPleasure->setMAXValue(P->getPleasure());
+            ui->breastPleasure->setNOWValue(P->getNowPleasure());
+            ui->breastPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->breastPleasure->setProspect(":/Strip/Strip/bg.png");
+
+            ui->breastMilk->setName("母乳");
+            ui->breastMilk->setMAXValue(P->getVolume());
+            ui->breastMilk->setNOWValue(P->getStock());
+            ui->breastMilk->setBackground(":/Strip/Strip/MilkyWhite.png");
+            ui->breastMilk->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }else if(positionList[i]->getName().compare("乳头")==0){
+            MYGAME::Nipple*P=dynamic_cast<MYGAME::Nipple*>(positionList[i]);
+            ui->nippleRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->nippleCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->nippleLength->setText("长度:"+QString::number(P->getLength()));
+            ui->nippleDiameter->setText("直径:"+QString::number(P->getDiameter()));
+            ui->nippleDuctusLactiferiDiameter->setText("乳孔直径:"+QString::number(P->getDuctusLactiferiDiameter()));
+            ui->nippleColorView->setColor(P->getColor());
+
+            ui->nippleEXP->setName("EXP");
+            ui->nippleEXP->setMAXValue(P->getEXP());
+            ui->nippleEXP->setNOWValue(P->getNowEXP());
+            ui->nippleEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->nippleEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->nipplePleasure->setName("快感");
+            ui->nipplePleasure->setMAXValue(P->getPleasure());
+            ui->nipplePleasure->setNOWValue(P->getNowPleasure());
+            ui->nipplePleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->nipplePleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("阴蒂")==0){
+            MYGAME::Clit*P=dynamic_cast<MYGAME::Clit*>(positionList[i]);
+            ui->clitRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->clitCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->clitLength->setText("长度:"+QString::number(P->getLength()));
+            ui->clitDiameter->setText("直径:"+QString::number(P->getDiameter()));
+
+            ui->clitEXP->setName("EXP");
+            ui->clitEXP->setMAXValue(P->getEXP());
+            ui->clitEXP->setNOWValue(P->getNowEXP());
+            ui->clitEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->clitEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->clitPleasure->setName("快感");
+            ui->clitPleasure->setMAXValue(P->getPleasure());
+            ui->clitPleasure->setNOWValue(P->getNowPleasure());
+            ui->clitPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->clitPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("尿道")==0){
+             MYGAME::Urethra*P=dynamic_cast<MYGAME::Urethra*>(positionList[i]);
+            ui->urethraRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->urethraCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->urethraDiameter->setText("直径:"+QString::number(P->getExpand()));
+
+            ui->urethraEXP->setName("EXP");
+            ui->urethraEXP->setMAXValue(P->getEXP());
+            ui->urethraEXP->setNOWValue(P->getNowEXP());
+            ui->urethraEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->urethraEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->urethraPleasure->setName("快感");
+            ui->urethraPleasure->setMAXValue(P->getPleasure());
+            ui->urethraPleasure->setNOWValue(P->getNowPleasure());
+            ui->urethraPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->urethraPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("膀胱")==0){
+            MYGAME::Bladder*P=dynamic_cast<MYGAME::Bladder*>(positionList[i]);
+            ui->bladderRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->bladderCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->bladderYield->setText("尿液产量:"+QString::number(P->getYield()));
+
+            ui->bladderEXP->setName("EXP");
+            ui->bladderEXP->setMAXValue(P->getEXP());
+            ui->bladderEXP->setNOWValue(P->getNowEXP());
+            ui->bladderEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->bladderEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->bladderPleasure->setName("快感");
+            ui->bladderPleasure->setMAXValue(P->getPleasure());
+            ui->bladderPleasure->setNOWValue(P->getNowPleasure());
+            ui->bladderPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->bladderPleasure->setProspect(":/Strip/Strip/bg.png");
+
+            ui->bladderVolume->setName("膀胱容量");
+            ui->bladderVolume->setMAXValue(P->getVolume());
+            ui->bladderVolume->setNOWValue(P->getStock());
+            ui->bladderVolume->setBackground(":/Strip/Strip/Yellow.png");
+            ui->bladderVolume->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("阴道")==0){
+            MYGAME::Vagina*P=dynamic_cast<MYGAME::Vagina*>(positionList[i]);
+            ui->vaginaRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->vaginaCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->vaginaLength->setText("长度:"+QString::number(P->getLength()));
+            ui->vaginaDiameter->setText("直径:"+QString::number(P->getMaximumDiameter()));
+            ui->vaginaColorView->setColor(P->getColor());
+
+            ui->vaginaEXP->setName("EXP");
+            ui->vaginaEXP->setMAXValue(P->getEXP());
+            ui->vaginaEXP->setNOWValue(P->getNowEXP());
+            ui->vaginaEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->vaginaEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->vaginaPleasure->setName("快感");
+            ui->vaginaPleasure->setMAXValue(P->getPleasure());
+            ui->vaginaPleasure->setNOWValue(P->getNowPleasure());
+            ui->vaginaPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->vaginaPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("阴道")==0){
+            MYGAME::Vagina*P=dynamic_cast<MYGAME::Vagina*>(positionList[i]);
+            ui->vaginaRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->vaginaCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->vaginaLength->setText("长度:"+QString::number(P->getLength()));
+            ui->vaginaDiameter->setText("直径:"+QString::number(P->getMaximumDiameter()));
+            ui->vaginaColorView->setColor(P->getColor());
+
+            ui->vaginaEXP->setName("EXP");
+            ui->vaginaEXP->setMAXValue(P->getEXP());
+            ui->vaginaEXP->setNOWValue(P->getNowEXP());
+            ui->vaginaEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->vaginaEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->vaginaPleasure->setName("快感");
+            ui->vaginaPleasure->setMAXValue(P->getPleasure());
+            ui->vaginaPleasure->setNOWValue(P->getNowPleasure());
+            ui->vaginaPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->vaginaPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("子宫")==0){
+            MYGAME::Uterus*P=dynamic_cast<MYGAME::Uterus*>(positionList[i]);
+            ui->uterusRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->uterusCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->uterusVolume->setText("容量:"+QString::number(P->getVolume()));
+            ui->uterusMenstrualCycle->setText("月经周期:"+QString::number(P->getMenstrualCycle()));
+            if(P->getPregnancyDays()<0){
+                ui->uterusPregnancyDays->setText("怀孕天数:未怀孕");
+            }else{
+                ui->uterusPregnancyDays->setText("怀孕天数:"+QString::number(P->getPregnancyDays()));
+            }
+
+            ui->uterusEXP->setName("EXP");
+            ui->uterusEXP->setMAXValue(P->getEXP());
+            ui->uterusEXP->setNOWValue(P->getNowEXP());
+            ui->uterusEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->uterusEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->uterusPleasure->setName("快感");
+            ui->uterusPleasure->setMAXValue(P->getPleasure());
+            ui->uterusPleasure->setNOWValue(P->getNowPleasure());
+            ui->uterusPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->uterusPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("卵巢")==0){
+            MYGAME::Ovary*P=dynamic_cast<MYGAME::Ovary*>(positionList[i]);
+            ui->ovaryRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->ovaryCount->setText("经验次数:"+QString::number(P->getCount()));
+
+            ui->ovaryEXP->setName("EXP");
+            ui->ovaryEXP->setMAXValue(P->getEXP());
+            ui->ovaryEXP->setNOWValue(P->getNowEXP());
+            ui->ovaryEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->ovaryEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->ovaryPleasure->setName("快感");
+            ui->ovaryPleasure->setMAXValue(P->getPleasure());
+            ui->ovaryPleasure->setNOWValue(P->getNowPleasure());
+            ui->ovaryPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->ovaryPleasure->setProspect(":/Strip/Strip/bg.png");
+            continue;
+        }
+        else if(positionList[i]->getName().compare("肛门")==0){
+            MYGAME::Anus*P=dynamic_cast<MYGAME::Anus*>(positionList[i]);
+            ui->anusRank->setText("敏感度:"+QString::number(P->getRank()));
+            ui->anusCount->setText("经验次数:"+QString::number(P->getCount()));
+            ui->anusDiameter->setText("肛门直径:"+QString::number(P->getExpand()));
+            ui->anusVolume->setText("肛门容量:"+QString::number(P->getVolume()));
+
+            ui->anusEXP->setName("EXP");
+            ui->anusEXP->setMAXValue(P->getEXP());
+            ui->anusEXP->setNOWValue(P->getNowEXP());
+            ui->anusEXP->setBackground(":/Strip/Strip/Green.png");
+            ui->anusEXP->setProspect(":/Strip/Strip/bg.png");
+
+            ui->anusPleasure->setName("快感");
+            ui->anusPleasure->setMAXValue(P->getPleasure());
+            ui->anusPleasure->setNOWValue(P->getNowPleasure());
+            ui->anusPleasure->setBackground(":/Strip/Strip/Pink.png");
+            ui->anusPleasure->setProspect(":/Strip/Strip/bg.png");
             continue;
         }
     }
+    //MYGAME::CrotchTattoo*ct=this->girl->getCrotchTattoo();
+    //ui->label->setPixmap()
 }
