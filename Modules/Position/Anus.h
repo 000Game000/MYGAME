@@ -20,6 +20,7 @@ public:
      * volume                   容量单位ml
      */
     Anus(long long rank, long long EXP, long long pleasure, long long count,long long expand, long long volume);
+    virtual QString save();
     long long getExpand() const;
     void setExpand(long long newExpand);
     long long getVolume() const;

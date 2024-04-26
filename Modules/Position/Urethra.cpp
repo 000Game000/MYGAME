@@ -15,4 +15,10 @@ Urethra::Urethra(long long rank, long long EXP, long long pleasure, long long co
 {
 
 }
+
+QString Urethra::save()
+{
+    QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand);
+    return str;
+}
 }

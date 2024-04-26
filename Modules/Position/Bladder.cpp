@@ -37,4 +37,10 @@ Bladder::Bladder(long long rank, long long EXP, long long pleasure, long long co
     this->yield=1;
 }
 
+QString Bladder::save()
+{
+    QString str=PositionBase::save()+"\nvolume:"+QString::number(this->volume)+"\nstock:"+QString::number(this->stock)
+                  +"\nyield:"+QString::number(this->yield);
+    return str;
+}
 }

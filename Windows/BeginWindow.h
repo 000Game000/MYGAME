@@ -16,11 +16,16 @@ class BeginWindow : public QWidget
 public:
     explicit BeginWindow(QWidget *parent = nullptr);
     ~BeginWindow();
-
+public slots:
+    void sdirSlots(QString sdir);
+signals:
+    void sdirSignals(QString sdir);
 private slots:
     void on_exitBtn_clicked();
 
     void on_StartBtn_clicked();
+
+    void on_continueBtn_clicked();
 
 private:
     Ui::BeginWindow *ui;

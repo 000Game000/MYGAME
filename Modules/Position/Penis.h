@@ -15,6 +15,7 @@ protected:
     DickSize dickSize;                              //鸡儿大小的tag
 public:
     Penis();
+    virtual QString save();
     long long getDiameter() const;
     void setDiameter(long long newDiameter);
     long long getSemen() const;

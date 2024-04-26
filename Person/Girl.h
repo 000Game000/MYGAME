@@ -23,6 +23,7 @@ protected:
     CrotchTattoo*crotchTattoo;                              //淫纹
 public:
     Girl();
+    virtual QString save();
     long long getId() const;
     void setId(long long newId);
     long long getLovept() const;

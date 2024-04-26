@@ -41,6 +41,7 @@ public:
      * size         乳房大小
      */
     Breast(long long rank, long long EXP, long long pleasure, long long count,bool milkYield,long long size);
+    virtual QString save();
     double getMilkYield() const;
     void setMilkYield(double newMilkYield);
     long long getVolume() const;

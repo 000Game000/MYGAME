@@ -36,4 +36,11 @@ Penis::Penis():PositionBase("阴茎",2,0,0,0)
     this->diameter=10;
     this->dickSize=Lovely;
 }
+
+QString Penis::save()
+{
+    QString str=PositionBase::save()+"\ndiameter:"+QString::number(this->diameter)+"\nsemen:"+QString::number(this->semen)
+                  +"\ndickSize:"+QString::number(this->dickSize);
+    return str;
+}
 }

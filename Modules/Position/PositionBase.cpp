@@ -86,6 +86,14 @@ PositionBase::PositionBase(const QString &name, long long rank, long long EXP, l
     this->nowEXP=0;
 }
 
+QString PositionBase::save()
+{
+    QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nnowEXP:"+QString::number(this->nowEXP)
+                  +"\nEXP:"+QString::number(this->EXP)+"\npleasure:"+QString::number(this->pleasure)+"\nnowPleasure:"+QString::number(this->nowPleasure)
+                  +"\ncount:"+QString::number(this->count);
+    return str;
+}
+
 void PositionBase::setEXPValue()
 {
     const long long num[3] = { 10,30,60 };

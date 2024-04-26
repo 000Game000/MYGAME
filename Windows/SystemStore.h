@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "Person/Player.h"
 #include<QListWidgetItem>
+#include <Modules/System_.h>
 namespace Ui {
 class SystemStore;
 }
@@ -20,7 +21,7 @@ class SystemStore : public QWidget
     bool flag=false;                                                                //当前物品是否在背包中拥有
 public:
     explicit SystemStore(QWidget *parent = nullptr);
-    SystemStore(MYGAME::Player*p,QWidget*parent=nullptr);
+    SystemStore(MYGAME::Player*p,MYGAME::System_*_system,QWidget*parent=nullptr);
     ~SystemStore();
 
 private slots:

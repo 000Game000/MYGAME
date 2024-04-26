@@ -45,22 +45,22 @@ void ItemBase::setLocation(const QString &newLocation)
     location = newLocation;
 }
 
-long long ItemBase::getMoney() const
+unsigned long long ItemBase::getMoney() const
 {
     return money;
 }
 
-void ItemBase::setMoney(long long newMoney)
+void ItemBase::setMoney(unsigned long long newMoney)
 {
     money = newMoney;
 }
 
-long long ItemBase::getCount() const
+unsigned long long ItemBase::getCount() const
 {
     return count;
 }
 
-void ItemBase::setCount(long long newCount)
+void ItemBase::setCount(unsigned long long newCount)
 {
     count = newCount;
 }
@@ -89,4 +89,10 @@ ItemBase::ItemBase(const QString &name, const QString &describe, const QString &
     count(count)
 {}
 
+QString ItemBase::save()
+{
+    QString str="\nname:"+this->name+"\ndescribe:"+this->describe+"\nitemFunction:"+this->itemFunction+"\nitemType:"+this->itemType
+                  +"\nlocation:"+this->location+"\nmoney:"+QString::number(this->money)+"\ncount:"+QString::number(this->count);
+    return str;
+}
 }

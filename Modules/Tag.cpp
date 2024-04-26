@@ -20,6 +20,12 @@ void Tag::setDescription(const QString &newDescription)
     description = newDescription;
 }
 
+QString Tag::save()
+{
+    QString str="\name:"+this->name+"\ndescription:"+this->description;
+    return str;
+}
+
 Tag::Tag(const QString &name, const QString &description) : name(name),
     description(description)
 {}

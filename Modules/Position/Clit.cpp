@@ -25,4 +25,10 @@ Clit::Clit(long long rank, long long EXP, long long pleasure, long long count,lo
 {
 
 }
+
+QString Clit::save()
+{
+    QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter);
+    return str;
+}
 }

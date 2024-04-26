@@ -16,6 +16,7 @@ public:
     void setName(const QString &newName);
     QString getDescription() const;
     void setDescription(const QString &newDescription);
+    virtual QString save();
 };
 
 #endif // TAG_H

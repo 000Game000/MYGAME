@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QGridLayout>
+#include <Modules/System_.h>
 #include"Person/Player.h"
 
 
@@ -23,12 +24,21 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 public slots:
     void NewGame(MYGAME::Player*player);
+
+    void loadGame(QString sdir);
+
+    void read(QString sdir);
 private slots:
 
     void on_systemCommand_visibilityChanged(bool visible);
+
+    void on_actionSave_S_triggered();
+
+    void on_actionread_S_triggered();
 
 private:
     const int buttonWidth=130;                                                              //按钮最小宽度
@@ -36,6 +46,7 @@ private:
     QDateTime*time;                                                                         //游戏时间
     Ui::MainWindow *ui;                                                                     //主窗口ui
     MYGAME::Player*player;                                                                  //主角指针
+    MYGAME::System_*_system;                                                                //主角身上携带的系统
     std::vector<MYGAME::Map*> mapList;                                                      //游戏地图
     std::vector<QString*(MainWindow::*)(UC)> SystemCommandList;                             //按钮表列
     std::vector<MYGAME::People*> peopleList;                                                //角色表列
@@ -50,6 +61,7 @@ private:
     template<class T>
     void gridLayoutWidget(QWidget*widget,T*type,std::vector<QString*(T::*)(UC)>*list);      //对widget进行栅格布局
 
+    QString VersionNumber="0.0.1";                                                          //版本号
     QString*playerStatusFunction(UC flag=0);                                                //显示玩家状态
     QString*itemList(UC flag=0);                                                            //显示玩家所持物品表列
     QString*systemStore(UC flag=0);                                                         //显示系统商城
@@ -60,6 +72,5 @@ private:
     //显示人物表列
     void showPeopleList();
     bool ifShowPeopleList();
-
 };
 #endif // MAINWINDOW_H

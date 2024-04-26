@@ -25,6 +25,7 @@ public:
     PositionBase(const QString &name, long long rank, long long EXP=0, long long pleasure=100, long long count=0);
     /* 设置每级的部位经验
      */
+    virtual QString save();
     virtual void setEXPValue();
     QString getName() const;
     void setName(const QString &newName);

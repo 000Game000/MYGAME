@@ -82,7 +82,7 @@ CrotchTattoo *Girl::getVariableCrotchTattoo()
 
 void Girl::setCrotchTattoo(CrotchTattoo *newCrotchTattoo)
 {
-    crotchTattoo = newCrotchTattoo;
+    //crotchTattoo = newCrotchTattoo;
 }
 
 long long Girl::getSm() const
@@ -108,5 +108,15 @@ void Girl::setExposing(long long newExposing)
 Girl::Girl()
 {
     this->crotchTattoo=new CrotchTattoo();
+}
+
+QString Girl::save()
+{
+    QString str=People::save()+"\nid:"+QString::number(this->id)+"\nlovept:"+QString::number(this->lovept)
+                  +"\nobedience:"+QString::number(this->obedience)+"\nfornication:"+QString::number(this->fornication)
+                  +"\ndesire:"+QString::number(this->desire)+"\nsm:"+QString::number(this->sm)+"\nexposing:"+QString::number(this->exposing)
+                  +"\nimg:"+this->img+"\nthought:"+this->thought+"\nselfIntroduction:"+this->selfIntroduction;
+    str+=this->crotchTattoo->save();
+    return str;
 }
 }

@@ -35,4 +35,21 @@ Vagina::Vagina(long long rank, long long EXP, long long pleasure, long long coun
 {
 
 }
+
+QString Vagina::save()
+{
+    QString str=PositionBase::save()+"\nmaximumDiameter:"+QString::number(this->maximumDiameter)+"\nlength:"+QString::number(this->length)
+                  +"\ncolor:";
+    int r=0;
+    int g=0;
+    int b=0;
+    this->color.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    return str;
+}
+long long maximumDiameter=10;                                      //现有最大直径单位mm萝莉10mm,成年20mm~30mm
+long long length=70;                                               //长度单位mm 萝莉40mm~70mm成人70mm~120mm
+QColor color;                                                      //阴唇颜色
 }

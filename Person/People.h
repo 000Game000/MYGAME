@@ -35,9 +35,9 @@ protected:
     std::vector<Skill*> skillList;                  //技能表列
     std::vector<PositionBase*> positionList;        //部位表列
     QString describe;                               //人物描述
-    Cloths cloths;                                  //人物服装
     Room *live;                                     //人物居住地址
     Map*currentPosition;                            //当前所在地点
+    //Cloths cloths;                                  //人物服装
 public:
     People();
     QString getName() const;
@@ -79,15 +79,15 @@ public:
     Room *getLive() const;
     void setLive(Room *newLive);
     void setLive(Map*newLive);
-    Cloths getCloths() const;
-    Cloths&getVariableCloths();
-    void setCloths(const Cloths &newCloths);
-    virtual bool save();
+    // Cloths getCloths() const;
+    // Cloths&getVariableCloths();
+    // void setCloths(const Cloths &newCloths);
     std::vector<Tag *> getTagList() const;
     std::vector<Tag*>&getVariableTagList();
     void setTagList(const std::vector<Tag *> &newTagList);
     Map *getCurrentPosition() const;
     void setCurrentPosition(Map *newCurrentPosition);
+    virtual QString save();
 };
 }
 #endif // PEOPLE_H

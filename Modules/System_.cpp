@@ -1,15 +1,5 @@
 #include "System_.h"
 namespace MYGAME{
-long long System_::getPoint() const
-{
-    return point;
-}
-
-void System_::setPoint(long long newPoint)
-{
-    point = newPoint;
-}
-
 std::vector<ItemBase *>&System_::getItemList()
 {
     return itemList;

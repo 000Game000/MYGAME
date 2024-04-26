@@ -40,4 +40,9 @@ Skill::Skill(const QString &name, long long rank, long long EXP) : name(name),
     EXP(EXP)
 {}
 
+QString Skill::save()
+{
+    QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP);
+    return str;
+}
 }

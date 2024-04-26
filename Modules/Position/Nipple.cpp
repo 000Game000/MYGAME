@@ -45,4 +45,18 @@ Nipple::Nipple(long long rank, long long EXP, long long pleasure, long long coun
 {
 
 }
+
+QString Nipple::save()
+{
+    QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter)
+                  +"\nductusLactiferiDiameter:"+QString::number(this->ductusLactiferiDiameter)+"\ncolor:";
+    int r=0;
+    int g=0;
+    int b=0;
+    this->color.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    return str;
+}
 }

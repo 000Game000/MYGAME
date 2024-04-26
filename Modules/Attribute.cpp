@@ -35,6 +35,11 @@ void Attribute::show()
 
 }
 
+QString Attribute::save()
+{
+    QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP);
+    return str;
+}
 Attribute::Attribute(const QString &name, long long rank, long long EXP) : name(name),
     rank(rank),
     EXP(EXP)

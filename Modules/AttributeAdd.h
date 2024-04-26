@@ -17,6 +17,7 @@ public:
     void show();
     long long getNowValue() const;
     void setNowValue(long long newNowValue);
+    virtual QString save();
 };
 }
 #endif // ATTRIBUTEADD_H

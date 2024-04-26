@@ -4,6 +4,8 @@ SOURCES += \
     $$PWD/CreateLead.cpp \
     $$PWD/ItemBaseWidget.cpp \
     $$PWD/ItemList.cpp \
+    $$PWD/Load.cpp \
+    $$PWD/LoadItem.cpp \
     $$PWD/Module/ColorSelection.cpp \
     $$PWD/Module/ColorView.cpp \
     $$PWD/Module/MYStrip.cpp \
@@ -18,6 +20,8 @@ HEADERS += \
     $$PWD/CreateLead.h \
     $$PWD/ItemBaseWidget.h \
     $$PWD/ItemList.h \
+    $$PWD/Load.h \
+    $$PWD/LoadItem.h \
     $$PWD/Module/ColorSelection.h \
     $$PWD/Module/ColorView.h \
     $$PWD/Module/MYStrip.h \
@@ -32,6 +36,8 @@ FORMS += \
     $$PWD/CreateLead.ui \
     $$PWD/ItemBaseWidget.ui \
     $$PWD/ItemList.ui \
+    $$PWD/Load.ui \
+    $$PWD/LoadItem.ui \
     $$PWD/Module/ColorSelection.ui \
     $$PWD/Module/ColorView.ui \
     $$PWD/Module/MYStrip.ui \

@@ -22,6 +22,7 @@ public:
     long long getEXP() const;
     void setEXP(long long newEXP);
     virtual void show();
+    virtual QString save();
 };
 }
 #endif // ATTRIBUTE_H

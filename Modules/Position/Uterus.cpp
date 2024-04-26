@@ -47,4 +47,10 @@ Uterus::Uterus(long long rank, long long EXP, long long pleasure, long long coun
     this->ovulation=this->menstrualCycle/2;
 }
 
+QString Uterus::save()
+{
+    QString str=PositionBase::save()+"\nvolume:"+QString::number(this->volume)+"\nmenstrualCycle:"+QString::number(this->menstrualCycle)
+                  +"\novulation:"+QString::number(this->ovulation)+"\npregnancyDays:"+QString::number(this->pregnancyDays);
+    return str;
+}
 }

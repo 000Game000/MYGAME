@@ -6,6 +6,7 @@ namespace MYGAME{
 class Cloth : public ItemBase
 {
 protected:
+    QString name;
     QString img;
 public:
     Cloth();

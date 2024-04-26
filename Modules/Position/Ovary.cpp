@@ -4,4 +4,10 @@ Ovary::Ovary(long long rank, long long EXP, long long pleasure, long long count)
 {
 
 }
+
+QString Ovary::save()
+{
+    QString str=PositionBase::save();
+    return str;
+}
 }

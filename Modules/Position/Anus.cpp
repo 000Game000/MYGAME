@@ -32,4 +32,9 @@ Anus::Anus(long long rank, long long EXP, long long pleasure, long long count,lo
 
 }
 
+QString Anus::save()
+{
+    QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand)+"\nvolume:"+QString::number(this->volume);
+    return str;
+}
 }

@@ -11,11 +11,11 @@ SystemStore::SystemStore(QWidget *parent) :
     ui->setupUi(this);
 }
 
-SystemStore::SystemStore(MYGAME::Player *p, QWidget *parent):SystemStore(parent)
+SystemStore::SystemStore(MYGAME::Player *p, MYGAME::System_*_system, QWidget *parent):SystemStore(parent)
 {
     this->player=p;
-    ui->point->setText(tr("系统点数:")+QString::number(this->player->getSystem().getPoint()));
-    itemList=&player->getVariableSystem().getItemList();
+    ui->point->setText(tr("系统点数:")+QString::number(this->player->getPoint()));
+    itemList=&_system->getItemList();
     for(size_t i=0;i<itemList->size();i++){
         QListWidgetItem*qlwi=new QListWidgetItem();
         ItemBaseWidget*ibw=new ItemBaseWidget((*this->itemList)[i]);
@@ -62,15 +62,15 @@ void SystemStore::on_count_valueChanged(int)
 
 void SystemStore::on_buy_clicked()
 {
-    if(player->getSystem().getPoint()>=(item->getMoney()*(ui->count->value())-ui->count->minimum())){
+    if(player->getPoint()>=(item->getMoney()*(ui->count->value())-ui->count->minimum())){
         if(ui->count->value()!=0){
             item->setCount(ui->count->value());
             if(!this->flag){
                 player->getVariableItemList()->push_back(item);
             }
-            this->player->getVariableSystem().setPoint(player->getSystem().getPoint()-item->getMoney()*(ui->count->value()-ui->count->minimum()));
+            this->player->setPoint(player->getPoint()-item->getMoney()*(ui->count->value()-ui->count->minimum()));
         }
-        ui->point->setText(tr("系统点数:")+QString::number(this->player->getSystem().getPoint()));
+        ui->point->setText(tr("系统点数:")+QString::number(this->player->getPoint()));
     }
     else{
         QMessageBox::critical(this,tr("错误"),tr("系统点数不足无法购买!!!"));

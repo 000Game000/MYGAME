@@ -10,6 +10,12 @@ void AttributeAdd::setNowValue(long long newNowValue)
     nowValue = newNowValue;
 }
 
+QString AttributeAdd::save()
+{
+    QString str=Attribute::save()+"\nnowValue:"+QString::number(this->nowValue);
+    return str;
+}
+
 void AttributeAdd::show()
 {
 

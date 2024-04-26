@@ -10,6 +10,11 @@
 #include "Windows/PlayerStatus.h"
 #include "Modules/AttributeAdd.h"
 #include "Person/SystemGirlOne.h"
+
+#include <QDir>
+#include <QMessageBox>
+
+#include <Windows/Load.h>
 #define button_width 130
 #define button_height 36
 void textMap(std::vector<MYGAME::Map*>&mapList);
@@ -21,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->initWindows();
     this->initMap();
     this->initSystemCommand();
+    this->_system=new MYGAME::System_();
     ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
     ui->systemCommand->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
 }
@@ -41,6 +47,12 @@ void MainWindow::NewGame(MYGAME::Player *player)
     this->initSystemCommandDockWidget();
 }
 
+void MainWindow::loadGame(QString sdir)
+{
+    this->read(sdir);
+    this->show();
+}
+
 void MainWindow::initWindows()
 {
     MYGAME::global.setMainWindow(this);
@@ -48,6 +60,7 @@ void MainWindow::initWindows()
     MYGAME::global.setCreateLead(new CreateLead);
     MYGAME::global.getBeginWindow()->show();
     connect(MYGAME::global.getCreateLead(),&CreateLead::NewGame,this,&MainWindow::NewGame);
+    connect(MYGAME::global.getBeginWindow(),&BeginWindow::sdirSignals,this,&MainWindow::loadGame);
 }
 
 void MainWindow::initNewGame()
@@ -65,7 +78,7 @@ void MainWindow::initNewGame()
     //初始化主角所在位置
     ui->position->setText("当前所在地点:"+this->player->getCurrentPosition()->getName());
     ui->position->setToolTip(MYGAME::getSPosition(this->player->getCurrentPosition()));
-    initPeople();
+    this->initPeople();
     this->refresh();
 }
 
@@ -608,7 +621,7 @@ void MainWindow::refresh()
     ui->date->setText(locale.toString(*this->time,SFormat));
     //刷新角色类内部内容
     //刷新系统点数
-    ui->points->setText("点数:"+QString::number(player->getSystem().getPoint()));
+    ui->points->setText("点数:"+QString::number(player->getPoint()));
     //刷新金钱
     ui->money->setText("金钱:"+QString::number(player->getMoney()));
     std::vector<MYGAME::Attribute*>list=player->getAttributeList();
@@ -664,7 +677,7 @@ QString *MainWindow::systemStore(UC flag)
     if(flag==2){
         return new QString("系统商城");
     }
-    SystemStore*Ss=new SystemStore(this->player);
+    SystemStore*Ss=new SystemStore(this->player,this->_system);
     Ss->show();
     return nullptr;
 }
@@ -716,4 +729,45 @@ void MainWindow::on_systemCommand_visibilityChanged(bool visible)
     }else{
         qDebug()<<"隐藏";
     }
+}
+
+void MainWindow::on_actionSave_S_triggered()
+{
+    QString time=QDateTime::currentDateTime().toString("yyyy.MM.dd   hh.mm.ss.zzz");
+    QString sdir=QDir::currentPath()+"/save";
+    QDir dir(sdir);
+    if(!dir.exists()){
+        if(!dir.mkdir(sdir)){
+            QMessageBox::critical(this,"严重错误","save文件夹不存在并且无法创建",QMessageBox::Ok);
+            return;
+        }
+    }
+    sdir+="/"+time+".save";
+    QFile file(sdir);
+    if(file.exists()){
+        file.remove();
+    }
+    file.open(QIODevice::ReadWrite|QIODevice::Text);
+    QString str="存档时间:"+time+"\n游戏版本:"+this->VersionNumber+"\n游戏时间:"+this->time->toString("yyyy.MM.dd.hh.mm.ss.zzz");
+    str+=this->player->save();;
+    for(size_t i=0;i<this->peopleList.size();i++){
+        str+=peopleList[i]->save();
+    }
+    file.write(str.toUtf8());
+    file.close();
+    qDebug()<<sdir;
+}
+
+
+void MainWindow::on_actionread_S_triggered()
+{
+    Load *P=new Load();
+    connect(P,&Load::sdir,this,&MainWindow::read);
+    P->show();
+    qDebug()<<"点击读取按钮";
+}
+
+void MainWindow::read(QString sdir)
+{
+    qDebug()<<sdir;
 }

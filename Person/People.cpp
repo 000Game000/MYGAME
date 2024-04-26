@@ -1,4 +1,5 @@
 #include "People.h"
+#include "Modules/MYFunctions.h"
 namespace MYGAME {
 Map *People::getCurrentPosition() const
 {
@@ -211,26 +212,66 @@ void People::setLive(Map *newLive)
     live = dynamic_cast<Room*>(newLive);
 }
 
-Cloths People::getCloths() const
-{
-    return cloths;
-}
+// Cloths People::getCloths() const
+// {
+//     return cloths;
+// }
 
-Cloths &People::getVariableCloths()
-{
-    return cloths;
-}
+// Cloths &People::getVariableCloths()
+// {
+//     return cloths;
+// }
 
-void People::setCloths(const Cloths &newCloths)
-{
-    cloths = newCloths;
-}
+// void People::setCloths(const Cloths &newCloths)
+// {
+//     cloths = newCloths;
+// }
 
-bool People::save()
+QString People::save()
 {
-    return true;
+    QString str="\nname:"+this->name+"\nnickName:"+this->nickName+"\nclaimed:"+this->claimed
+                  +"\nbirthday:"+this->birthday.toString("yyyy-MM-dd")+"\noccupation:"+this->occupation
+                  +"\nmajor:"+this->major;
+    for(size_t i=0;i<this->attributeList.size();i++){
+        str+=attributeList[i]->save();
+    }
+    str+="\nheight:"+QString::number(this->height)+"\nweight:"+QString::number(this->height)+"\nhairColor:";
+    int r=0;
+    int g=0;
+    int b=0;
+    this->hairColor.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    str+="\nskinColor:";
+    this->skinColor.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    str+="\nRPupilColor:";
+    this->RPupilColor.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    str+="\nLPupilColor:";
+    this->LPupilColor.getRgb(&r,&g,&b);
+    str+="\nr:"+QString::number(r);
+    str+="\ng:"+QString::number(g);
+    str+="\nb:"+QString::number(b);
+    for(size_t i=0;i<this->tagList.size();i++){
+        str+=this->tagList[i]->save();
+    }
+    for(size_t i=0;i<this->skillList.size();i++){
+        str+=this->skillList[i]->save();
+    }
+    for(size_t i=0;i<this->positionList.size();i++){
+        str+=this->positionList[i]->save();
+    }
+    str+="\ndescribe:"+this->describe;
+    str+="\nlive:"+MYGAME::getSPosition(this->live);
+    str+="\ncurrentPosition:"+MYGAME::getSPosition(this->currentPosition);
+    return str;
 }
-
 std::vector<Tag *> People::getTagList() const
 {
     return tagList;

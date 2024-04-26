@@ -1,4 +1,5 @@
 #include "CrotchTattoo.h"
+#include "qdebug.h"
 namespace MYGAME{
 long long CrotchTattoo::getRank() const
 {
@@ -68,5 +69,17 @@ CrotchTattoo::CrotchTattoo()
     this->EXP=0;
     this->rank=0;
     this->setMAXEXP();
+    this->img="";
+}
+
+QString CrotchTattoo::save()
+{
+
+    QString str="\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP)+"\nMAXEXP:"+QString::number(this->MAXEXP)+
+                  "\nimg:"+img;
+    for(size_t i=0;i<this->sList.size();i++){
+        str+="\n"+this->sList[i];
+    }
+    return str;
 }
 }

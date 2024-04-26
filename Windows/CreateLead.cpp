@@ -295,13 +295,12 @@ void CreateLead::on_complete_clicked()
     //设置初始金钱
     this->player->setMoney(3000);
     //设置初始系统点数
-    MYGAME::System_&temp = this->player->getVariableSystem();
-    temp.setPoint(300);
+    this->player->setPoint(300);
     //设置初始服装
-    this->player->getVariableCloths().setCoat(MYGAME::Cloth("格子衬衫","程序员!!!","外衣有什么用,或许不让别人觉得你们变态吧.","外衣上","服装店",100,1,""));
-    this->player->getVariableCloths().setPant(MYGAME::Cloth("短裤","一条普通的短裤","外衣有什么用,或许不让别人觉得你们变态吧.","外衣下","服装店",100,1,""));
-    this->player->getVariableCloths().setPanty(MYGAME::Cloth("四角内裤","一条普通的短裤","正常男性的常见的内裤.","内衣下","服装店",100,1,""));
-    this->player->getVariableCloths().setShoes(MYGAME::Cloth("运动鞋","一双普通的运动鞋","运动鞋,方便运动.","鞋子","服装店",100,1,""));
+    // this->player->getVariableCloths().setCoat(MYGAME::Cloth("格子衬衫","程序员!!!","外衣有什么用,或许不让别人觉得你们变态吧.","外衣上","服装店",100,1,""));
+    // this->player->getVariableCloths().setPant(MYGAME::Cloth("短裤","一条普通的短裤","外衣有什么用,或许不让别人觉得你们变态吧.","外衣下","服装店",100,1,""));
+    // this->player->getVariableCloths().setPanty(MYGAME::Cloth("四角内裤","一条普通的短裤","正常男性的常见的内裤.","内衣下","服装店",100,1,""));
+    // this->player->getVariableCloths().setShoes(MYGAME::Cloth("运动鞋","一双普通的运动鞋","运动鞋,方便运动.","鞋子","服装店",100,1,""));
     //触发信号
     emit this->NewGame(this->player);
     //关闭窗口

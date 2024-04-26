@@ -11,6 +11,7 @@ class SystemGirlOne : public Girl
 {
 public:
     SystemGirlOne(QDate time,Map*live);
+    virtual QString save();
 };
 }
 #endif // SYSTEMGIRLONE_H

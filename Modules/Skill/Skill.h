@@ -14,7 +14,7 @@ protected:
 public:
     Skill();
     Skill(const QString &name, long long rank, long long EXP);
-
+    virtual QString save();
     QString getName() const;
     void setName(const QString &newName);
     long long getRank() const;

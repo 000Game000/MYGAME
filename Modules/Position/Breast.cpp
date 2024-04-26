@@ -68,4 +68,11 @@ Breast::Breast(long long rank, long long EXP, long long pleasure, long long coun
         }
     }
 }
+
+QString Breast::save()
+{
+    QString str=PositionBase::save()+"\nmilkYield:"+QString::number(this->milkYield)+"\nvolume:"+QString::number(this->volume)
+                  +"\nsize:"+QString::number(this->size)+"\ngalactophore:"+QString::number(this->galactophore)+"\nstock:"+QString::number(this->stock);
+    return str;
+}
 }

@@ -46,6 +46,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionSave_S"/>
+    <addaction name="actionread_S"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="Information">
@@ -300,6 +308,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <layout class="QVBoxLayout" name="verticalLayout_5"/>
    </widget>
   </widget>
+  <action name="actionread_S">
+   <property name="text">
+    <string>Load(&amp;L)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionSave_S">
+   <property name="text">
+    <string>Save(&amp;S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

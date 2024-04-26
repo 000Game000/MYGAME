@@ -15,6 +15,7 @@ protected:
     std::vector<QString> sList;                         //特质列表
 public:
     CrotchTattoo();
+    virtual QString save();
     /*
      * 设置每级的淫纹经验
      */
