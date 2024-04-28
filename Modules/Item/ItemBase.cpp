@@ -1,4 +1,5 @@
 #include "ItemBase.h"
+#include "Modules/Modules.h"
 
 namespace MYGAME {
 ItemBase::ItemBase()
@@ -91,8 +92,20 @@ ItemBase::ItemBase(const QString &name, const QString &describe, const QString &
 
 QString ItemBase::save()
 {
-    QString str="\nname:"+this->name+"\ndescribe:"+this->describe+"\nitemFunction:"+this->itemFunction+"\nitemType:"+this->itemType
+    QString str="\n类型:ItemBase\nname:"+this->name+"\ndescribe:"+this->describe+"\nitemFunction:"+this->itemFunction+"\nitemType:"+this->itemType
                   +"\nlocation:"+this->location+"\nmoney:"+QString::number(this->money)+"\ncount:"+QString::number(this->count);
     return str;
+}
+
+bool ItemBase::load(QTextStream &ts)
+{
+    this->name=getValue(ts.readLine());
+    this->describe=getValue(ts.readLine());
+    this->itemFunction=getValue(ts.readLine());
+    this->itemType=getValue(ts.readLine());
+    this->location=getValue(ts.readLine());
+    this->money=getValue(ts.readLine()).toULongLong();
+    this->count=getValue(ts.readLine()).toULongLong();
+    return true;
 }
 }

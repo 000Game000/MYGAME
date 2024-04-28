@@ -1,4 +1,5 @@
 #include "Skill.h"
+#include "Modules/Modules.h"
 namespace MYGAME {
 QString Skill::getName() const
 {
@@ -44,5 +45,13 @@ QString Skill::save()
 {
     QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP);
     return str;
+}
+
+bool Skill::load(QTextStream &ts)
+{
+    this->name=getValue(ts.readLine());
+    this->rank=getValue(ts.readLine()).toLongLong();
+    this->EXP=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

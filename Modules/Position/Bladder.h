@@ -20,7 +20,9 @@ public:
      * volume                   膀胱的容量
      */
     Bladder(long long rank, long long EXP, long long pleasure, long long count,long long volume);
+    Bladder();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     long long getVolume() const;
     void setVolume(long long newVolume);
     long long getStock() const;

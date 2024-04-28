@@ -1,4 +1,5 @@
 #include "Breast.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 const long double PI=3.141592654;
 
@@ -69,10 +70,26 @@ Breast::Breast(long long rank, long long EXP, long long pleasure, long long coun
     }
 }
 
+Breast::Breast()
+{
+
+}
+
 QString Breast::save()
 {
     QString str=PositionBase::save()+"\nmilkYield:"+QString::number(this->milkYield)+"\nvolume:"+QString::number(this->volume)
                   +"\nsize:"+QString::number(this->size)+"\ngalactophore:"+QString::number(this->galactophore)+"\nstock:"+QString::number(this->stock);
     return str;
+}
+
+bool Breast::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->milkYield=getValue(ts.readLine()).toDouble();
+    this->volume=getValue(ts.readLine()).toLongLong();
+    this->size=getValue(ts.readLine()).toLongLong();
+    this->galactophore=getValue(ts.readLine()).toLongLong();
+    this->stock=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

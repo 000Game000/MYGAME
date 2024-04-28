@@ -26,6 +26,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
+
 public slots:
     void NewGame(MYGAME::Player*player);
 
@@ -53,9 +54,9 @@ private:
 
     void refresh();                                                                         //刷新
     void initMap();                                                                         //初始化游戏地图
+    void recovery();                                                                        //恢复游戏(新游戏和读取存档)
     void initPeople();                                                                      //初始化主角以外的游戏角色
     void initWindows();                                                                     //窗口关系初始化
-    void initNewGame();                                                                     //新游戏初始化
     void initSystemCommand();                                                               //初始化系统指令
     void initSystemCommandDockWidget();                                                     //初始化系统指令窗口
     template<class T>

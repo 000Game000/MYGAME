@@ -1,4 +1,5 @@
 #include "Nipple.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 long long Nipple::getLength() const
 {
@@ -46,6 +47,11 @@ Nipple::Nipple(long long rank, long long EXP, long long pleasure, long long coun
 
 }
 
+Nipple::Nipple()
+{
+
+}
+
 QString Nipple::save()
 {
     QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter)
@@ -58,5 +64,19 @@ QString Nipple::save()
     str+="\ng:"+QString::number(g);
     str+="\nb:"+QString::number(b);
     return str;
+}
+
+bool Nipple::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->length=getValue(ts.readLine()).toLongLong();
+    this->diameter=getValue(ts.readLine()).toLongLong();
+    this->ductusLactiferiDiameter=getValue(ts.readLine()).toLongLong();
+    ts.readLine();
+    int r=getValue(ts.readLine()).toInt();
+    int g=getValue(ts.readLine()).toInt();
+    int b=getValue(ts.readLine()).toInt();
+    this->color.setRgb(r,g,b);
+    return true;
 }
 }

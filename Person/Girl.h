@@ -24,6 +24,7 @@ protected:
 public:
     Girl();
     virtual QString save();
+    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
     long long getId() const;
     void setId(long long newId);
     long long getLovept() const;

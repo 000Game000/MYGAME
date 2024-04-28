@@ -41,11 +41,11 @@ void SystemStore::on_stoneList_itemClicked(QListWidgetItem *item)
     this->item=(*this->itemList)[ui->stoneList->row(item)];
     ui->count->setMinimum(0);
     ui->count->setValue(1);
-    for(size_t i=0;i<player->getItemList()->size();i++){
-        if((*player->getItemList())[i]->getName()==(*this->itemList)[ui->stoneList->row(item)]->getName()){
+    for(size_t i=0;i<player->getItemList().size();i++){
+        if(player->getItemList()[i]->getName()==(*this->itemList)[ui->stoneList->row(item)]->getName()){
             this->flag=true;
-            this->item=(*player->getItemList())[i];
-            ui->count->setMinimum((*player->getItemList())[i]->getCount());
+            this->item=player->getItemList()[i];
+            ui->count->setMinimum(player->getItemList()[i]->getCount());
             ui->count->setValue(ui->count->minimum()+1);
             break;
         }
@@ -66,7 +66,7 @@ void SystemStore::on_buy_clicked()
         if(ui->count->value()!=0){
             item->setCount(ui->count->value());
             if(!this->flag){
-                player->getVariableItemList()->push_back(item);
+                player->getVariableItemList().push_back(item);
             }
             this->player->setPoint(player->getPoint()-item->getMoney()*(ui->count->value()-ui->count->minimum()));
         }

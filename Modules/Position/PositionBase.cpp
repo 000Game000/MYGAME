@@ -1,4 +1,5 @@
 #include "PositionBase.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 QString PositionBase::getName() const
 {
@@ -86,12 +87,28 @@ PositionBase::PositionBase(const QString &name, long long rank, long long EXP, l
     this->nowEXP=0;
 }
 
+PositionBase::PositionBase()
+{
+
+}
+
 QString PositionBase::save()
 {
     QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nnowEXP:"+QString::number(this->nowEXP)
                   +"\nEXP:"+QString::number(this->EXP)+"\npleasure:"+QString::number(this->pleasure)+"\nnowPleasure:"+QString::number(this->nowPleasure)
                   +"\ncount:"+QString::number(this->count);
     return str;
+}
+
+bool PositionBase::load(QTextStream &ts)
+{
+    this->rank=getValue(ts.readLine()).toLongLong();
+    this->nowEXP=getValue(ts.readLine()).toLongLong();
+    this->EXP=getValue(ts.readLine()).toLongLong();
+    this->pleasure=getValue(ts.readLine()).toLongLong();
+    this->nowPleasure=getValue(ts.readLine()).toLongLong();
+    this->count=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 
 void PositionBase::setEXPValue()

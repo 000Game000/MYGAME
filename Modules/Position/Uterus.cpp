@@ -1,4 +1,5 @@
 #include "Uterus.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 
 long long Uterus::getVolume() const
@@ -47,10 +48,25 @@ Uterus::Uterus(long long rank, long long EXP, long long pleasure, long long coun
     this->ovulation=this->menstrualCycle/2;
 }
 
+Uterus::Uterus()
+{
+
+}
+
 QString Uterus::save()
 {
     QString str=PositionBase::save()+"\nvolume:"+QString::number(this->volume)+"\nmenstrualCycle:"+QString::number(this->menstrualCycle)
                   +"\novulation:"+QString::number(this->ovulation)+"\npregnancyDays:"+QString::number(this->pregnancyDays);
     return str;
+}
+
+bool Uterus::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->volume=getValue(ts.readLine()).toLongLong();
+    this->menstrualCycle=getValue(ts.readLine()).toShort();
+    this->ovulation=getValue(ts.readLine()).toShort();
+    this->pregnancyDays=getValue(ts.readLine()).toShort();
+    return true;
 }
 }

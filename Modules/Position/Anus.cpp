@@ -1,4 +1,5 @@
 #include "Anus.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 
 long long Anus::getExpand() const
@@ -32,9 +33,22 @@ Anus::Anus(long long rank, long long EXP, long long pleasure, long long count,lo
 
 }
 
+Anus::Anus()
+{
+
+}
+
 QString Anus::save()
 {
     QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand)+"\nvolume:"+QString::number(this->volume);
     return str;
+}
+
+bool Anus::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->expand=getValue(ts.readLine()).toLongLong();
+    this->volume=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

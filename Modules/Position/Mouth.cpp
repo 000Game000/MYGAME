@@ -5,9 +5,20 @@ Mouth::Mouth(long long rank, long long EXP, long long pleasure, long long count)
 
 }
 
+Mouth::Mouth()
+{
+
+}
+
 QString Mouth::save()
 {
     QString str=PositionBase::save();
     return str;
+}
+
+bool Mouth::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    return true;
 }
 }

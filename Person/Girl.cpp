@@ -82,7 +82,7 @@ CrotchTattoo *Girl::getVariableCrotchTattoo()
 
 void Girl::setCrotchTattoo(CrotchTattoo *newCrotchTattoo)
 {
-    //crotchTattoo = newCrotchTattoo;
+    crotchTattoo = newCrotchTattoo;
 }
 
 long long Girl::getSm() const
@@ -112,11 +112,29 @@ Girl::Girl()
 
 QString Girl::save()
 {
-    QString str=People::save()+"\nid:"+QString::number(this->id)+"\nlovept:"+QString::number(this->lovept)
+    QString str="\nid:"+QString::number(this->id)+"\nlovept:"+QString::number(this->lovept)
                   +"\nobedience:"+QString::number(this->obedience)+"\nfornication:"+QString::number(this->fornication)
                   +"\ndesire:"+QString::number(this->desire)+"\nsm:"+QString::number(this->sm)+"\nexposing:"+QString::number(this->exposing)
                   +"\nimg:"+this->img+"\nthought:"+this->thought+"\nselfIntroduction:"+this->selfIntroduction;
     str+=this->crotchTattoo->save();
+    str+=People::save();
     return str;
+}
+
+bool Girl::load(QTextStream &ts, std::vector<Map *> *mapList)
+{
+    this->id=getValue(ts.readLine()).toLongLong();
+    this->lovept=getValue(ts.readLine()).toLongLong();
+    this->obedience=getValue(ts.readLine()).toLongLong();
+    this->fornication=getValue(ts.readLine()).toLongLong();
+    this->desire=getValue(ts.readLine()).toLongLong();
+    this->sm=getValue(ts.readLine()).toLongLong();
+    this->exposing=getValue(ts.readLine()).toLongLong();
+    this->img=getValue(ts.readLine());
+    this->thought=getValue(ts.readLine());
+    this->selfIntroduction=getValue(ts.readLine());
+    this->crotchTattoo->load(ts);
+    People::load(ts,mapList);
+    return true;
 }
 }

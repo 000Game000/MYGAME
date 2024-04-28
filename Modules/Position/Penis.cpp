@@ -43,4 +43,13 @@ QString Penis::save()
                   +"\ndickSize:"+QString::number(this->dickSize);
     return str;
 }
+
+bool Penis::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->diameter=getValue(ts.readLine()).toLongLong();
+    this->semen=getValue(ts.readLine()).toLongLong();
+    this->dickSize=(DickSize)getValue(ts.readLine()).toInt();
+    return true;
+}
 }

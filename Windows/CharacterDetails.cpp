@@ -18,6 +18,7 @@ CharacterDetails::CharacterDetails(QWidget *parent) :
     this->setWindowModality(Qt::ApplicationModal);
     this->setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 CharacterDetails::CharacterDetails(MYGAME::Girl *girl, QWidget *parent):CharacterDetails(parent)
@@ -378,6 +379,12 @@ void CharacterDetails::init()
             continue;
         }
     }
-    //MYGAME::CrotchTattoo*ct=this->girl->getCrotchTattoo();
-    //ui->label->setPixmap()
+    MYGAME::CrotchTattoo*ct=this->girl->getCrotchTattoo();
+    ui->crotchTattooRank->setText("淫纹等级:"+QString::number(ct->getRank()));
+    ui->crotchTattooEXP->setName("淫纹");
+    ui->crotchTattooEXP->setMAXValue(ct->getMAXEXP());
+    ui->crotchTattooEXP->setNOWValue(ct->getEXP());
+    ui->crotchTattooEXP->setBackground(":/Strip/Strip/Green.png");
+    ui->crotchTattooEXP->setProspect(":/Strip/Strip/bg.png");
+    ui->crotchTattooTags->setText("");
 }

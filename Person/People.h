@@ -6,7 +6,7 @@
 #include<vector>
 #include "Map/Room.h"
 #include "Modules/Tag.h"
-#include "Modules/Cloths.h"
+//#include "Modules/Cloths.h"
 #include "Modules/Modules.h"
 #include "Modules/Attribute.h"
 #include "Modules/Skill/Skill.h"
@@ -37,7 +37,7 @@ protected:
     QString describe;                               //人物描述
     Room *live;                                     //人物居住地址
     Map*currentPosition;                            //当前所在地点
-    //Cloths cloths;                                  //人物服装
+    //Cloths cloths;                                //人物服装
 public:
     People();
     QString getName() const;
@@ -88,6 +88,7 @@ public:
     Map *getCurrentPosition() const;
     void setCurrentPosition(Map *newCurrentPosition);
     virtual QString save();
+    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
 };
 }
 #endif // PEOPLE_H

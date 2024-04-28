@@ -1,4 +1,5 @@
 #include "Mainwindow.h"
+#include "Modules/MYFunctions.h"
 #include "ui_Mainwindow.h"
 #include "Modules/Global.h"
 #include "Windows/ItemList.h"
@@ -6,7 +7,6 @@
 #include "Windows/PeopleList.h"
 #include "Windows/BeginWindow.h"
 #include "Windows/SystemStore.h"
-#include "Modules/MYFunctions.h"
 #include "Windows/PlayerStatus.h"
 #include "Modules/AttributeAdd.h"
 #include "Person/SystemGirlOne.h"
@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->_system=new MYGAME::System_();
     ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
     ui->systemCommand->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    qDebug()<<"Main构造完成";
 }
 
 MainWindow::~MainWindow()
@@ -42,14 +43,17 @@ void MainWindow::NewGame(MYGAME::Player *player)
     this->player=player;
     this->player->setLive((*(*(*(*(*this->mapList[6]->getList())[0]->getList())[0]->getList())[0]->getList())[2]->getList())[1]);
     this->player->setCurrentPosition(this->player->getLive());
-    this->initNewGame();
+    //初始化时间
+    this->time=new QDateTime(QDate(3021,6,30),QTime(7,0,0));
+    this->initPeople();
     this->show();
-    this->initSystemCommandDockWidget();
+    this->recovery();
 }
 
 void MainWindow::loadGame(QString sdir)
 {
     this->read(sdir);
+    this->recovery();
     this->show();
 }
 
@@ -61,25 +65,6 @@ void MainWindow::initWindows()
     MYGAME::global.getBeginWindow()->show();
     connect(MYGAME::global.getCreateLead(),&CreateLead::NewGame,this,&MainWindow::NewGame);
     connect(MYGAME::global.getBeginWindow(),&BeginWindow::sdirSignals,this,&MainWindow::loadGame);
-}
-
-void MainWindow::initNewGame()
-{
-    //初始化时间
-    this->time=new QDateTime(QDate(3021,6,30),QTime(7,0,0));
-    //初始化血条
-    ui->staminaBarStrip->setBackground(":/Strip/Strip/Red.png");
-    ui->staminaBarStrip->setProspect(":/Strip/Strip/bg.png");
-    ui->staminaBarStrip->setFrame(1);
-    //初始化精力条
-    ui->energyBarStrip->setBackground(":/Strip/Strip/Blue.png");
-    ui->energyBarStrip->setProspect(":/Strip/Strip/bg.png");
-    ui->energyBarStrip->setFrame(1);
-    //初始化主角所在位置
-    ui->position->setText("当前所在地点:"+this->player->getCurrentPosition()->getName());
-    ui->position->setToolTip(MYGAME::getSPosition(this->player->getCurrentPosition()));
-    this->initPeople();
-    this->refresh();
 }
 
 void MainWindow::initSystemCommand()
@@ -582,6 +567,22 @@ void MainWindow::initMap()
     (*_0)[2]->setList(__0);
 }
 
+void MainWindow::recovery()
+{
+
+    //初始化血条
+    ui->staminaBarStrip->setBackground(":/Strip/Strip/Red.png");
+    ui->staminaBarStrip->setProspect(":/Strip/Strip/bg.png");
+    ui->staminaBarStrip->setFrame(1);
+    //初始化精力条
+    ui->energyBarStrip->setBackground(":/Strip/Strip/Blue.png");
+    ui->energyBarStrip->setProspect(":/Strip/Strip/bg.png");
+    ui->energyBarStrip->setFrame(1);
+    //初始化指令
+    this->initSystemCommandDockWidget();
+    this->refresh();
+}
+
 void MainWindow::initPeople()
 {
     this->peopleList.push_back(new MYGAME::SystemGirlOne(this->time->date(),this->player->getLive()));
@@ -620,6 +621,9 @@ void MainWindow::refresh()
     QLocale locale=QLocale::Chinese;
     ui->date->setText(locale.toString(*this->time,SFormat));
     //刷新角色类内部内容
+    //初始化主角所在位置
+    ui->position->setText("当前所在地点:"+this->player->getCurrentPosition()->getName());
+    ui->position->setToolTip(MYGAME::getSPosition(this->player->getCurrentPosition()));
     //刷新系统点数
     ui->points->setText("点数:"+QString::number(player->getPoint()));
     //刷新金钱
@@ -690,7 +694,7 @@ QString *MainWindow::showPeopleList(UC flag)
     if(flag==2){
         return new QString("人物表列");
     }
-    qDebug()<<this->peopleList.size();
+    //qDebug()<<this->peopleList.size();
     PeopleList*Pl=new PeopleList(&(this->peopleList),this->time);
     Pl->show();
     return nullptr;
@@ -749,7 +753,8 @@ void MainWindow::on_actionSave_S_triggered()
     }
     file.open(QIODevice::ReadWrite|QIODevice::Text);
     QString str="存档时间:"+time+"\n游戏版本:"+this->VersionNumber+"\n游戏时间:"+this->time->toString("yyyy.MM.dd.hh.mm.ss.zzz");
-    str+=this->player->save();;
+    str+=this->player->save();
+    str+="\n人物数量:"+QString::number(this->peopleList.size());
     for(size_t i=0;i<this->peopleList.size();i++){
         str+=peopleList[i]->save();
     }
@@ -764,10 +769,38 @@ void MainWindow::on_actionread_S_triggered()
     Load *P=new Load();
     connect(P,&Load::sdir,this,&MainWindow::read);
     P->show();
-    qDebug()<<"点击读取按钮";
 }
 
 void MainWindow::read(QString sdir)
 {
-    qDebug()<<sdir;
+    QFile file(sdir);
+    if(file.open(QIODevice::ReadOnly|QIODevice::Text)){
+        QTextStream ts(&file);
+        QString str=ts.readLine();
+        str=ts.readLine();
+        str=ts.readLine();
+        QStringList strsp = str.split(":");
+        if(strsp.size()<1){
+            QMessageBox::critical(this,"严重错误","存档损坏!!!",QMessageBox::Ok);
+            this->close();
+        }
+        this->time=new QDateTime(QDateTime::fromString(strsp[1], "yyyy.MM.dd.hh.mm.ss.zzz"));
+        this->player=new MYGAME::Player();
+        ts.readLine();
+        this->player->load(ts,&mapList);
+        size_t max=MYGAME::getValue(ts.readLine()).toULongLong();
+        for(size_t i=0;i<max;i++){
+            str=MYGAME::getValue(ts.readLine());
+            if(str.compare("SystemGirlOne")==0){
+                MYGAME::SystemGirlOne*P=new MYGAME::SystemGirlOne();
+                P->load(ts,&this->mapList);
+                this->peopleList.push_back(P);
+            }
+        }
+        str=ts.readLine();
+        qDebug()<<str;
+    }else{
+        QMessageBox::critical(this,"严重错误","无法读取存档文件!!!",QMessageBox::Ok);
+        this->close();
+    }
 }

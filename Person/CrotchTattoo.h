@@ -1,6 +1,7 @@
 #ifndef CROTCHTATTOO_H
 #define CROTCHTATTOO_H
 #include <QString>
+#include <QTextStream>
 namespace MYGAME {
 /*
  * 淫纹
@@ -16,6 +17,7 @@ protected:
 public:
     CrotchTattoo();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     /*
      * 设置每级的淫纹经验
      */
@@ -30,6 +32,7 @@ public:
     std::vector<QString>&getVariableSList();
     void setSList(const std::vector<QString> &newSList);
 
+    long long getMAXEXP() const;
 };
 }
 #endif // CROTCHTATTOO_H

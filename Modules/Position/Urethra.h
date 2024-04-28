@@ -18,7 +18,9 @@ public:
      * expand                   尿道内部的直径
      */
     Urethra(long long rank, long long EXP, long long pleasure, long long count,long long expand);
+    Urethra();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     long long getExpand() const;
     void setExpand(long long newExpand);
 };

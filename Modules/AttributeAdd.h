@@ -2,6 +2,8 @@
 #define ATTRIBUTEADD_H
 
 #include "Attribute.h"
+
+#include <QTextStream>
 namespace MYGAME{
 /*
  * 属性类
@@ -14,10 +16,13 @@ protected:
     long long nowValue;
 public:
     AttributeAdd(const QString &name, long long rank, long long EXP,long long nowValue);
+    AttributeAdd();
     void show();
     long long getNowValue() const;
     void setNowValue(long long newNowValue);
     virtual QString save();
+    virtual void load(QTextStream&ts);
 };
 }
 #endif // ATTRIBUTEADD_H
+

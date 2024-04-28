@@ -24,7 +24,9 @@ public:
      * color                    乳头颜色
      */
     Nipple(long long rank, long long EXP, long long pleasure, long long count,long long length,long long diameter,long long ductusLactiferiDiameter,QColor color);
+    Nipple();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     long long getLength() const;
     void setLength(long long newLength);
     long long getDiameter() const;

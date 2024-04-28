@@ -15,7 +15,9 @@ public:
      * count                    当前部位的经验次数
      */
     Ovary(long long rank, long long EXP, long long pleasure, long long count);
+    Ovary();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
 };
 }
 #endif // OVARY_H

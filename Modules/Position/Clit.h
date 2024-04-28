@@ -20,7 +20,9 @@ public:
      * diameter                 阴蒂直径
      */
     Clit(long long rank, long long EXP, long long pleasure, long long count,long long length,long long diameter);
+    Clit();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     long long getLength() const;
     void setLength(long long newLength);
     long long getDiameter() const;

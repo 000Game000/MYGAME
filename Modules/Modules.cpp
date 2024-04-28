@@ -20,4 +20,15 @@ void setMenu(QWidget*widget){
         widget->close();
     });
 }
+
+QString getValue(QString str)
+{
+    QStringList strs=str.split(":");
+    if(strs.size()>1){
+        return strs[1];
+    }else{
+        return "";
+    }
+}
+
 }

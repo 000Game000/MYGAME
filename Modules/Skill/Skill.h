@@ -1,6 +1,7 @@
 #ifndef SKILL_H
 #define SKILL_H
 #include<QString>
+#include <QTextStream>
 namespace MYGAME{
 /*
  * 人物技能类
@@ -15,6 +16,7 @@ public:
     Skill();
     Skill(const QString &name, long long rank, long long EXP);
     virtual QString save();
+    virtual bool load(QTextStream &ts);
     QString getName() const;
     void setName(const QString &newName);
     long long getRank() const;

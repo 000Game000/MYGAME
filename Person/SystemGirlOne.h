@@ -11,7 +11,9 @@ class SystemGirlOne : public Girl
 {
 public:
     SystemGirlOne(QDate time,Map*live);
+    SystemGirlOne();
     virtual QString save();
+    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
 };
 }
 #endif // SYSTEMGIRLONE_H

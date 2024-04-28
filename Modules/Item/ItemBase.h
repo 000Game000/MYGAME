@@ -1,6 +1,7 @@
 #ifndef ITEMBASE_H
 #define ITEMBASE_H
 #include <QString>
+#include <QTextStream>
 namespace MYGAME{
 /*
  * 物品
@@ -19,6 +20,7 @@ public:
     ItemBase();
     ItemBase(const QString &name, const QString &describe, const QString &itemFunction, const QString &itemType, const QString &location, long long money, long long count);
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     QString getName() const;
     void setName(const QString &newName);
     QString getDescribe() const;

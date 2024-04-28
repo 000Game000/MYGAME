@@ -1,4 +1,7 @@
 #include "Tag.h"
+#include "Modules/Modules.h"
+namespace MYGAME {
+
 
 QString Tag::getName() const
 {
@@ -26,6 +29,19 @@ QString Tag::save()
     return str;
 }
 
+bool Tag::load(QTextStream &ts)
+{
+    this->name=getValue(ts.readLine());
+    this->description=getValue(ts.readLine());
+    return true;
+}
+
 Tag::Tag(const QString &name, const QString &description) : name(name),
     description(description)
 {}
+
+Tag::Tag()
+{
+
+}
+}

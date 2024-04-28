@@ -16,6 +16,7 @@ protected:
 public:
     Penis();
     virtual QString save();
+    virtual bool load(QTextStream&ts);
     long long getDiameter() const;
     void setDiameter(long long newDiameter);
     long long getSemen() const;

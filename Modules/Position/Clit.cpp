@@ -1,4 +1,5 @@
 #include "Clit.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 long long Clit::getLength() const
 {
@@ -26,9 +27,22 @@ Clit::Clit(long long rank, long long EXP, long long pleasure, long long count,lo
 
 }
 
+Clit::Clit()
+{
+
+}
+
 QString Clit::save()
 {
     QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter);
     return str;
+}
+
+bool Clit::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->length=getValue(ts.readLine()).toLongLong();
+    this->diameter=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

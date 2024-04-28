@@ -1,4 +1,5 @@
 #include "CrotchTattoo.h"
+#include "Modules/Modules.h"
 #include "qdebug.h"
 namespace MYGAME{
 long long CrotchTattoo::getRank() const
@@ -64,6 +65,11 @@ void CrotchTattoo::setMAXEXP()
     }
 }
 
+long long CrotchTattoo::getMAXEXP() const
+{
+    return MAXEXP;
+}
+
 CrotchTattoo::CrotchTattoo()
 {
     this->EXP=0;
@@ -77,9 +83,23 @@ QString CrotchTattoo::save()
 
     QString str="\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP)+"\nMAXEXP:"+QString::number(this->MAXEXP)+
                   "\nimg:"+img;
+    str+="\n数量:"+QString::number(sList.size());
     for(size_t i=0;i<this->sList.size();i++){
         str+="\n"+this->sList[i];
     }
     return str;
+}
+
+bool CrotchTattoo::load(QTextStream &ts)
+{
+    this->rank=getValue(ts.readLine()).toLongLong();
+    this->EXP=getValue(ts.readLine()).toLongLong();;
+    this->MAXEXP=getValue(ts.readLine()).toLongLong();
+    this->img=getValue(ts.readLine());
+    size_t max=getValue(ts.readLine()).toLongLong();
+    for(size_t i=0;i<max;i++){
+        this->sList.push_back(getValue(ts.readLine()));
+    }
+    return true;
 }
 }

@@ -1,6 +1,7 @@
 #ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 #include<QString>
+#include <QTextStream>
 namespace MYGAME {
 /*
  * 属性类
@@ -15,6 +16,7 @@ protected:
     long long EXP;                                      //经验值
 public:
     Attribute(const QString &name, long long rank, long long EXP);
+    Attribute();
     QString getName() const;
     void setName(const QString &newName);
     virtual long long getRank() const;
@@ -23,6 +25,7 @@ public:
     void setEXP(long long newEXP);
     virtual void show();
     virtual QString save();
+    virtual void load(QTextStream&ts);
 };
 }
 #endif // ATTRIBUTE_H

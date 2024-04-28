@@ -1,4 +1,5 @@
 #include "Urethra.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
 long long Urethra::getExpand() const
 {
@@ -16,9 +17,21 @@ Urethra::Urethra(long long rank, long long EXP, long long pleasure, long long co
 
 }
 
+Urethra::Urethra()
+{
+
+}
+
 QString Urethra::save()
 {
     QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand);
     return str;
+}
+
+bool Urethra::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->expand=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

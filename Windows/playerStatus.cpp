@@ -29,7 +29,7 @@ void PlayerStatus::init()
     ui->claimed->setText("自称:"+this->player->getClaimed());
     ui->Major->setText("专业:"+this->player->getMajor());
     ui->Occupation->setText("职业:"+this->player->getOccupation());
-    ui->birthday->setText("生日"+this->player->getBirthday().toString("yyyy年MM月dd日"));
+    ui->birthday->setText("生日:"+this->player->getBirthday().toString("yyyy年MM月dd日"));
     switch(this->player->getHeight()){
     case MYGAME::Height::young:
         ui->height->setText("身高:幼小");
@@ -133,19 +133,19 @@ void PlayerStatus::init()
 
     MYGAME::Penis*P=dynamic_cast<MYGAME::Penis*>(this->player->getVariablePositionList()[0]);
     if(P->getDiameter()>10){
-        ui->penisEnum->setText("短小");
+        ui->penisEnum->setText("大小:短小");
     }else if(P->getDiameter()>20){
-        ui->penisEnum->setText("普通");
+        ui->penisEnum->setText("大小:普通");
     }else if(P->getDiameter()>30){
-        ui->penisEnum->setText("巨根");
+        ui->penisEnum->setText("大小:巨根");
     }else if(P->getDiameter()>40){
-        ui->penisEnum->setText("规格外");
+        ui->penisEnum->setText("大小:规格外");
     }else if(P->getDiameter()>60){
-        ui->penisEnum->setText("非人类");
+        ui->penisEnum->setText("大小:非人类");
     }else if(P->getDiameter()>80){
-        ui->penisEnum->setText("怪兽");
+        ui->penisEnum->setText("大小:怪兽");
     }else{
-        ui->penisEnum->setText("可爱");
+        ui->penisEnum->setText("大小:可爱");
     }
     ui->penisLong->setText("长度:"+QString::number(P->getDiameter()*5));
     ui->penisDiameter->setText("直径:"+QString::number(P->getDiameter()));

@@ -1,6 +1,7 @@
 #ifndef POSITIONBASE_H
 #define POSITIONBASE_H
 #include<QString>
+#include <QTextStream>
 namespace MYGAME {
 /*
  * 人物部位的基础类
@@ -23,10 +24,12 @@ public:
      * count    当前部位的经验次数
      */
     PositionBase(const QString &name, long long rank, long long EXP=0, long long pleasure=100, long long count=0);
+    PositionBase();
     /* 设置每级的部位经验
      */
-    virtual QString save();
     virtual void setEXPValue();
+    virtual QString save();
+    virtual bool load(QTextStream &ts);
     QString getName() const;
     void setName(const QString &newName);
     long long getRank() const;

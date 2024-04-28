@@ -14,9 +14,9 @@ ItemList::ItemList(MYGAME::Player *player, QWidget *parent):ItemList(parent)
 {
     this->player=player;
     itemList=player->getItemList();
-    for(size_t i=0;i<itemList->size();i++){
+    for(size_t i=0;i<itemList.size();i++){
         QListWidgetItem*qlwi=new QListWidgetItem();
-        ItemBaseWidget*ibw=new ItemBaseWidget((*this->itemList)[i]);
+        ItemBaseWidget*ibw=new ItemBaseWidget(this->itemList[i]);
         qlwi->setSizeHint(ibw->size());
         ui->itemList->addItem(qlwi);
         ui->itemList->setItemWidget(qlwi,ibw);
@@ -30,10 +30,10 @@ ItemList::~ItemList()
 
 void ItemList::on_itemList_itemClicked(QListWidgetItem *item)
 {
-    ui->itemName->setText((*this->itemList)[ui->itemList->row(item)]->getName());
-    ui->describe->setText((*this->itemList)[ui->itemList->row(item)]->getDescribe());
-    ui->itemFunction->setText((*this->itemList)[ui->itemList->row(item)]->getItemFunction());
-    ui->itemType->setText("物品类别:"+(*this->itemList)[ui->itemList->row(item)]->getItemType());
-    ui->count->setText("所持数量:"+QString::number((*this->itemList)[ui->itemList->row(item)]->getCount()));
+    ui->itemName->setText(this->itemList[ui->itemList->row(item)]->getName());
+    ui->describe->setText(this->itemList[ui->itemList->row(item)]->getDescribe());
+    ui->itemFunction->setText(this->itemList[ui->itemList->row(item)]->getItemFunction());
+    ui->itemType->setText("物品类别:"+this->itemList[ui->itemList->row(item)]->getItemType());
+    ui->count->setText("所持数量:"+QString::number(this->itemList[ui->itemList->row(item)]->getCount()));
 }
 

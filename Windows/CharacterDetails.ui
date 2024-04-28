@@ -2149,11 +2149,11 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="page3">
       <attribute name="title">
        <string>淫纹</string>
       </attribute>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="crotchTattooRank">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -2172,7 +2172,7 @@
         <string>淫纹等级:9999999999</string>
        </property>
       </widget>
-      <widget class="MYStripAdd" name="vaginaEXP_2" native="true">
+      <widget class="MYStripAdd" name="crotchTattooEXP" native="true">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -2188,7 +2188,7 @@
         </size>
        </property>
       </widget>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="crotchTattooTags">
        <property name="geometry">
         <rect>
          <x>710</x>
@@ -2207,7 +2207,7 @@
         <string>TextLabel</string>
        </property>
       </widget>
-      <widget class="QFrame" name="frame">
+      <widget class="QFrame" name="crotchTattooImg">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -2248,6 +2248,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
