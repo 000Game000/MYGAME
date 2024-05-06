@@ -146,4 +146,4 @@ CMakeLists.txt.user*
 
 # MYFLIE
 /build/
-MYGAME.pro.user
+.MYGAME.pro.user
