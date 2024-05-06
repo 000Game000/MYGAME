@@ -144,5 +144,6 @@ CMakeLists.txt.user*
 
 *.exe
 
-# dir
+# MYFLIE
 /build/
+MYGAME.pro.user
