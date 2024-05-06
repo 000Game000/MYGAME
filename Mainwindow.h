@@ -68,7 +68,7 @@ private:
     QString*systemStore(UC flag=0);                                                         //显示系统商城
     QString*showPeopleList(UC flag=0);                                                      //显示人物表列
     QString*move(UC flag=0);                                                                //人物移动函数
-    QString*text(UC flag=0);
+    QString*moveStorey(UC flag=0);                                                          //上下楼函数
 
     //显示人物表列
     void showPeopleList();

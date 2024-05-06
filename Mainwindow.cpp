@@ -15,6 +15,7 @@
 #include <QMessageBox>
 
 #include <Windows/Load.h>
+#include <Windows/MapList.h>
 #define button_width 130
 #define button_height 36
 void textMap(std::vector<MYGAME::Map*>&mapList);
@@ -30,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
     ui->systemCommand->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
     qDebug()<<"Main构造完成";
+    //textMap(this->mapList);
 }
 
 MainWindow::~MainWindow()
@@ -74,7 +76,7 @@ void MainWindow::initSystemCommand()
     this->SystemCommandList.push_back(&MainWindow::systemStore);
     this->SystemCommandList.push_back(&MainWindow::showPeopleList);
     this->SystemCommandList.push_back(&MainWindow::move);
-    this->SystemCommandList.push_back(&MainWindow::text);
+    this->SystemCommandList.push_back(&MainWindow::moveStorey);
 }
 
 void MainWindow::initSystemCommandDockWidget()
@@ -98,8 +100,8 @@ void MainWindow::gridLayoutWidget(QWidget*widget,T*type,std::vector<QString*(T::
     size_t count=0;
     for(size_t i=0;i<list->size();i++){
         if((type->*(*list)[i])(1)->compare(QString("true"))==0){
-            QPushButton*pb=new QPushButton(*(this->*(this->SystemCommandList[i]))(2),widget);
-            pb->setMinimumSize(this->buttonWidth,this->buttonHeight);
+            QPushButton*pb=new QPushButton(*(type->*(this->SystemCommandList[i]))(2),widget);
+            pb->setMinimumSize(type->buttonWidth,type->buttonHeight);
             connect(pb,&QPushButton::clicked,type,(*list)[i]);
             gl->addWidget(pb,count/5,count%5);
             pb->show();
@@ -621,7 +623,7 @@ void MainWindow::refresh()
     QLocale locale=QLocale::Chinese;
     ui->date->setText(locale.toString(*this->time,SFormat));
     //刷新角色类内部内容
-    //初始化主角所在位置
+    //刷新主角所在位置
     ui->position->setText("当前所在地点:"+this->player->getCurrentPosition()->getName());
     ui->position->setToolTip(MYGAME::getSPosition(this->player->getCurrentPosition()));
     //刷新系统点数
@@ -708,22 +710,27 @@ QString *MainWindow::move(UC flag)
     if(flag==2){
         return new QString("移动");
     }
-    qDebug()<<"移动";
-    //PeopleList*Pl=new PeopleList(&(this->peopleList));
-    //Pl->show();
-    return new QString("移动");
+    MapList*P=new MapList(this->time,this->player,"移动",ui->textBrowser);
+    P->exec();
+    this->refresh();
+    return nullptr;
 }
 
-QString *MainWindow::text(UC flag)
+QString *MainWindow::moveStorey(UC flag)
 {
     if(flag==1){
-        return new QString("true");
+        if(this->player->getCurrentPosition()->getSuperiorMap()->getType().compare("楼层")==0){
+            return new QString("true");
+        }
+        return new QString("false");
     }
     if(flag==2){
-        return new QString("测试");
+        return new QString("楼层移动");
     }
-    qDebug()<<"测试";
-    return new QString("测试");
+    MapList*P=new MapList(this->time,this->player,"楼层移动",ui->textBrowser);
+    P->exec();
+    this->refresh();
+    return nullptr;
 }
 
 void MainWindow::on_systemCommand_visibilityChanged(bool visible)
@@ -773,6 +780,7 @@ void MainWindow::on_actionread_S_triggered()
 
 void MainWindow::read(QString sdir)
 {
+    ui->textBrowser->clear();
     QFile file(sdir);
     if(file.open(QIODevice::ReadOnly|QIODevice::Text)){
         QTextStream ts(&file);

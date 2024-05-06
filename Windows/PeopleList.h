@@ -14,7 +14,7 @@ class PeopleList : public QWidget
 
 public:
     explicit PeopleList(QWidget *parent = nullptr);
-    PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime* const time,QWidget *parent = nullptr);
+    PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime* time,QWidget *parent = nullptr);
     ~PeopleList();
 
 private slots:
