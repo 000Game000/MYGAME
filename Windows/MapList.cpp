@@ -50,13 +50,19 @@ void MapList::on_mapList_itemDoubleClicked(QListWidgetItem *item)
             break;
         }
     }
-    if(std::abs(i-ui->mapList->row(item)))
+    int distance=std::abs(i-ui->mapList->row(item));
+    if(distance)
     {
         this->play->setCurrentPosition((*this->mapList)[ui->mapList->row(item)]);
-        if(this->type.compare("楼层移动")==0&&this->play->getCurrentPosition()->getList()!=nullptr){
+        if(this->type.compare("楼层移动")==0){
+            qDebug()<<play->getCurrentPosition()->getName();
             this->play->setCurrentPosition((*this->play->getCurrentPosition()->getList())[0]);
         }
+        if(this->play->getCurrentPosition()->getType().compare("地点分区")==0){
+            (*this->time)=this->time->addSecs(60*distance);
+        }
         this->text->append("移动到:"+play->getCurrentPosition()->getName());
+
     }
     this->close();
 }

@@ -14,9 +14,9 @@ public:
     Room();
     Room(const QString &name, std::vector<Map *> *list, const QString &img, const QString &type, Map *superiorMap,const QString &roomType);
 
-    QString getType() const;
-    void setType(const QString &newType);
     virtual void show();
+    QString getRoomType() const;
+    void setRoomType(const QString &newRoomType);
 };
 }
 #endif // ROOM_H

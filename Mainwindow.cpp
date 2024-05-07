@@ -77,6 +77,8 @@ void MainWindow::initSystemCommand()
     this->SystemCommandList.push_back(&MainWindow::showPeopleList);
     this->SystemCommandList.push_back(&MainWindow::move);
     this->SystemCommandList.push_back(&MainWindow::moveStorey);
+    this->SystemCommandList.push_back(&MainWindow::goOut);
+    this->SystemCommandList.push_back(&MainWindow::addTime);
 }
 
 void MainWindow::initSystemCommandDockWidget()
@@ -470,7 +472,7 @@ void MainWindow::initMap()
     ___0->push_back(new MYGAME::Map("父母家",nullptr,"","地点分区",(*__0)[0]));
     ___0->push_back(new MYGAME::Map("艾斯忒拉家",nullptr,"","地点分区",(*__0)[0]));
     ___0->push_back(new MYGAME::Map("HK家",nullptr,"","地点分区",(*__0)[0]));
-    __0->push_back(new MYGAME::Room("0区站.",nullptr,"","车站",(*__0)[0],"车站"));
+    ___0->push_back(new MYGAME::Room("0区站",nullptr,"","地点分区",(*__0)[0],"车站"));
     (*__0)[0]->setList(___0);
     //父母家(主角)
     //楼层
@@ -478,7 +480,7 @@ void MainWindow::initMap()
     ____0->push_back(new MYGAME::Map("-1楼",nullptr,"","楼层",(*___0)[0]));
     ____0->push_back(new MYGAME::Map("1楼",nullptr,"","楼层",(*___0)[0]));
     ____0->push_back(new MYGAME::Map("2楼",nullptr,"","楼层",(*___0)[0]));
-    ____0->push_back(new MYGAME::Room("后花园",nullptr,"","房间",(*___0)[0],"后花园"));
+    ____0->push_back(new MYGAME::Map("后花园",nullptr,"","楼层",(*___0)[0]));
     (*___0)[0]->setList(____0);
     //-1
     _____0=new std::vector<MYGAME::Map*>;
@@ -502,6 +504,10 @@ void MainWindow::initMap()
     _____0->push_back(new MYGAME::Room("客房",nullptr,"","房间",(*____0)[2],"客房"));
     _____0->push_back(new MYGAME::Room("厕所",nullptr,"","房间",(*____0)[2],"厕所"));
     (*____0)[2]->setList(_____0);
+    //后花园
+    _____0=new std::vector<MYGAME::Map*>;
+    _____0->push_back(new MYGAME::Room("后花园",nullptr,"","房间",(*____0)[3],"后花园"));
+    (*____0)[3]->setList(_____0);
     //艾斯忒拉家
     ____0=new std::vector<MYGAME::Map*>;
     ____0->push_back(new MYGAME::Map("庭院",nullptr,"","楼层",(*___0)[1]));
@@ -521,7 +527,7 @@ void MainWindow::initMap()
     (*____0)[1]->setList(_____0);
     //1
     _____0=new std::vector<MYGAME::Map*>;
-    _____0->push_back(new MYGAME::Room("玄关",nullptr,"","房间",(*____0)[2],"玄关"));
+    _____0->push_back(new MYGAME::Room("玄关",nullptr,"","房间",(*____0)[2],"门口"));
     _____0->push_back(new MYGAME::Room("客厅",nullptr,"","房间",(*____0)[2],"客厅"));
     _____0->push_back(new MYGAME::Room("餐厅",nullptr,"","房间",(*____0)[2],"餐厅"));
     _____0->push_back(new MYGAME::Room("厨房",nullptr,"","房间",(*____0)[2],"厨房"));
@@ -536,13 +542,33 @@ void MainWindow::initMap()
     _____0->push_back(new MYGAME::Room("卫生间",nullptr,"","房间",(*____0)[3],"卫生间"));
     _____0->push_back(new MYGAME::Room("浴室",nullptr,"","房间",(*____0)[3],"浴室"));
     _____0->push_back(new MYGAME::Room("客卧",nullptr,"","房间",(*____0)[3],"客卧"));
-    _____0->push_back(new MYGAME::Room("露台",nullptr,"","露台",(*____0)[3],"玄关"));
+    _____0->push_back(new MYGAME::Room("露台",nullptr,"","房间",(*____0)[3],"露台"));
     (*____0)[3]->setList(_____0);
     //后院
     _____0=new std::vector<MYGAME::Map*>;
     _____0->push_back(new MYGAME::Room("阳台",nullptr,"","房间",(*____0)[4],"阳台"));
     _____0->push_back(new MYGAME::Room("花园",nullptr,"","房间",(*____0)[4],"花园"));
     (*____0)[4]->setList(_____0);
+    //HK家
+    ____0=new std::vector<MYGAME::Map*>;
+    ____0->push_back(new MYGAME::Map("1楼",nullptr,"","楼层",(*___0)[2]));
+    ____0->push_back(new MYGAME::Map("-1楼",nullptr,"","楼层",(*___0)[2]));
+    (*___0)[2]->setList(____0);
+    //1
+    _____0=new std::vector<MYGAME::Map*>;
+    _____0->push_back(new MYGAME::Room("玄关",nullptr,"","房间",(*____0)[0],"门口"));
+    _____0->push_back(new MYGAME::Room("客厅",nullptr,"","房间",(*____0)[0],"客厅"));
+    _____0->push_back(new MYGAME::Room("饭厅",nullptr,"","房间",(*____0)[0],"饭厅"));
+    _____0->push_back(new MYGAME::Room("厨房",nullptr,"","房间",(*____0)[0],"厨房"));
+    _____0->push_back(new MYGAME::Room("厕所",nullptr,"","房间",(*____0)[0],"厕所"));
+    _____0->push_back(new MYGAME::Room("主人房",nullptr,"","房间",(*____0)[0],"主人房"));
+    _____0->push_back(new MYGAME::Room("客房",nullptr,"","房间",(*____0)[0],"客房"));
+    (*____0)[0]->setList(_____0);
+    //-1
+    _____0=new std::vector<MYGAME::Map*>;
+    _____0->push_back(new MYGAME::Room("军备库",nullptr,"","房间",(*____0)[1],"军备库"));
+    _____0->push_back(new MYGAME::Room("指挥室",nullptr,"","房间",(*____0)[1],"指挥室"));
+    (*____0)[1]->setList(_____0);
     //学院联合分部
     __0=new std::vector<MYGAME::Map*>;
     __0->push_back(new MYGAME::Map("初等学院",nullptr,"","设施",(*_0)[1]));
@@ -647,6 +673,7 @@ void MainWindow::refresh()
             ui->energyBarNumberLabel->setText(QString::number(temp->getNowValue())+"/"+QString::number(temp->getRank()));
         }
     }
+    this->initSystemCommandDockWidget();
 }
 
 QString*MainWindow::playerStatusFunction(UC flag)
@@ -659,6 +686,7 @@ QString*MainWindow::playerStatusFunction(UC flag)
     }
     PlayerStatus*Ps=new PlayerStatus(this->player);
     Ps->show();
+    this->refresh();
     return nullptr;
 }
 
@@ -672,6 +700,7 @@ QString *MainWindow::itemList(UC flag)
     }
     ItemList*IL=new ItemList(this->player);
     IL->show();
+    this->refresh();
     return nullptr;
 }
 
@@ -685,6 +714,7 @@ QString *MainWindow::systemStore(UC flag)
     }
     SystemStore*Ss=new SystemStore(this->player,this->_system);
     Ss->show();
+    this->refresh();
     return nullptr;
 }
 
@@ -699,13 +729,21 @@ QString *MainWindow::showPeopleList(UC flag)
     //qDebug()<<this->peopleList.size();
     PeopleList*Pl=new PeopleList(&(this->peopleList),this->time);
     Pl->show();
+    this->refresh();
     return nullptr;
 }
 
 QString *MainWindow::move(UC flag)
 {
+
     if(flag==1){
-        return new QString("true");
+        qDebug()<<"指令列表刷新";
+        if(this->player->getCurrentPosition()->getSuperiorMap()->getList()->size()==1){
+            return new QString("false");
+        }
+        else{
+            return new QString("true");
+        }
     }
     if(flag==2){
         return new QString("移动");
@@ -729,6 +767,57 @@ QString *MainWindow::moveStorey(UC flag)
     }
     MapList*P=new MapList(this->time,this->player,"楼层移动",ui->textBrowser);
     P->exec();
+    this->refresh();
+    return nullptr;
+}
+
+QString *MainWindow::goOut(UC flag)
+{
+    if(flag==1){
+        if(this->player->getCurrentPosition()->getType().compare("房间")==0){
+            if(dynamic_cast<MYGAME::Room*>(this->player->getCurrentPosition())->getRoomType().compare("门口")==0){
+                return new QString("true");
+            }
+        }
+        return new QString("false");
+    }
+    if(flag==2){
+        return new QString("出门");
+    }
+    this->player->setCurrentPosition(this->player->getCurrentPosition()->getSuperiorMap()->getSuperiorMap());
+    ui->textBrowser->append("移动到:"+this->player->getCurrentPosition()->getName());
+    this->refresh();
+    return nullptr;
+}
+
+QString *MainWindow::enter(UC flag)
+{
+    if(flag==1){
+        if(this->player->getCurrentPosition()->getList()!=nullptr){
+            return new QString("true");
+        }
+        return new QString("false");
+    }
+    if(flag==2){
+        return new QString("出门");
+    }
+    this->player->setCurrentPosition(this->player->getCurrentPosition()->getSuperiorMap()->getSuperiorMap());
+    ui->textBrowser->append("移动到:"+this->player->getCurrentPosition()->getName());
+    this->refresh();
+    return nullptr;
+}
+
+QString *MainWindow::addTime(UC flag)
+{
+    if(flag==1){
+        return new QString("true");
+    }
+    if(flag==2){
+        return new QString("增加时间");
+    }
+
+    (*this->time)=this->time->addSecs(60*60);
+    (*this->time)=this->time->addSecs(60);
     this->refresh();
     return nullptr;
 }

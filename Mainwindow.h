@@ -69,6 +69,9 @@ private:
     QString*showPeopleList(UC flag=0);                                                      //显示人物表列
     QString*move(UC flag=0);                                                                //人物移动函数
     QString*moveStorey(UC flag=0);                                                          //上下楼函数
+    QString*goOut(UC flag=0);                                                               //出门函数
+    QString*enter(UC flag=0);                                                               //进入函数
+    QString*addTime(UC flag=0);                                                             //添加时间
 
     //显示人物表列
     void showPeopleList();
