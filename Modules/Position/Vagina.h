@@ -13,7 +13,24 @@ protected:
     long long length=70;                                               //长度单位mm 萝莉40mm~70mm成人70mm~120mm
     QColor color;                                                      //阴唇颜色
 public:
+    /* rank                     感度等级
+     * EXP                      经验(达到后升级部位等级)
+     * pleasure                 快感的最大值
+     * count                    当前部位的经验次数
+     * maximumDiameter          阴道的直径
+     * length                   阴道的长度
+     * color                    阴唇的颜色
+     */
+    Vagina(long long rank, long long EXP, long long pleasure, long long count,long long maximumDiameter,long long length,QColor color);
     Vagina();
+    virtual QString save();
+    virtual bool load(QTextStream&ts);
+    long long getMaximumDiameter() const;
+    void setMaximumDiameter(long long newMaximumDiameter);
+    long long getLength() const;
+    void setLength(long long newLength);
+    QColor getColor() const;
+    void setColor(const QColor &newColor);
 };
 }
 #endif // VAGINA_H

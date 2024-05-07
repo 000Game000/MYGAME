@@ -1,6 +1,7 @@
 #ifndef ITEMBASE_H
 #define ITEMBASE_H
 #include <QString>
+#include <QTextStream>
 namespace MYGAME{
 /*
  * 物品
@@ -13,11 +14,13 @@ protected:
     QString itemFunction;                               //物品作用
     QString itemType;                                   //物品类别
     QString location;                                   //物品购买地点
-    long long money;                                    //购买物品所花的点数/金钱
-    long long count;                                    //持有的物品数量
+    unsigned long long money;                           //购买物品所花的点数/金钱
+    unsigned long long count;                           //持有的物品数量
 public:
     ItemBase();
     ItemBase(const QString &name, const QString &describe, const QString &itemFunction, const QString &itemType, const QString &location, long long money, long long count);
+    virtual QString save();
+    virtual bool load(QTextStream&ts);
     QString getName() const;
     void setName(const QString &newName);
     QString getDescribe() const;
@@ -28,10 +31,10 @@ public:
     void setItemType(const QString &newItemType);
     QString getLocation() const;
     void setLocation(const QString &newLocation);
-    long long getMoney() const;
-    void setMoney(long long newMoney);
-    long long getCount() const;
-    void setCount(long long newCount);
+    unsigned long long getMoney() const;
+    void setMoney(unsigned long long newMoney);
+    unsigned long long getCount() const;
+    void setCount(unsigned long long newCount);
     virtual void show();
 };
 }

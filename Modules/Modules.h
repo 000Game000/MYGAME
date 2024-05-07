@@ -33,6 +33,7 @@ enum Weight{
     obesity,                                        //肥胖
     weightCount                                     //计数有多少个胖瘦标签
 };
-void setMenu(QWidget*widget);                                                           //设置菜单
+void setMenu(QWidget*widget);                       //设置菜单
+QString getValue(QString str);
 }
 #endif // MODULES_H

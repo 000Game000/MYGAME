@@ -1,6 +1,7 @@
 #include "BeginWindow.h"
 #include "ui_BeginWindow.h"
 #include "CreateLead.h"
+#include "Load.h"
 #include "Modules/Global.h"
 BeginWindow::BeginWindow(QWidget *parent) :
     QWidget(parent),
@@ -14,6 +15,12 @@ BeginWindow::~BeginWindow()
 {
     MYGAME::global.setBeginWindow(nullptr);
     delete ui;
+}
+
+void BeginWindow::sdirSlots(QString sdir)
+{
+    emit this->sdirSignals(sdir);
+    this->close();
 }
 
 void BeginWindow::on_exitBtn_clicked()
@@ -32,3 +39,11 @@ void BeginWindow::on_StartBtn_clicked()
     }
     this->close();
 }
+
+void BeginWindow::on_continueBtn_clicked()
+{
+    Load*P=new Load();
+    connect(P,&Load::sdir,this,&BeginWindow::sdirSlots);
+    P->show();
+}
+

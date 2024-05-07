@@ -1,42 +1,25 @@
 #include "Room.h"
 namespace MYGAME{
-QString Room::getName() const
-{
-    return name;
-}
-
-void Room::setName(const QString &newName)
-{
-    name = newName;
-}
-
-QString Room::getType() const
-{
-    return type;
-}
-
-void Room::setType(const QString &newType)
-{
-    type = newType;
-}
-
-std::map<Room *, long long> Room::getRoomList() const
-{
-    return roomList;
-}
-
-void Room::setRoomList(const std::map<Room *, long long> &newRoomList)
-{
-    roomList = newRoomList;
-}
-
 void Room::show()
 {
 
 }
 
+QString Room::getRoomType() const
+{
+    return roomType;
+}
+
+void Room::setRoomType(const QString &newRoomType)
+{
+    roomType = newRoomType;
+}
+
 Room::Room()
 {
-
+}
+Room::Room(const QString &name, std::vector<Map *> *list, const QString &img, const QString &type, Map *superiorMap,const QString &roomType) : Map(name, list, img, type,superiorMap)
+{
+    this->roomType=roomType;
 }
 }

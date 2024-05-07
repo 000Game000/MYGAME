@@ -1,11 +1,24 @@
 #include "Mouth.h"
 namespace MYGAME{
+Mouth::Mouth(long long rank, long long EXP, long long pleasure, long long count):PositionBase("嘴巴",rank,EXP,pleasure,count)
+{
+
+}
+
 Mouth::Mouth()
 {
-    this->name="嘴巴";
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
-    this->rank=0;
+
+}
+
+QString Mouth::save()
+{
+    QString str=PositionBase::save();
+    return str;
+}
+
+bool Mouth::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    return true;
 }
 }

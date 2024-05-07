@@ -31,14 +31,25 @@ void Penis::show()
     qDebug()<<"Penis类";
 }
 
-Penis::Penis()
+Penis::Penis():PositionBase("阴茎",2,0,0,0)
 {
-    this->name="阴茎";
-    this->rank=2;
-    this->EXP=0;
-    this->count=0;
-    this->pleasure=0;
     this->diameter=10;
     this->dickSize=Lovely;
+}
+
+QString Penis::save()
+{
+    QString str=PositionBase::save()+"\ndiameter:"+QString::number(this->diameter)+"\nsemen:"+QString::number(this->semen)
+                  +"\ndickSize:"+QString::number(this->dickSize);
+    return str;
+}
+
+bool Penis::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->diameter=getValue(ts.readLine()).toLongLong();
+    this->semen=getValue(ts.readLine()).toLongLong();
+    this->dickSize=(DickSize)getValue(ts.readLine()).toInt();
+    return true;
 }
 }

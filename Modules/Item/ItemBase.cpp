@@ -1,4 +1,5 @@
 #include "ItemBase.h"
+#include "Modules/Modules.h"
 
 namespace MYGAME {
 ItemBase::ItemBase()
@@ -45,22 +46,22 @@ void ItemBase::setLocation(const QString &newLocation)
     location = newLocation;
 }
 
-long long ItemBase::getMoney() const
+unsigned long long ItemBase::getMoney() const
 {
     return money;
 }
 
-void ItemBase::setMoney(long long newMoney)
+void ItemBase::setMoney(unsigned long long newMoney)
 {
     money = newMoney;
 }
 
-long long ItemBase::getCount() const
+unsigned long long ItemBase::getCount() const
 {
     return count;
 }
 
-void ItemBase::setCount(long long newCount)
+void ItemBase::setCount(unsigned long long newCount)
 {
     count = newCount;
 }
@@ -89,4 +90,22 @@ ItemBase::ItemBase(const QString &name, const QString &describe, const QString &
     count(count)
 {}
 
+QString ItemBase::save()
+{
+    QString str="\n类型:ItemBase\nname:"+this->name+"\ndescribe:"+this->describe+"\nitemFunction:"+this->itemFunction+"\nitemType:"+this->itemType
+                  +"\nlocation:"+this->location+"\nmoney:"+QString::number(this->money)+"\ncount:"+QString::number(this->count);
+    return str;
+}
+
+bool ItemBase::load(QTextStream &ts)
+{
+    this->name=getValue(ts.readLine());
+    this->describe=getValue(ts.readLine());
+    this->itemFunction=getValue(ts.readLine());
+    this->itemType=getValue(ts.readLine());
+    this->location=getValue(ts.readLine());
+    this->money=getValue(ts.readLine()).toULongLong();
+    this->count=getValue(ts.readLine()).toULongLong();
+    return true;
+}
 }

@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -202,7 +202,7 @@
               <widget class="QLabel" name="MajorLable">
                <property name="maximumSize">
                 <size>
-                 <width>38</width>
+                 <width>29</width>
                  <height>21</height>
                 </size>
                </property>
@@ -253,7 +253,7 @@
               <widget class="QLabel" name="OccupationLable">
                <property name="maximumSize">
                 <size>
-                 <width>38</width>
+                 <width>29</width>
                  <height>21</height>
                 </size>
                </property>
@@ -1021,7 +1021,7 @@
   <customwidget>
    <class>ColorSelection</class>
    <extends>QWidget</extends>
-   <header>Windows/ColorSelection.h</header>
+   <header>Windows/Module/ColorSelection.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

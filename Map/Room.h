@@ -1,22 +1,22 @@
 #ifndef ROOM_H
 #define ROOM_H
 #include<QString>
-#include<map>
+#include"Map.h"
 namespace MYGAME{
-class Room
+/*
+ * 房间类
+ */
+class Room : public Map
 {
-    QString name;                                       //房间名称
-    QString type;                                       //房间类型
-    std::map<Room*,long long> roomList;                 //从此房间可到达的房间和所花时间
+protected:
+    QString roomType;                                       //房间类型
 public:
     Room();
-    QString getName() const;
-    void setName(const QString &newName);
-    QString getType() const;
-    void setType(const QString &newType);
-    std::map<Room *, long long> getRoomList() const;
-    void setRoomList(const std::map<Room *, long long> &newRoomList);
+    Room(const QString &name, std::vector<Map *> *list, const QString &img, const QString &type, Map *superiorMap,const QString &roomType);
+
     virtual void show();
+    QString getRoomType() const;
+    void setRoomType(const QString &newRoomType);
 };
 }
 #endif // ROOM_H

@@ -1,11 +1,95 @@
 #include "Breast.h"
+#include "Modules/Modules.h"
 namespace MYGAME{
+const long double PI=3.141592654;
+
+double Breast::getMilkYield() const
+{
+    return milkYield;
+}
+
+void Breast::setMilkYield(double newMilkYield)
+{
+    milkYield = newMilkYield;
+}
+long long Breast::getVolume() const
+{
+    return volume;
+}
+
+void Breast::setVolume(long long newVolume)
+{
+    volume = newVolume;
+}
+
+long long Breast::getSize() const
+{
+    return size;
+}
+
+void Breast::setSize(long long newSize)
+{
+    size = newSize;
+}
+
+long long Breast::getGalactophore() const
+{
+    return galactophore;
+}
+
+void Breast::setGalactophore(long long newGalactophore)
+{
+    galactophore = newGalactophore;
+}
+
+long long Breast::getStock() const
+{
+    return stock;
+}
+
+void Breast::setStock(long long newStock)
+{
+    stock = newStock;
+}
+
+Breast::Breast(long long rank, long long EXP, long long pleasure, long long count, bool milkYield, long long size)
+    :PositionBase("乳房",rank,EXP,pleasure,count),size(size)
+{
+    //    50/2=25
+    //    2 pi*R
+    //    4/3*pi*r*r*r
+    long double R=size/PI;
+    this->volume=(4/3*PI*R*R*R)/1000;
+    this->galactophore=10+size*0.1;
+    this->stock=0;
+    if(milkYield){
+        this->milkYield=1+this->galactophore*0.1;
+        if(this->milkYield<=0){
+            this->milkYield=1;
+        }
+    }
+}
+
 Breast::Breast()
 {
-    this->name="乳房";
-    this->rank=1;
-    this->EXP=0;
-    this->pleasure=0;
-    this->count=0;
+
+}
+
+QString Breast::save()
+{
+    QString str=PositionBase::save()+"\nmilkYield:"+QString::number(this->milkYield)+"\nvolume:"+QString::number(this->volume)
+                  +"\nsize:"+QString::number(this->size)+"\ngalactophore:"+QString::number(this->galactophore)+"\nstock:"+QString::number(this->stock);
+    return str;
+}
+
+bool Breast::load(QTextStream &ts)
+{
+    PositionBase::load(ts);
+    this->milkYield=getValue(ts.readLine()).toDouble();
+    this->volume=getValue(ts.readLine()).toLongLong();
+    this->size=getValue(ts.readLine()).toLongLong();
+    this->galactophore=getValue(ts.readLine()).toLongLong();
+    this->stock=getValue(ts.readLine()).toLongLong();
+    return true;
 }
 }

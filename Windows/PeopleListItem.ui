@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PeopleListItem</class>
+ <widget class="QWidget" name="PeopleListItem">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>795</width>
+    <height>60</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="name">
+       <property name="text">
+        <string>一二三四五六七八九十</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="sex">
+       <property name="text">
+        <string>女</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="age">
+       <property name="text">
+        <string>12</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="lovept">
+       <property name="text">
+        <string>好感度:XXXXXXXXXX</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="obedience">
+       <property name="text">
+        <string>服从度:XXXXXXXXXX</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="fornication">
+       <property name="text">
+        <string>淫乱度:XXXXXXXXXX</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true"/>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="staminaBarLabel">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>体力:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="MYStrip" name="staminaBarStrip" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>15</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="staminaBarNumberLabel">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>999999/999999</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="energyBarLabel">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>精力:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="MYStrip" name="energyBarStrip" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>15</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="energyBarNumberLabel">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>999999/999999</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="position">
+       <property name="text">
+        <string>自室</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MYStrip</class>
+   <extends>QWidget</extends>
+   <header>Windows/Module/MYStrip.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
