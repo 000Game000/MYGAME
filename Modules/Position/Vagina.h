@@ -23,8 +23,8 @@ public:
      */
     Vagina(long long rank, long long EXP, long long pleasure, long long count,long long maximumDiameter,long long length,QColor color);
     Vagina();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     long long getMaximumDiameter() const;
     void setMaximumDiameter(long long newMaximumDiameter);
     long long getLength() const;

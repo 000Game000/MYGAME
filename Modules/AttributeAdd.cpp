@@ -1,5 +1,4 @@
 #include "AttributeAdd.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 long long AttributeAdd::getNowValue() const
 {
@@ -11,23 +10,24 @@ void AttributeAdd::setNowValue(long long newNowValue)
     nowValue = newNowValue;
 }
 
-QString AttributeAdd::save()
+QJsonObject* AttributeAdd::save()
 {
-    QString str="\n类型:AttributeAdd\nname:"+this->name+"\nrank:"+QString::number(this->rank)
-                  +"\nEXP:"+QString::number(this->EXP)+"\nnowValue:"+QString::number(this->nowValue);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","AttributeAdd");
+    obj->insert("nowValue",QString::number(this->nowValue));
+    obj->insert("Attribute",*Attribute::save());
+    return obj;
 }
 
-void AttributeAdd::load(QTextStream &ts)
+bool AttributeAdd::load(QJsonObject obj)
 {
-    this->name=getValue(ts.readLine());
-    //qDebug()<<this->name;
-    this->rank=getValue(ts.readLine()).toLongLong();
-    //qDebug()<<this->rank;
-    this->EXP=getValue(ts.readLine()).toLongLong();
-    //qDebug()<<this->EXP;
-    this->nowValue=getValue(ts.readLine()).toLongLong();
-    //qDebug()<<this->nowValue;
+    this->setNowValue(obj.value("nowValue").toString().toLongLong());
+    QJsonValue value=obj.value("Attribute");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        Attribute::load(o);
+    }
+    return true;
 }
 
 void AttributeAdd::show()

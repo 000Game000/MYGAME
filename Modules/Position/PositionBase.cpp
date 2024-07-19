@@ -92,22 +92,29 @@ PositionBase::PositionBase()
 
 }
 
-QString PositionBase::save()
+QJsonObject*PositionBase::save()
 {
-    QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nnowEXP:"+QString::number(this->nowEXP)
-                  +"\nEXP:"+QString::number(this->EXP)+"\npleasure:"+QString::number(this->pleasure)+"\nnowPleasure:"+QString::number(this->nowPleasure)
-                  +"\ncount:"+QString::number(this->count);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","PositionBase");
+    obj->insert("Name",this->name);
+    obj->insert("Rank",QString::number(this->rank));
+    obj->insert("NowEXP",QString::number(this->nowEXP));
+    obj->insert("EXP",QString::number(this->EXP));
+    obj->insert("Pleasure",QString::number(this->pleasure));
+    obj->insert("nowPleasure",QString::number(this->nowPleasure));
+    obj->insert("Count",QString::number(this->count));
+    return obj;
 }
 
-bool PositionBase::load(QTextStream &ts)
+bool PositionBase::load(QJsonObject obj)
 {
-    this->rank=getValue(ts.readLine()).toLongLong();
-    this->nowEXP=getValue(ts.readLine()).toLongLong();
-    this->EXP=getValue(ts.readLine()).toLongLong();
-    this->pleasure=getValue(ts.readLine()).toLongLong();
-    this->nowPleasure=getValue(ts.readLine()).toLongLong();
-    this->count=getValue(ts.readLine()).toLongLong();
+    this->name=obj.value("Name").toString();
+    this->rank=obj.value("Rank").toString().toLongLong();
+    this->nowEXP=obj.value("NowEXP").toString().toLongLong();
+    this->EXP=obj.value("EXP").toString().toLongLong();
+    this->pleasure=obj.value("Pleasure").toString().toLongLong();
+    this->nowPleasure=obj.value("nowPleasure").toString().toLongLong();
+    this->count=obj.value("Count").toString().toLongLong();
     return true;
 }
 

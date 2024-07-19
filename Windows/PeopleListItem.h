@@ -2,6 +2,7 @@
 #define PEOPLELISTITEM_H
 
 #include <QWidget>
+#include <Map/Node.h>
 #include "Person/Girl.h"
 
 namespace Ui {
@@ -13,7 +14,7 @@ class PeopleListItem : public QWidget
     Q_OBJECT
 
 public:
-    PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,QWidget *parent = nullptr);
+    PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,std::unordered_map<QString,MYGAME::Node*>*mapList,QWidget *parent = nullptr);
     explicit PeopleListItem(QWidget *parent = nullptr);
     ~PeopleListItem();
 private:

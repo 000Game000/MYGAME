@@ -13,7 +13,7 @@ ItemList::ItemList(QWidget *parent) :
 ItemList::ItemList(MYGAME::Player *player, QWidget *parent):ItemList(parent)
 {
     this->player=player;
-    itemList=player->getItemList();
+    this->itemList=player->getItemList();
     for(size_t i=0;i<itemList.size();i++){
         QListWidgetItem*qlwi=new QListWidgetItem();
         ItemBaseWidget*ibw=new ItemBaseWidget(this->itemList[i]);

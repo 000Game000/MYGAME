@@ -78,7 +78,7 @@ void CreateLead::initUI()
 
 void CreateLead::initPlayer()
 {
-    this->player=new MYGAME::Player;
+    this->player=new MYGAME::Player();
     this->penis=new MYGAME::Penis;
 }
 
@@ -296,6 +296,9 @@ void CreateLead::on_complete_clicked()
     this->player->setMoney(3000);
     //设置初始系统点数
     this->player->setPoint(300);
+    //设置主角住址
+    this->player->setLive("7-1-1-0-0-3-3");
+    this->player->setCurrentPosition("7-1-1-0-0-3-3");
     //设置初始服装
     // this->player->getVariableCloths().setCoat(MYGAME::Cloth("格子衬衫","程序员!!!","外衣有什么用,或许不让别人觉得你们变态吧.","外衣上","服装店",100,1,""));
     // this->player->getVariableCloths().setPant(MYGAME::Cloth("短裤","一条普通的短裤","外衣有什么用,或许不让别人觉得你们变态吧.","外衣下","服装店",100,1,""));

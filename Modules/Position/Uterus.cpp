@@ -1,5 +1,4 @@
 #include "Uterus.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 
 long long Uterus::getVolume() const
@@ -53,20 +52,29 @@ Uterus::Uterus()
 
 }
 
-QString Uterus::save()
+QJsonObject *Uterus::save()
 {
-    QString str=PositionBase::save()+"\nvolume:"+QString::number(this->volume)+"\nmenstrualCycle:"+QString::number(this->menstrualCycle)
-                  +"\novulation:"+QString::number(this->ovulation)+"\npregnancyDays:"+QString::number(this->pregnancyDays);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Uterus");
+    obj->insert("Volume",QString::number(this->volume));
+    obj->insert("MenstrualCycle",QString::number(this->menstrualCycle));
+    obj->insert("Ovulation",QString::number(this->ovulation));
+    obj->insert("PregnancyDays",QString::number(this->pregnancyDays));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Uterus::load(QTextStream &ts)
+bool Uterus::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->volume=getValue(ts.readLine()).toLongLong();
-    this->menstrualCycle=getValue(ts.readLine()).toShort();
-    this->ovulation=getValue(ts.readLine()).toShort();
-    this->pregnancyDays=getValue(ts.readLine()).toShort();
+    this->volume=obj.value("Volume").toString().toLongLong();
+    this->menstrualCycle=obj.value("MenstrualCycle").toString().toShort();
+    this->ovulation=obj.value("Ovulation").toString().toShort();
+    this->pregnancyDays=obj.value("PregnancyDays").toString().toShort();
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

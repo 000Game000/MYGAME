@@ -4,7 +4,7 @@
 #include<QDate>
 #include<QColor>
 #include<vector>
-#include "Map/Room.h"
+#include <QJsonObject>
 #include "Modules/Tag.h"
 //#include "Modules/Cloths.h"
 #include "Modules/Modules.h"
@@ -35,11 +35,12 @@ protected:
     std::vector<Skill*> skillList;                  //技能表列
     std::vector<PositionBase*> positionList;        //部位表列
     QString describe;                               //人物描述
-    Room *live;                                     //人物居住地址
-    Map*currentPosition;                            //当前所在地点
+    QString live;                                   //人物居住地址
+    QString currentPosition;                        //当前所在地点
     //Cloths cloths;                                //人物服装
 public:
-    People();
+    People(int year=1,int month=1,int day=1);
+    //virtual ~People();
     QString getName() const;
     void setName(const QString &newName);
     QString getNickName() const;
@@ -76,19 +77,18 @@ public:
     std::vector<PositionBase *> getPositionList() const;
     std::vector<PositionBase *>&getVariablePositionList();
     void setPositionList(const std::vector<PositionBase *> &newPositionList);
-    Room *getLive() const;
-    void setLive(Room *newLive);
-    void setLive(Map*newLive);
     // Cloths getCloths() const;
     // Cloths&getVariableCloths();
     // void setCloths(const Cloths &newCloths);
     std::vector<Tag *> getTagList() const;
     std::vector<Tag*>&getVariableTagList();
     void setTagList(const std::vector<Tag *> &newTagList);
-    Map *getCurrentPosition() const;
-    void setCurrentPosition(Map *newCurrentPosition);
-    virtual QString save();
-    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
+    QString getLive() const;
+    void setLive(QString  newLive);
+    QString getCurrentPosition() const;
+    void setCurrentPosition(QString newCurrentPosition);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
 };
 }
 #endif // PEOPLE_H

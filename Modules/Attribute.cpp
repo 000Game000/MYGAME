@@ -1,5 +1,4 @@
 #include "Attribute.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 QString Attribute::getName() const
 {
@@ -36,20 +35,22 @@ void Attribute::show()
 
 }
 
-QString Attribute::save()
+QJsonObject*Attribute::save()
 {
-    QString str="\n类型:Attribute\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Attribute");
+    obj->insert("Name",this->name);
+    obj->insert("Rank",QString::number(this->rank));
+    obj->insert("EXP",this->EXP);
+    return obj;
 }
 
-void Attribute::load(QTextStream &ts)
+bool Attribute::load(QJsonObject obj)
 {
-    this->name=getValue(ts.readLine());
-    //qDebug()<<this->name;
-    this->rank=getValue(ts.readLine()).toLongLong();
-    //qDebug()<<this->rank;
-    this->EXP=getValue(ts.readLine()).toLongLong();
-    //qDebug()<<this->EXP;
+    this->name=obj.value("Name").toString();
+    this->EXP=obj.value("EXP").toString().toLongLong();
+    this->rank=obj.value("Rank").toString().toLongLong();
+    return true;
 }
 Attribute::Attribute(const QString &name, long long rank, long long EXP) : name(name),
     rank(rank),

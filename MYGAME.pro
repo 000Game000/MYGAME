@@ -32,6 +32,7 @@ include(Windows/Windows.pri)
 include(Modules/Modules.pri)
 include(Person/Person.pri)
 include(Map/Map.pri)
+
 RESOURCES += \
     Images/People/People.qrc \
     Images/System/System.qrc

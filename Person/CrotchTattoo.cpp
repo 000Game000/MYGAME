@@ -1,6 +1,8 @@
 #include "CrotchTattoo.h"
 #include "Modules/Modules.h"
 #include "qdebug.h"
+
+#include <QJsonArray>
 namespace MYGAME{
 long long CrotchTattoo::getRank() const
 {
@@ -73,32 +75,39 @@ long long CrotchTattoo::getMAXEXP() const
 CrotchTattoo::CrotchTattoo()
 {
     this->EXP=0;
-    this->rank=0;
+    this->rank=-1;
     this->setMAXEXP();
     this->img="";
 }
 
-QString CrotchTattoo::save()
+QJsonObject *CrotchTattoo::save()
 {
-
-    QString str="\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP)+"\nMAXEXP:"+QString::number(this->MAXEXP)+
-                  "\nimg:"+img;
-    str+="\n数量:"+QString::number(sList.size());
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","CrotchTattoo");
+    obj->insert("Rank",QString::number(this->rank));
+    obj->insert("EXP",QString::number(this->EXP));
+    obj->insert("MAXEXP",QString::number(this->MAXEXP));
+    obj->insert("Img",this->img);
+    QJsonArray*arr=new QJsonArray();
     for(size_t i=0;i<this->sList.size();i++){
-        str+="\n"+this->sList[i];
+        arr->append(this->sList[i]);
     }
-    return str;
+    obj->insert("SList",*arr);
+    return obj;
 }
 
-bool CrotchTattoo::load(QTextStream &ts)
+bool CrotchTattoo::load(QJsonObject obj)
 {
-    this->rank=getValue(ts.readLine()).toLongLong();
-    this->EXP=getValue(ts.readLine()).toLongLong();;
-    this->MAXEXP=getValue(ts.readLine()).toLongLong();
-    this->img=getValue(ts.readLine());
-    size_t max=getValue(ts.readLine()).toLongLong();
-    for(size_t i=0;i<max;i++){
-        this->sList.push_back(getValue(ts.readLine()));
+    this->rank=obj.value("Rank").toString().toLongLong();
+    this->EXP=obj.value("EXP").toString().toLongLong();
+    this->MAXEXP=obj.value("MAXEXP").toString().toLongLong();
+    this->img=obj.value("Img").toString();
+    QJsonValue v=obj.value("SList");
+    if(v.isArray()){
+        QJsonArray arr=v.toArray();
+        for(long long i=0;i<arr.size();i++){
+            this->sList.push_back(arr.at(i).toString());
+        }
     }
     return true;
 }

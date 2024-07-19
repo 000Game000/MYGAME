@@ -22,9 +22,9 @@ protected:
     QString selfIntroduction;                               //自我介绍
     CrotchTattoo*crotchTattoo;                              //淫纹
 public:
-    Girl();
-    virtual QString save();
-    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
+    Girl(int year=1,int month=1,int day=1);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     long long getId() const;
     void setId(long long newId);
     long long getLovept() const;

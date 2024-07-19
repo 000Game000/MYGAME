@@ -10,15 +10,21 @@ Mouth::Mouth()
 
 }
 
-QString Mouth::save()
+QJsonObject *Mouth::save()
 {
-    QString str=PositionBase::save();
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Mouth");
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Mouth::load(QTextStream &ts)
+bool Mouth::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

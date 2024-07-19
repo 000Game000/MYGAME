@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include <Map/Node.h>
+
 namespace Ui {
 class MapListItem;
 }
@@ -12,7 +14,7 @@ class MapListItem : public QWidget
     Q_OBJECT
 
 public:
-    explicit MapListItem(QString name,QWidget *parent = nullptr);
+    explicit MapListItem(QString name,long long money,long long time,QWidget *parent = nullptr);
     ~MapListItem();
 
 private:

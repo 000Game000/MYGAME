@@ -19,8 +19,8 @@ public:
      */
     Urethra(long long rank, long long EXP, long long pleasure, long long count,long long expand);
     Urethra();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     long long getExpand() const;
     void setExpand(long long newExpand);
 };

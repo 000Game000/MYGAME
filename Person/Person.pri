@@ -1,15 +1,13 @@
 HEADERS += \
     $$PWD/CrotchTattoo.h \
     $$PWD/Girl.h \
-    $$PWD/Nine.h \
+    $$PWD/MengLi.h \
     $$PWD/People.h \
-    $$PWD/Player.h \
-    $$PWD/SystemGirlOne.h
+    $$PWD/Player.h
 
 SOURCES += \
     $$PWD/CrotchTattoo.cpp \
     $$PWD/Girl.cpp \
-    $$PWD/Nine.cpp \
+    $$PWD/MengLi.cpp \
     $$PWD/People.cpp \
-    $$PWD/Player.cpp \
-    $$PWD/SystemGirlOne.cpp
+    $$PWD/Player.cpp

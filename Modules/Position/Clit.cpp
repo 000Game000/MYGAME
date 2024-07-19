@@ -1,5 +1,4 @@
 #include "Clit.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 long long Clit::getLength() const
 {
@@ -32,17 +31,25 @@ Clit::Clit()
 
 }
 
-QString Clit::save()
+QJsonObject *Clit::save()
 {
-    QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Clit");
+    obj->insert("Length",QString::number(this->length));
+    obj->insert("Diameter",QString::number(this->diameter));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Clit::load(QTextStream &ts)
+bool Clit::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->length=getValue(ts.readLine()).toLongLong();
-    this->diameter=getValue(ts.readLine()).toLongLong();
+    this->length=obj.value("Length").toString().toLongLong();
+    this->diameter=obj.value("Diameter").toString().toLongLong();
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

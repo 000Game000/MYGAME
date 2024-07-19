@@ -1,5 +1,6 @@
 #ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
+#include <QJsonObject>
 #include<QString>
 #include <QTextStream>
 namespace MYGAME {
@@ -24,8 +25,8 @@ public:
     long long getEXP() const;
     void setEXP(long long newEXP);
     virtual void show();
-    virtual QString save();
-    virtual void load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
 };
 }
 #endif // ATTRIBUTE_H

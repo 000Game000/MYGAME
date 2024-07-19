@@ -1,5 +1,6 @@
 #ifndef SKILL_H
 #define SKILL_H
+#include <QJsonObject>
 #include<QString>
 #include <QTextStream>
 namespace MYGAME{
@@ -15,8 +16,8 @@ protected:
 public:
     Skill();
     Skill(const QString &name, long long rank, long long EXP);
-    virtual QString save();
-    virtual bool load(QTextStream &ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     QString getName() const;
     void setName(const QString &newName);
     long long getRank() const;

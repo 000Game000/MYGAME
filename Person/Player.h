@@ -16,9 +16,10 @@ private:
     unsigned long long point;                                       //系统点数
     std::vector<ItemBase*>itemList;                                 //物品表列
 public:
-    Player();
-    virtual QString save();
-    virtual bool load(QTextStream&ts,std::vector<MYGAME::Map*>*mapList);
+    Player(int year=1,int month=1,int day=1);
+    //virtual ~Player();
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     void show();
     unsigned long long getMoney() const;
     void setMoney(unsigned long long newMoney);

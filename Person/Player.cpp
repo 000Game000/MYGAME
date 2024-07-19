@@ -1,4 +1,7 @@
 #include "Player.h"
+
+#include <QJsonArray>
+#include <QJsonObject>
 namespace MYGAME {
 unsigned long long Player::getMoney() const
 {
@@ -35,35 +38,54 @@ void Player::setPoint(unsigned long long newPoint)
     point = newPoint;
 }
 
-Player::Player()
+Player::Player(int year,int month,int day):People(year,month,day)
 {
 }
 
-QString Player::save()
+// Player::~Player()
+// {
+//     for(ItemBase*item:this->itemList){
+//         delete item;
+//     }
+// }
+
+QJsonObject*Player::save()
 {
-    QString str="\n类型:Player\nmoney:"+QString::number(this->money)+"\npoint:"+QString::number(this->point);
-    str+="\n数量:"+QString::number(this->itemList.size());
-    for(size_t i=0;i<this->itemList.size();i++){
-        str+=this->itemList[i]->save();
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("Type","Player");
+    obj->insert("Money",QString::number(this->money));
+    obj->insert("Point",QString::number(this->point));
+    QJsonArray*array=new QJsonArray();
+    for(ItemBase*i:this->itemList){
+        array->append(*(i->save()));
     }
-    str+=People::save();
-    return str;
+    obj->insert("Item",*array);
+    obj->insert("People",*People::save());
+    return obj;
 }
 
-bool Player::load(QTextStream &ts,std::vector<MYGAME::Map*>*mapList)
+bool Player::load(QJsonObject obj)
 {
-    this->money=getValue(ts.readLine()).toULongLong();
-    this->point=getValue(ts.readLine()).toULongLong();
-    size_t max=getValue(ts.readLine()).toLongLong();
-    for(size_t i=0;i<max;i++){
-        QString type=getValue(ts.readLine());{
-            if(type.compare("ItemBase")==0){
-                ItemBase*P=new ItemBase();
-                P->load(ts);
+    this->money=obj.value("Money").toString().toULongLong();
+    this->point=obj.value("Point").toString().toULongLong();
+    QJsonValue value=obj.value("Item");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        for(long long i=0;i<arr.size();i++){
+            QJsonValue v=arr.at(i);
+            if(v.isObject()){
+                QJsonObject o=v.toObject();
+                ItemBase*item=new ItemBase();
+                item->load(o);
+                itemList.push_back(item);
             }
         }
     }
-    People::load(ts,mapList);
+    value=obj.value("People");
+    if(value.isObject()){
+        QJsonObject people=value.toObject();
+        People::load(people);
+    }
     return true;
 }
 void Player::show()

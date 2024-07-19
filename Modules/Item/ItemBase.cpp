@@ -90,22 +90,34 @@ ItemBase::ItemBase(const QString &name, const QString &describe, const QString &
     count(count)
 {}
 
-QString ItemBase::save()
+ItemBase::~ItemBase()
 {
-    QString str="\n类型:ItemBase\nname:"+this->name+"\ndescribe:"+this->describe+"\nitemFunction:"+this->itemFunction+"\nitemType:"+this->itemType
-                  +"\nlocation:"+this->location+"\nmoney:"+QString::number(this->money)+"\ncount:"+QString::number(this->count);
-    return str;
+
 }
 
-bool ItemBase::load(QTextStream &ts)
+QJsonObject*ItemBase::save()
 {
-    this->name=getValue(ts.readLine());
-    this->describe=getValue(ts.readLine());
-    this->itemFunction=getValue(ts.readLine());
-    this->itemType=getValue(ts.readLine());
-    this->location=getValue(ts.readLine());
-    this->money=getValue(ts.readLine()).toULongLong();
-    this->count=getValue(ts.readLine()).toULongLong();
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("Type","ItemBase");
+    obj->insert("Name",this->name);
+    obj->insert("Describe",this->describe);
+    obj->insert("ItemFunction",this->itemFunction);
+    obj->insert("ItemType",this->itemType);
+    obj->insert("Location",this->location);
+    obj->insert("Money",QString::number(this->money));
+    obj->insert("Count",QString::number(this->count));
+    return obj;
+}
+
+bool ItemBase::load(QJsonObject obj)
+{
+    this->name=obj.value("Name").toString();
+    this->describe=obj.value("Describe").toString();
+    this->itemFunction=obj.value("ItemFunction").toString();
+    this->itemType=obj.value("ItemType").toString();
+    this->location=obj.value("Location").toString();
+    this->money=obj.value("Money").toString().toULongLong();
+    this->count=obj.value("Count").toString().toULongLong();
     return true;
 }
 }

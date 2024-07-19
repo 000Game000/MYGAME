@@ -1,5 +1,6 @@
 #ifndef POSITIONBASE_H
 #define POSITIONBASE_H
+#include <QJsonObject>
 #include<QString>
 #include <QTextStream>
 namespace MYGAME {
@@ -28,8 +29,8 @@ public:
     /* 设置每级的部位经验
      */
     virtual void setEXPValue();
-    virtual QString save();
-    virtual bool load(QTextStream &ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     QString getName() const;
     void setName(const QString &newName);
     long long getRank() const;

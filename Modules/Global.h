@@ -1,5 +1,6 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
+#include <QJsonArray>
 #include<QList>
 #include<QString>
 #include"Mainwindow.h"
@@ -34,6 +35,8 @@ public:
     CreateLead *getCreateLead() const;
     void setCreateLead(CreateLead *newCreateLead);
 };
+const QString Version="0.0.1";               //游戏版本号
+QColor JsonArrToQColor(QJsonArray arr);
 extern Global global;
 }
 #endif // GLOBAL_H

@@ -16,12 +16,13 @@ PeopleList::~PeopleList()
     delete ui;
 }
 
-PeopleList::PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime* const time,QWidget *parent) : PeopleList(parent)
+PeopleList::PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime* const time,std::unordered_map<QString,MYGAME::Node*>*mapList,QWidget *parent) : PeopleList(parent)
 {
+    this->mapList=mapList;
     this->peopleList=peopleList;
     for(size_t i=0;i<this->peopleList->size();i++){
         QListWidgetItem*qlwi=new QListWidgetItem();
-        PeopleListItem*P=new PeopleListItem(dynamic_cast<MYGAME::Girl*>((*this->peopleList)[i]),time,this);
+        PeopleListItem*P=new PeopleListItem(dynamic_cast<MYGAME::Girl*>((*this->peopleList)[i]),time,mapList,this);
         qlwi->setSizeHint(P->size());
         ui->listWidget->addItem(qlwi);
         ui->listWidget->setItemWidget(qlwi,P);
@@ -31,7 +32,7 @@ PeopleList::PeopleList(std::vector<MYGAME::People *> *peopleList,const QDateTime
 
 void PeopleList::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
-    CharacterDetails*windows=new CharacterDetails(dynamic_cast<MYGAME::Girl*>((*this->peopleList)[ui->listWidget->row(item)]));
+    CharacterDetails*windows=new CharacterDetails(dynamic_cast<MYGAME::Girl*>((*this->peopleList)[ui->listWidget->row(item)]),mapList);
     windows->show();
 }
 

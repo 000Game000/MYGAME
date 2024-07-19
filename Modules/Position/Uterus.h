@@ -25,8 +25,8 @@ public:
      */
     Uterus(long long rank, long long EXP, long long pleasure, long long count,long long volume,short menstrualCycle=28,short pregnancyDays=-1);
     Uterus();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     long long getVolume() const;
     void setVolume(long long newVolume);
     short getMenstrualCycle() const;

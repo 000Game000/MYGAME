@@ -43,19 +43,27 @@ Bladder::Bladder()
 
 }
 
-QString Bladder::save()
+QJsonObject *Bladder::save()
 {
-    QString str=PositionBase::save()+"\nvolume:"+QString::number(this->volume)+"\nstock:"+QString::number(this->stock)
-                  +"\nyield:"+QString::number(this->yield);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Bladder");
+    obj->insert("Volume",QString::number(this->volume));
+    obj->insert("Stock",QString::number(this->stock));
+    obj->insert("Yield",QString::number(this->yield));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Bladder::load(QTextStream &ts)
+bool Bladder::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->volume=getValue(ts.readLine()).toLongLong();
-    this->stock=getValue(ts.readLine()).toLongLong();
-    this->yield=getValue(ts.readLine()).toLongLong();
+    this->volume=obj.value("Volume").toString().toLongLong();
+    this->stock=obj.value("Stock").toString().toLongLong();
+    this->yield=obj.value("Yield").toString().toLongLong();
+    QJsonValue value=obj.value("Bladder");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

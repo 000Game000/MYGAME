@@ -60,4 +60,14 @@ void Global::initCareerList()
 {
     this->careerList<<"自由职业者";
 }
+
+QColor JsonArrToQColor(QJsonArray arr)
+{
+    QColor color;
+    int r=arr.at(0).toInt();
+    int g=arr.at(1).toInt();
+    int b=arr.at(2).toInt();
+    color.setRgb(r,g,b);
+    return color;
+}
 }

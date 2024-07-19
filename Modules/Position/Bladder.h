@@ -21,8 +21,8 @@ public:
      */
     Bladder(long long rank, long long EXP, long long pleasure, long long count,long long volume);
     Bladder();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     long long getVolume() const;
     void setVolume(long long newVolume);
     long long getStock() const;

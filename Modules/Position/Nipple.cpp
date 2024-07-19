@@ -1,5 +1,7 @@
 #include "Nipple.h"
-#include "Modules/Modules.h"
+#include "Modules/Global.h"
+
+#include <QJsonArray>
 namespace MYGAME{
 long long Nipple::getLength() const
 {
@@ -52,31 +54,41 @@ Nipple::Nipple()
 
 }
 
-QString Nipple::save()
+QJsonObject *Nipple::save()
 {
-    QString str=PositionBase::save()+"\nlength:"+QString::number(this->length)+"\ndiameter:"+QString::number(this->diameter)
-                  +"\nductusLactiferiDiameter:"+QString::number(this->ductusLactiferiDiameter)+"\ncolor:";
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Nipple");
+    obj->insert("Length",QString::number(this->length));
+    obj->insert("Diameter",QString::number(this->diameter));
+    obj->insert("DuctusLactiferiDiameter",QString::number(this->ductusLactiferiDiameter));
+    QJsonArray*color=new QJsonArray();
     int r=0;
     int g=0;
     int b=0;
     this->color.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    return str;
+    color->append(r);
+    color->append(g);
+    color->append(b);
+    obj->insert("Color",*color);
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Nipple::load(QTextStream &ts)
+bool Nipple::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->length=getValue(ts.readLine()).toLongLong();
-    this->diameter=getValue(ts.readLine()).toLongLong();
-    this->ductusLactiferiDiameter=getValue(ts.readLine()).toLongLong();
-    ts.readLine();
-    int r=getValue(ts.readLine()).toInt();
-    int g=getValue(ts.readLine()).toInt();
-    int b=getValue(ts.readLine()).toInt();
-    this->color.setRgb(r,g,b);
+    this->length=obj.value("Length").toString().toLongLong();
+    this->diameter=obj.value("Diameter").toString().toLongLong();
+    this->ductusLactiferiDiameter=obj.value("DuctusLactiferiDiameter").toString().toLongLong();
+    QJsonValue value=obj.value("Color");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->color=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

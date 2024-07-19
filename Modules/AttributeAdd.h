@@ -20,8 +20,8 @@ public:
     void show();
     long long getNowValue() const;
     void setNowValue(long long newNowValue);
-    virtual QString save();
-    virtual void load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
 };
 }
 #endif // ATTRIBUTEADD_H

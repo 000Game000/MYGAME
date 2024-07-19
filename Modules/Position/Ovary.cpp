@@ -10,15 +10,21 @@ Ovary::Ovary()
 
 }
 
-QString Ovary::save()
+QJsonObject *Ovary::save()
 {
-    QString str=PositionBase::save();
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Ovary");
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Ovary::load(QTextStream &ts)
+bool Ovary::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

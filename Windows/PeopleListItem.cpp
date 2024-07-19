@@ -13,11 +13,11 @@ PeopleListItem::~PeopleListItem()
     delete ui;
 }
 
-PeopleListItem::PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,QWidget *parent):PeopleListItem(parent)
+PeopleListItem::PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,std::unordered_map<QString,MYGAME::Node*>*mapList,QWidget *parent):PeopleListItem(parent)
 {
     this->girl=girl;
     ui->name->setText(this->girl->getName());
-    ui->age->setText(QString::number(time->date().year()-this->girl->getBirthday().year()));
+    ui->age->setText("年龄:"+QString::number(time->date().year()-this->girl->getBirthday().year()));
     ui->lovept->setText("好感度:"+QString::number(this->girl->getLovept()));
     ui->obedience->setText("服从度:"+QString::number(this->girl->getObedience()));
     ui->fornication->setText("淫乱度:"+QString::number(this->girl->getFornication()));
@@ -47,5 +47,5 @@ PeopleListItem::PeopleListItem(MYGAME::Girl *girl,const QDateTime*const time,QWi
             ui->energyBarNumberLabel->setText(QString::number(temp->getNowValue())+"/"+QString::number(temp->getRank()));
         }
     }
-    ui->position->setText(this->girl->getCurrentPosition()->getName());
+    ui->position->setText("当前所在地点:"+(*mapList)[this->girl->getCurrentPosition()]->getName());
 }

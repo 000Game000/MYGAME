@@ -42,8 +42,8 @@ public:
      */
     Breast(long long rank, long long EXP, long long pleasure, long long count,bool milkYield,long long size);
     Breast();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     double getMilkYield() const;
     void setMilkYield(double newMilkYield);
     long long getVolume() const;

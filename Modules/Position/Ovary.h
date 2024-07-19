@@ -16,8 +16,8 @@ public:
      */
     Ovary(long long rank, long long EXP, long long pleasure, long long count);
     Ovary();
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
 };
 }
 #endif // OVARY_H

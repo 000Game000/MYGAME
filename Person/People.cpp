@@ -1,6 +1,6 @@
 #include "People.h"
-#include "Modules/MYFunctions.h"
-
+//#include "Modules/MYFunctions.h"
+#include "Modules/Global.h"
 #include <Modules/AttributeAdd.h>
 
 #include <Modules/Position/Anus.h>
@@ -14,20 +14,33 @@
 #include <Modules/Position/Urethra.h>
 #include <Modules/Position/Uterus.h>
 #include <Modules/Position/Vagina.h>
+
+#include <QJsonArray>
 namespace MYGAME {
-Map *People::getCurrentPosition() const
+
+QString People::getLive() const
+{
+    return live;
+}
+
+void People::setLive(QString newLive)
+{
+    live = newLive;
+}
+
+QString People::getCurrentPosition() const
 {
     return currentPosition;
 }
 
-void People::setCurrentPosition(Map *newCurrentPosition)
+void People::setCurrentPosition(QString newCurrentPosition)
 {
     currentPosition = newCurrentPosition;
 }
 
-People::People()
+People::People(int year,int month,int day)
 {
-    this->live=nullptr;
+    this->birthday.setDate(year,month,day);
 }
 
 QString People::getName() const
@@ -211,255 +224,215 @@ void People::setPositionList(const std::vector<PositionBase *> &newPositionList)
     positionList = newPositionList;
 }
 
-Room *People::getLive() const
+QJsonObject*People::save()
 {
-    return live;
-}
-
-void People::setLive(Room *newLive)
-{
-    live = newLive;
-}
-
-void People::setLive(Map *newLive)
-{
-    live = dynamic_cast<Room*>(newLive);
-}
-
-// Cloths People::getCloths() const
-// {
-//     return cloths;
-// }
-
-// Cloths &People::getVariableCloths()
-// {
-//     return cloths;
-// }
-
-// void People::setCloths(const Cloths &newCloths)
-// {
-//     cloths = newCloths;
-// }
-
-QString People::save()
-{
-    QString str="\nname:"+this->name+"\nnickName:"+this->nickName+"\nclaimed:"+this->claimed
-                  +"\nbirthday:"+this->birthday.toString("yyyy-MM-dd")+"\noccupation:"+this->occupation
-                  +"\nmajor:"+this->major;
-    str+="\n数量:"+QString::number(this->attributeList.size());
-    for(size_t i=0;i<this->attributeList.size();i++){
-        str+=attributeList[i]->save();
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","People");
+    obj->insert("Name",this->name);
+    obj->insert("NickName",this->nickName);
+    obj->insert("Claimed",this->claimed);
+    obj->insert("Birthday",this->birthday.toString("yyyy-MM-dd"));
+    obj->insert("Occupation",this->occupation);
+    obj->insert("Major",this->major);
+    QJsonArray*JAttributeList=new QJsonArray();
+    for(Attribute*i:this->attributeList){
+        JAttributeList->append(*i->save());
     }
-    str+="\nheight:"+QString::number(this->height)+"\nweight:"+QString::number(this->height)+"\nhairColor:";
+    obj->insert("Attribute",*JAttributeList);
+    obj->insert("Height",this->height);
+    obj->insert("Weight",this->weight);
+
+    QJsonArray*JHairColor=new QJsonArray();
     int r=0;
     int g=0;
     int b=0;
     this->hairColor.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    str+="\nskinColor:";
+    JHairColor->append(r);
+    JHairColor->append(g);
+    JHairColor->append(b);
+    obj->insert("HairColor",*JHairColor);
+
+    QJsonArray*JSkinColor=new QJsonArray();
     this->skinColor.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    str+="\nRPupilColor:";
+    JSkinColor->append(r);
+    JSkinColor->append(g);
+    JSkinColor->append(b);
+    obj->insert("SkinColor",*JSkinColor);
+
+    QJsonArray*JRPupilColor=new QJsonArray();
     this->RPupilColor.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    str+="\nLPupilColor:";
+    JRPupilColor->append(r);
+    JRPupilColor->append(g);
+    JRPupilColor->append(b);
+    obj->insert("RPupilColor",*JRPupilColor);
+
+    QJsonArray*JLPupilColor=new QJsonArray();
     this->LPupilColor.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    str+="\n数量:"+QString::number(this->tagList.size());
-    for(size_t i=0;i<this->tagList.size();i++){
-        str+=this->tagList[i]->save();
+    JLPupilColor->append(r);
+    JLPupilColor->append(g);
+    JLPupilColor->append(b);
+    obj->insert("LPupilColor",*JLPupilColor);
+
+    QJsonArray*JTagList=new QJsonArray();
+    for(Tag*i:this->tagList){
+        JTagList->append(*i->save());
     }
-    str+="\n数量:"+QString::number(this->skillList.size());
-    for(size_t i=0;i<this->skillList.size();i++){
-        str+=this->skillList[i]->save();
+    obj->insert("TagList",*JTagList);
+
+    QJsonArray*JSkillList=new QJsonArray();
+    for(Skill*i:this->skillList){
+        JSkillList->append(*i->save());
     }
-    str+="\n数量:"+QString::number(this->positionList.size());
-    for(size_t i=0;i<this->positionList.size();i++){
-        str+=this->positionList[i]->save();
+    obj->insert("SkillList",*JSkillList);
+
+    QJsonArray*JPositionList=new QJsonArray();
+    for(PositionBase*i:this->positionList){
+        JPositionList->append(*i->save());
     }
-    str+="\ndescribe:"+this->describe;
-    str+="\nlive:"+MYGAME::getSPosition(this->live);
-    str+="\ncurrentPosition:"+MYGAME::getSPosition(this->currentPosition);
-    return str;
+    obj->insert("PositionList",*JPositionList);
+    obj->insert("Describe",this->describe);
+    obj->insert("Live",this->live);
+    obj->insert("CurrentPosition",this->currentPosition);
+    return obj;
 }
 
-bool People::load(QTextStream &ts,std::vector<MYGAME::Map*>*mapList)
+bool People::load(QJsonObject obj)
 {
-    this->name=getValue(ts.readLine());
-    this->nickName=getValue(ts.readLine());
-    this->claimed=getValue(ts.readLine());
-    this->birthday=QDate::fromString(getValue(ts.readLine()),"yyyy-MM-dd");
-    this->occupation=getValue(ts.readLine());
-    this->major=getValue(ts.readLine());
-    size_t max=getValue(ts.readLine()).toULongLong();
-    for(size_t i=0;i<max;i++){
-        QString type=getValue(ts.readLine());
-        if(type.compare("AttributeAdd")==0){
-            AttributeAdd*add=new AttributeAdd();
-            add->load(ts);
-            this->attributeList.push_back(add);
-        }else if(type.compare("Attribute")==0){
-            Attribute*a=new Attribute();
-            a->load(ts);
-            this->attributeList.push_back(a);
-        }
-    }
-    this->height=(Height)getValue(ts.readLine()).toInt();
-    this->weight=(Weight)getValue(ts.readLine()).toInt();
-    ts.readLine();
-    int r=getValue(ts.readLine()).toInt();
-    int g=getValue(ts.readLine()).toInt();
-    int b=getValue(ts.readLine()).toInt();
-    this->hairColor.setRgb(r,g,b);
-    ts.readLine();
-    r=getValue(ts.readLine()).toInt();
-    g=getValue(ts.readLine()).toInt();
-    b=getValue(ts.readLine()).toInt();
-    this->skinColor.setRgb(r,g,b);
-    ts.readLine();
-    r=getValue(ts.readLine()).toInt();
-    g=getValue(ts.readLine()).toInt();
-    b=getValue(ts.readLine()).toInt();
-    this->RPupilColor.setRgb(r,g,b);
-    ts.readLine();
-    r=getValue(ts.readLine()).toInt();
-    g=getValue(ts.readLine()).toInt();
-    b=getValue(ts.readLine()).toInt();
-    this->LPupilColor.setRgb(r,g,b);
-    max=getValue(ts.readLine()).toULongLong();
-    for(size_t i=0;i<max;i++){
-        Tag*P=new Tag();
-        P->load(ts);
-        this->tagList.push_back(P);
-    }
-    max=getValue(ts.readLine()).toULongLong();
-    for(size_t i=0;i<max;i++){
-        Skill*P=new Skill();
-        P->load(ts);
-        this->skillList.push_back(P);
-    }
-    max=getValue(ts.readLine()).toULongLong();
-    for(size_t i=0;i<max;i++){
-        QString name=getValue(ts.readLine());
-        if(name.compare("肛门")==0){
-            Anus*P=new Anus();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("膀胱")==0){
-            Bladder*P=new Bladder();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("乳房")==0){
-            Breast*P=new Breast();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("阴蒂")==0){
-            Clit*P=new Clit();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("嘴巴")==0){
-            Mouth*P=new Mouth();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("乳头")==0){
-            Nipple*P=new Nipple();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("卵巢")==0){
-            Ovary*P=new Ovary();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("阴茎")==0){
-            Penis*P=new Penis();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("尿道")==0){
-            Urethra*P=new Urethra();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("子宫")==0){
-            Uterus*P=new Uterus();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-        if(name.compare("阴道")==0){
-            Vagina*P=new Vagina();
-            P->setName(name);
-            P->load(ts);
-            this->positionList.push_back(P);
-        }
-    }
-    this->describe=getValue(ts.readLine());
-    QString str=getValue(ts.readLine());
-    QStringList slist=str.split("\\");
-    for(qsizetype i=0;i<slist.size();i++){
-        for(size_t j=0;j<mapList->size();j++){
-            if(slist[i].compare((*mapList)[j]->getName())==0){
-                if((*mapList)[j]->getList()==nullptr){
-                    this->live=dynamic_cast<Room*>((*mapList)[j]);
-                    break;
+    this->name=obj.value("Name").toString();
+    this->nickName=obj.value("NickName").toString();
+    this->claimed=obj.value("Claimed").toString();
+    this->birthday=QDate::fromString(obj.value("Birthday").toString(),"yyyy-MM-dd");
+    //qDebug()<<this->birthday.toString("yyyy-MM-dd");
+    this->occupation=obj.value("Occupation").toString();
+    this->major=obj.value("Major").toString();
+    QJsonValue value=obj.value("Attribute");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        for(long long i=0;i<arr.size();i++){
+            QJsonValue v=arr.at(i);
+            if(v.isObject()){
+                QJsonObject o=v.toObject();
+                if(o.value("ClassType").toString().compare("Attribute")==0){
+                    Attribute*a=new Attribute();
+                    a->load(o);
+                    this->attributeList.push_back(a);
+                }else{
+                    AttributeAdd*a=new AttributeAdd();
+                    a->load(o);
+                    this->attributeList.push_back(a);
                 }
-                mapList=(*mapList)[j]->getList();
-                break;
             }
         }
     }
-    str=getValue(ts.readLine());
-    slist=str.split("\\");
-    for(qsizetype i=0;i<slist.size();i++){
-        for(size_t j=0;j<mapList->size();j++){
-            if(slist[i].compare((*mapList)[j]->getName())==0){
-                if((*mapList)[j]->getList()==nullptr){
-                    this->currentPosition=(*mapList)[j];
-                    break;
-                }
-                mapList=(*mapList)[j]->getList();
-                break;
+    this->height=(Height)obj.value("Height").toInt();
+    this->weight=(Weight)obj.value("Weight").toInt();
+    value=obj.value("HairColor");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->hairColor=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("SkinColor");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->skinColor=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("RPupilColor");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->RPupilColor=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("LPupilColor");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->LPupilColor=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("TagList");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        for(long long i=0;i<arr.size();i++){
+            QJsonValue t=arr.at(i);
+            if(t.isObject()){
+                QJsonObject o=t.toObject();
+                Tag*tag=new Tag();
+                tag->load(o);
+                this->tagList.push_back(tag);
             }
         }
     }
+    value=obj.value("SkillList");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        for(long long i=0;i<arr.size();i++){
+            QJsonValue s=arr.at(i);
+            if(s.isObject()){
+                QJsonObject o=s.toObject();
+                Skill*s=new Skill();
+                s->load(o);
+                this->skillList.push_back(s);
+            }
+        }
+    }
+    value=obj.value("PositionList");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        for(long long i=0;i<arr.size();i++){
+            QJsonValue s=arr.at(i);
+            if(s.isObject()){
+                QJsonObject o=s.toObject();
+                if(o.value("ClassType").toString().compare("Anus")==0){
+                    Anus*a=new Anus();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Bladder")==0){
+                    Bladder*a=new Bladder();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Breast")==0){
+                    Breast*a=new Breast();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Clit")==0){
+                    Clit*a=new Clit();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Mouth")==0){
+                    Mouth*a=new Mouth();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Nipple")==0){
+                    Nipple*a=new Nipple();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Ovary")==0){
+                    Ovary*a=new Ovary();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Penis")==0){
+                    Penis*a=new Penis();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Urethra")==0){
+                    Urethra*a=new Urethra();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Uterus")==0){
+                    Uterus*a=new Uterus();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }else if(o.value("ClassType").toString().compare("Vagina")==0){
+                    Vagina*a=new Vagina();
+                    a->load(o);
+                    this->positionList.push_back(a);
+                }
+            }
+        }
+    }
+    this->describe=obj.value("Describe").toString();
+    this->live=obj.value("Live").toString();
+    this->currentPosition=obj.value("CurrentPosition").toString();
     return true;
 }
-std::vector<Attribute*> attributeList;          //属性表列
-Height height;                                  //身高
-Weight weight;                                  //胖瘦
-QColor hairColor;                               //发色
-QColor skinColor;                               //肤色
-QColor RPupilColor;                             //右眼颜色
-QColor LPupilColor;                             //左眼颜色
-std::vector<Tag*> tagList;                      //人物素质
-std::vector<Skill*> skillList;                  //技能表列
-std::vector<PositionBase*> positionList;        //部位表列
-QString describe;                               //人物描述
-Room *live;                                     //人物居住地址
-Map*currentPosition;                            //当前所在地点
+
 std::vector<Tag *> People::getTagList() const
 {
     return tagList;

@@ -1,7 +1,7 @@
 #ifndef MAPLIST_H
 #define MAPLIST_H
 
-#include "Map/Map.h"
+#include "Map/Node.h"
 #include <QDialog>
 #include <QListWidgetItem>
 #include <QTextBrowser>
@@ -17,19 +17,23 @@ class MapList : public QDialog
 
 public:
     explicit MapList(QDialog *parent = nullptr);
-    MapList(QDateTime*time,MYGAME::Player*play,QString Type,QTextBrowser*text,QDialog *parent = nullptr);
+    MapList(QDateTime*time,MYGAME::Player*play,QTextBrowser*text,const std::unordered_map<QString,MYGAME::Node*>*mapList,QDialog *parent = nullptr);
     ~MapList();
+    void Refresh(const MYGAME::Node*n);
 
 private slots:
     void on_mapList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MapList *ui;
-    QString type;
     QDateTime*time;
+    unsigned long long money;
+    unsigned long long timeAdd;
     QTextBrowser*text;
     MYGAME::Player*play;
-    std::vector<MYGAME::Map*>*mapList;
+    const MYGAME::Node*n;
+    std::vector<MYGAME::Path*> pathList;
+    const std::unordered_map<QString,MYGAME::Node*>*mapList;
 };
 
 #endif // MAPLIST_H

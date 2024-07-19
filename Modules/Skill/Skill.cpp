@@ -1,5 +1,4 @@
 #include "Skill.h"
-#include "Modules/Modules.h"
 namespace MYGAME {
 QString Skill::getName() const
 {
@@ -41,17 +40,21 @@ Skill::Skill(const QString &name, long long rank, long long EXP) : name(name),
     EXP(EXP)
 {}
 
-QString Skill::save()
+QJsonObject*Skill::save()
 {
-    QString str="\nname:"+this->name+"\nrank:"+QString::number(this->rank)+"\nEXP:"+QString::number(this->EXP);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Skill");
+    obj->insert("Name",this->name);
+    obj->insert("Rank",QString::number(this->rank));
+    obj->insert("EXP",QString::number(this->EXP));
+    return obj;
 }
 
-bool Skill::load(QTextStream &ts)
+bool Skill::load(QJsonObject obj)
 {
-    this->name=getValue(ts.readLine());
-    this->rank=getValue(ts.readLine()).toLongLong();
-    this->EXP=getValue(ts.readLine()).toLongLong();
+    this->name=obj.value("Name").toString();
+    this->rank=obj.value("Rank").toString().toLongLong();
+    this->EXP=obj.value("EXP").toString().toLongLong();
     return true;
 }
 }

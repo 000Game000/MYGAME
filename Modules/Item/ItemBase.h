@@ -1,5 +1,6 @@
 #ifndef ITEMBASE_H
 #define ITEMBASE_H
+#include <QJsonObject>
 #include <QString>
 #include <QTextStream>
 namespace MYGAME{
@@ -19,8 +20,9 @@ protected:
 public:
     ItemBase();
     ItemBase(const QString &name, const QString &describe, const QString &itemFunction, const QString &itemType, const QString &location, long long money, long long count);
-    virtual QString save();
-    virtual bool load(QTextStream&ts);
+    virtual ~ItemBase();
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
     QString getName() const;
     void setName(const QString &newName);
     QString getDescribe() const;

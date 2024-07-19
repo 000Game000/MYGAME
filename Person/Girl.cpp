@@ -105,36 +105,53 @@ void Girl::setExposing(long long newExposing)
     exposing = newExposing;
 }
 
-Girl::Girl()
+Girl::Girl(int year,int month,int day):People(year,month,day)
 {
     this->crotchTattoo=new CrotchTattoo();
 }
 
-QString Girl::save()
+QJsonObject *Girl::save()
 {
-    QString str="\nid:"+QString::number(this->id)+"\nlovept:"+QString::number(this->lovept)
-                  +"\nobedience:"+QString::number(this->obedience)+"\nfornication:"+QString::number(this->fornication)
-                  +"\ndesire:"+QString::number(this->desire)+"\nsm:"+QString::number(this->sm)+"\nexposing:"+QString::number(this->exposing)
-                  +"\nimg:"+this->img+"\nthought:"+this->thought+"\nselfIntroduction:"+this->selfIntroduction;
-    str+=this->crotchTattoo->save();
-    str+=People::save();
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Girl");
+    obj->insert("Id",QString::number(this->id));
+    obj->insert("Lovept",QString::number(this->lovept));
+    obj->insert("Obedience",QString::number(this->obedience));
+    obj->insert("Fornication",QString::number(this->fornication));
+    obj->insert("Desire",QString::number(this->desire));
+    obj->insert("SM",QString::number(this->sm));
+    obj->insert("Exposing",QString::number(this->exposing));
+    obj->insert("Img",this->img);
+    obj->insert("Thought",this->thought);
+    obj->insert("SelfIntroduction",this->selfIntroduction);
+    obj->insert("CrotchTattoo",*this->crotchTattoo->save());
+    obj->insert("People",*People::save());
+    return obj;
 }
 
-bool Girl::load(QTextStream &ts, std::vector<Map *> *mapList)
+bool Girl::load(QJsonObject obj)
 {
-    this->id=getValue(ts.readLine()).toLongLong();
-    this->lovept=getValue(ts.readLine()).toLongLong();
-    this->obedience=getValue(ts.readLine()).toLongLong();
-    this->fornication=getValue(ts.readLine()).toLongLong();
-    this->desire=getValue(ts.readLine()).toLongLong();
-    this->sm=getValue(ts.readLine()).toLongLong();
-    this->exposing=getValue(ts.readLine()).toLongLong();
-    this->img=getValue(ts.readLine());
-    this->thought=getValue(ts.readLine());
-    this->selfIntroduction=getValue(ts.readLine());
-    this->crotchTattoo->load(ts);
-    People::load(ts,mapList);
+    this->id=obj.value("Id").toString().toLongLong();
+    this->lovept=obj.value("Lovept").toString().toLongLong();
+    this->obedience=obj.value("Obedience").toString().toLongLong();
+    this->fornication=obj.value("Fornication").toString().toLongLong();
+    this->desire=obj.value("Desire").toString().toLongLong();
+    this->sm=obj.value("SM").toString().toLongLong();
+    this->exposing=obj.value("Exposing").toString().toLongLong();
+    this->img=obj.value("Img").toString();
+    this->thought=obj.value("Thought").toString();
+    this->selfIntroduction=obj.value("SelfIntroduction").toString();
+    QJsonValue value=obj.value("CrotchTattoo");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        this->crotchTattoo=new CrotchTattoo();
+        this->crotchTattoo->load(o);
+    }
+    value=obj.value("People");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        People::load(o);
+    }
     return true;
 }
 }

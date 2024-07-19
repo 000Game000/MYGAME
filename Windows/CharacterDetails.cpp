@@ -1,6 +1,5 @@
 #include "CharacterDetails.h"
 #include "ui_CharacterDetails.h"
-#include "Modules/MYFunctions.h"
 #include "Modules/AttributeAdd.h"
 #include "Modules/Position/Breast.h"
 #include <Modules/Position/Anus.h>
@@ -21,10 +20,11 @@ CharacterDetails::CharacterDetails(QWidget *parent) :
     ui->tabWidget->setCurrentIndex(0);
 }
 
-CharacterDetails::CharacterDetails(MYGAME::Girl *girl, QWidget *parent):CharacterDetails(parent)
+CharacterDetails::CharacterDetails(MYGAME::Girl *girl,std::unordered_map<QString,MYGAME::Node*>*mapList, QWidget *parent):CharacterDetails(parent)
 {
     this->girl=girl;
     this->setWindowTitle(this->girl->getName());
+    this->mapList=mapList;
     this->init();
 }
 
@@ -88,8 +88,10 @@ void CharacterDetails::init()
     ui->lovept->setText("好感度:"+QString::number(this->girl->getLovept()));
     ui->obedience->setText("服从度:"+QString::number(this->girl->getObedience()));
     ui->fornication->setText("淫乱度:"+QString::number(this->girl->getFornication()));
-    ui->currentLocation->setText("当前所在地点:"+MYGAME::getSPosition(this->girl->getCurrentPosition()));
-    ui->housingLocation->setText("家庭住址:"+MYGAME::getSPosition(this->girl->getLive()));
+    ui->currentLocation->setText("当前所在地点:"+(*this->mapList)[this->girl->getCurrentPosition()]->getName());
+    ui->currentLocation->setToolTip(this->girl->getCurrentPosition());
+    ui->housingLocation->setText("家庭住址:"+(*this->mapList)[this->girl->getLive()]->getName());
+    ui->housingLocation->setToolTip(this->girl->getLive());
     std::vector<MYGAME::Attribute*>attributeList = this->girl->getVariableAttributeList();
     for(size_t i=0;i<attributeList.size();i++){
         MYGAME::Attribute*P=attributeList[i];

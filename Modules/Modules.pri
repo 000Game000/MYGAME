@@ -5,7 +5,6 @@ SOURCES += \
     $$PWD/Global.cpp \
     $$PWD/Item/Cloth.cpp \
     $$PWD/Item/ItemBase.cpp \
-    $$PWD/MYFunctions.cpp \
     $$PWD/Modules.cpp \
     $$PWD/Position/Anus.cpp \
     $$PWD/Position/Bladder.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     $$PWD/Global.h \
     $$PWD/Item/Cloth.h \
     $$PWD/Item/ItemBase.h \
-    $$PWD/MYFunctions.h \
     $$PWD/Modules.h \
     $$PWD/Position/Anus.h \
     $$PWD/Position/Bladder.h \

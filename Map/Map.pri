@@ -1,7 +1,7 @@
 HEADERS += \
-    $$PWD/Map.h \
-    $$PWD/Room.h
+    $$PWD/Node.h \
+    $$PWD/Path.h
 
 SOURCES += \
-    $$PWD/Map.cpp \
-    $$PWD/Room.cpp
+    $$PWD/Node.cpp \
+    $$PWD/Path.cpp

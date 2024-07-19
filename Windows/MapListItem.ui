@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>150</width>
-    <height>30</height>
+    <width>210</width>
+    <height>65</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,21 +18,35 @@
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <property name="rightMargin">
     <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <item>
     <widget class="QLabel" name="name">
      <property name="text">
-      <string>我需要十个字的长度啊</string>
+      <string>地点名称:十个十个十个十个十个</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="time">
+     <property name="text">
+      <string>消耗时间:2000年12月12日18时36分</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="money">
+     <property name="text">
+      <string>消耗金钱:2147483647</string>
      </property>
     </widget>
    </item>

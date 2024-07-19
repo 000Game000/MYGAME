@@ -1,5 +1,4 @@
 #include "Tag.h"
-#include "Modules/Modules.h"
 namespace MYGAME {
 
 
@@ -23,16 +22,19 @@ void Tag::setDescription(const QString &newDescription)
     description = newDescription;
 }
 
-QString Tag::save()
+QJsonObject*Tag::save()
 {
-    QString str="\name:"+this->name+"\ndescription:"+this->description;
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Tag");
+    obj->insert("Name",this->name);
+    obj->insert("Description",this->description);
+    return obj;
 }
 
-bool Tag::load(QTextStream &ts)
+bool Tag::load(QJsonObject obj)
 {
-    this->name=getValue(ts.readLine());
-    this->description=getValue(ts.readLine());
+    this->name=obj.value("Name").toString();
+    this->description=obj.value("Description").toString();
     return true;
 }
 

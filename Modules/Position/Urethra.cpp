@@ -1,5 +1,4 @@
 #include "Urethra.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 long long Urethra::getExpand() const
 {
@@ -22,16 +21,23 @@ Urethra::Urethra()
 
 }
 
-QString Urethra::save()
+QJsonObject *Urethra::save()
 {
-    QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Urethra");
+    obj->insert("Expand",QString::number(this->expand));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Urethra::load(QTextStream &ts)
+bool Urethra::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->expand=getValue(ts.readLine()).toLongLong();
+    this->expand=obj.value("Expand").toString().toLongLong();
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

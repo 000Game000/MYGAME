@@ -1,5 +1,4 @@
 #include "Breast.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 const long double PI=3.141592654;
 
@@ -67,6 +66,8 @@ Breast::Breast(long long rank, long long EXP, long long pleasure, long long coun
         if(this->milkYield<=0){
             this->milkYield=1;
         }
+    }else{
+        this->milkYield=0;
     }
 }
 
@@ -75,21 +76,31 @@ Breast::Breast()
 
 }
 
-QString Breast::save()
+QJsonObject *Breast::save()
 {
-    QString str=PositionBase::save()+"\nmilkYield:"+QString::number(this->milkYield)+"\nvolume:"+QString::number(this->volume)
-                  +"\nsize:"+QString::number(this->size)+"\ngalactophore:"+QString::number(this->galactophore)+"\nstock:"+QString::number(this->stock);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Breast");
+    obj->insert("MilkYield",QString::number(this->milkYield));
+    obj->insert("Volume",QString::number(this->volume));
+    obj->insert("Size",QString::number(this->size));
+    obj->insert("Galactophore",QString::number(this->galactophore));
+    obj->insert("Stock",QString::number(this->stock));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Breast::load(QTextStream &ts)
+bool Breast::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->milkYield=getValue(ts.readLine()).toDouble();
-    this->volume=getValue(ts.readLine()).toLongLong();
-    this->size=getValue(ts.readLine()).toLongLong();
-    this->galactophore=getValue(ts.readLine()).toLongLong();
-    this->stock=getValue(ts.readLine()).toLongLong();
+    this->milkYield=obj.value("MilkYield").toString().toDouble();
+    this->volume=obj.value("Volume").toString().toLongLong();
+    this->size=obj.value("Size").toString().toLongLong();
+    this->galactophore=obj.value("Galactophore").toString().toLongLong();
+    this->stock=obj.value("Stock").toString().toLongLong();
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
 }

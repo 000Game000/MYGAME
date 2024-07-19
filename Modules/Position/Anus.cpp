@@ -1,5 +1,4 @@
 #include "Anus.h"
-#include "Modules/Modules.h"
 namespace MYGAME{
 
 long long Anus::getExpand() const
@@ -38,17 +37,27 @@ Anus::Anus()
 
 }
 
-QString Anus::save()
+QJsonObject*Anus::save()
 {
-    QString str=PositionBase::save()+"\nexpand:"+QString::number(this->expand)+"\nvolume:"+QString::number(this->volume);
-    return str;
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Anus");
+    obj->insert("Expand",QString::number(this->expand));
+    obj->insert("Volume",QString::number(this->volume));
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Anus::load(QTextStream &ts)
+bool Anus::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->expand=getValue(ts.readLine()).toLongLong();
-    this->volume=getValue(ts.readLine()).toLongLong();
+    this->expand=obj.value("Expand").toString().toLongLong();
+    this->volume=obj.value("Volume").toString().toLongLong();
+    QJsonValue value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
+
+
 }

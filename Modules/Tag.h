@@ -1,6 +1,7 @@
 #ifndef TAG_H
 #define TAG_H
 #include "QString"
+#include <QJsonObject>
 #include <QTextStream>
 /*
  * 人物标签的类
@@ -19,8 +20,8 @@ public:
     void setName(const QString &newName);
     QString getDescription() const;
     void setDescription(const QString &newDescription);
-    virtual QString save();
-    virtual bool load(QTextStream &ts);
+    virtual QJsonObject*save();
+    virtual bool load(QJsonObject obj);
 };
 }
 #endif // TAG_H

@@ -1,5 +1,7 @@
 #include "Vagina.h"
-#include "Modules/Modules.h"
+#include "Modules/Global.h"
+
+#include <QJsonArray>
 namespace MYGAME{
 long long Vagina::getMaximumDiameter() const
 {
@@ -42,33 +44,39 @@ Vagina::Vagina()
 
 }
 
-QString Vagina::save()
+QJsonObject *Vagina::save()
 {
-    QString str=PositionBase::save()+"\nmaximumDiameter:"+QString::number(this->maximumDiameter)+"\nlength:"+QString::number(this->length)
-                  +"\ncolor:";
+    QJsonObject*obj=new QJsonObject();
+    obj->insert("ClassType","Vagina");
+    obj->insert("MaximumDiameter",QString::number(this->maximumDiameter));
+    obj->insert("Length",QString::number(this->length));
+    QJsonArray*color=new QJsonArray();
     int r=0;
     int g=0;
     int b=0;
     this->color.getRgb(&r,&g,&b);
-    str+="\nr:"+QString::number(r);
-    str+="\ng:"+QString::number(g);
-    str+="\nb:"+QString::number(b);
-    return str;
+    color->append(r);
+    color->append(g);
+    color->append(b);
+    obj->insert("Color",*color);
+    obj->insert("PositionBase",*PositionBase::save());
+    return obj;
 }
 
-bool Vagina::load(QTextStream &ts)
+bool Vagina::load(QJsonObject obj)
 {
-    PositionBase::load(ts);
-    this->maximumDiameter=getValue(ts.readLine()).toLongLong();
-    this->length=getValue(ts.readLine()).toLongLong();
-    ts.readLine();
-    int r=getValue(ts.readLine()).toInt();
-    int g=getValue(ts.readLine()).toInt();
-    int b=getValue(ts.readLine()).toInt();
-    this->color.setRgb(r,g,b);
+    this->maximumDiameter=obj.value("MaximumDiameter").toString().toLongLong();
+    this->length=obj.value("Length").toString().toLongLong();
+    QJsonValue value=obj.value("Color");
+    if(value.isArray()){
+        QJsonArray arr=value.toArray();
+        this->color=MYGAME::JsonArrToQColor(arr);
+    }
+    value=obj.value("PositionBase");
+    if(value.isObject()){
+        QJsonObject o=value.toObject();
+        PositionBase::load(o);
+    }
     return true;
 }
-long long maximumDiameter=10;                                      //现有最大直径单位mm萝莉10mm,成年20mm~30mm
-long long length=70;                                               //长度单位mm 萝莉40mm~70mm成人70mm~120mm
-QColor color;                                                      //阴唇颜色
 }
