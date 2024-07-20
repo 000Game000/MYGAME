@@ -54,6 +54,7 @@ private:
     std::unordered_map<QString,MYGAME::Node*> mapList;                                      //游戏地图
     std::vector<QString*(MainWindow::*)(UC)> SystemCommandList;                             //按钮表列
     std::vector<MYGAME::People*> peopleList;                                                //角色表列
+    std::vector<MYGAME::People*> locationPeople;                                            //与主角在同一地点的角色表列
 
     void refresh();                                                                         //刷新
     void initMap();                                                                         //初始化游戏地图
@@ -74,7 +75,7 @@ private:
     void addT(QDateTime*t);
 
     //显示人物表列
-    void showPeopleList();
-    bool ifShowPeopleList();
+    //void showPeopleList();
+    //bool ifShowPeopleList();
 };
 #endif // MAINWINDOW_H

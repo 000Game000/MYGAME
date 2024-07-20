@@ -14,6 +14,7 @@ SOURCES += \
     $$PWD/Module/MYStripAdd.cpp \
     $$PWD/PeopleList.cpp \
     $$PWD/PeopleListItem.cpp \
+    $$PWD/SimplePeopleItem.cpp \
     $$PWD/SystemStore.cpp \
     $$PWD/PlayerStatus.cpp
 HEADERS += \
@@ -32,6 +33,7 @@ HEADERS += \
     $$PWD/Module/MYStripAdd.h \
     $$PWD/PeopleList.h \
     $$PWD/PeopleListItem.h \
+    $$PWD/SimplePeopleItem.h \
     $$PWD/SystemStore.h \
     $$PWD/PlayerStatus.h
 FORMS += \
@@ -50,5 +52,6 @@ FORMS += \
     $$PWD/Module/MYStripAdd.ui \
     $$PWD/PeopleList.ui \
     $$PWD/PeopleListItem.ui \
+    $$PWD/SimplePeopleItem.ui \
     $$PWD/SystemStore.ui \
     $$PWD/PlayerStatus.ui

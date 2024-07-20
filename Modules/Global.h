@@ -28,11 +28,11 @@ public:
     void initCareerList();                                          //初始化职业表列
     QList<QString> getMajorList();
     QList<QString> getCareerList();
-    MainWindow *getMainWindow() const;
+    MainWindow *getMainWindow();
     void setMainWindow(MainWindow *newMainWindow);
-    BeginWindow *getBeginWindow() const;
+    BeginWindow *getBeginWindow();
     void setBeginWindow(BeginWindow *newBeginWindow);
-    CreateLead *getCreateLead() const;
+    CreateLead *getCreateLead();
     void setCreateLead(CreateLead *newCreateLead);
 };
 const QString Version="0.0.1";               //游戏版本号

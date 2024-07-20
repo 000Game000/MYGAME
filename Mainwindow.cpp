@@ -13,6 +13,7 @@
 #include "Windows/SystemStore.h"
 #include "Windows/PlayerStatus.h"
 #include "Modules/AttributeAdd.h"
+#include "Windows/SimplePeopleItem.h"
 
 #include <QDir>
 #include <QJsonArray>
@@ -34,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->_system=new MYGAME::System_();
     ui->Information->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
     ui->systemCommand->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->peopleListDock->setFeatures(QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
+    ui->peopleListDock->resize(100,0);
 }
 
 MainWindow::~MainWindow()
@@ -1238,6 +1241,22 @@ void MainWindow::refresh()
             ui->energyBarStrip->setMaxValue(temp->getRank());
             ui->energyBarStrip->setNowValue(temp->getNowValue());
             ui->energyBarNumberLabel->setText(QString::number(temp->getNowValue())+"/"+QString::number(temp->getRank()));
+        }
+    }
+    this->locationPeople.clear();
+    ui->PeopleListWidget->clear();
+    for(size_t i=0;i<this->peopleList.size();i++){
+        if(this->player->getCurrentPosition().compare(this->peopleList[i]->getCurrentPosition())==0){
+            this->locationPeople.push_back(this->peopleList[i]);
+        }
+    }
+    if(this->locationPeople.size()>0){
+        for(size_t i=0;i<this->peopleList.size();i++){
+            QListWidgetItem*qlwi=new QListWidgetItem();
+            SimplePeopleItem*spl=new SimplePeopleItem(dynamic_cast<MYGAME::Girl*>(this->locationPeople[i]),this->time);
+            qlwi->setSizeHint(spl->size());
+            ui->PeopleListWidget->addItem(qlwi);
+            ui->PeopleListWidget->setItemWidget(qlwi,spl);
         }
     }
     this->initSystemCommandDockWidget();

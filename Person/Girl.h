@@ -25,7 +25,9 @@ public:
     Girl(int year=1,int month=1,int day=1);
     virtual QJsonObject*save();
     virtual bool load(QJsonObject obj);
-    long long getId() const;
+    template<typename T>
+    std::vector<QString*(T::*)(unsigned char)>*getCommandList();
+    long long getId();
     void setId(long long newId);
     long long getLovept() const;
     void setLovept(long long newLovept);
@@ -46,6 +48,8 @@ public:
     void setSm(long long newSm);
     long long getExposing() const;
     void setExposing(long long newExposing);
+    QString*text(unsigned char);
+    long long getId() const;
 };
 }
 #endif // GIRL_H

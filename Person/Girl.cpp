@@ -1,6 +1,7 @@
 #include "Girl.h"
+#include "Modules/Global.h"
 namespace MYGAME {
-long long Girl::getId() const
+long long Girl::getId()
 {
     return id;
 }
@@ -105,6 +106,17 @@ void Girl::setExposing(long long newExposing)
     exposing = newExposing;
 }
 
+QString *Girl::text(unsigned char)
+{
+    MYGAME::global.getMainWindow();
+    return new QString("false");
+}
+
+long long Girl::getId() const
+{
+    return id;
+}
+
 Girl::Girl(int year,int month,int day):People(year,month,day)
 {
     this->crotchTattoo=new CrotchTattoo();
@@ -154,4 +166,6 @@ bool Girl::load(QJsonObject obj)
     }
     return true;
 }
+
+
 }

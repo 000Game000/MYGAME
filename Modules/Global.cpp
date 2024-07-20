@@ -12,7 +12,7 @@ QList<QString> Global::getCareerList()
     return careerList;
 }
 
-MainWindow *Global::getMainWindow() const
+MainWindow *Global::getMainWindow()
 {
     return mainWindow;
 }
@@ -22,7 +22,7 @@ void Global::setMainWindow(MainWindow *newMainWindow)
     mainWindow = newMainWindow;
 }
 
-BeginWindow *Global::getBeginWindow() const
+BeginWindow *Global::getBeginWindow()
 {
     return beginWindow;
 }
@@ -32,7 +32,7 @@ void Global::setBeginWindow(BeginWindow *newBeginWindow)
     beginWindow = newBeginWindow;
 }
 
-CreateLead *Global::getCreateLead() const
+CreateLead *Global::getCreateLead()
 {
     return createLead;
 }
